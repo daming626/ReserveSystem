@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+Hello Word
+<table border="1">
+    <tr>
+        <th>用户ID</th>
+        <th>用户名</th>
+        <th>真实姓名</th>
+        <th>联系方式</th>
+        <th>状态</th>
+        <th>注册时间</th>
+    </tr>
+    <tr  th:each="user,userStat : ${users}" >
+        <td th:text="${user.userId}"></td>
+        <td th:text="${user.username}"></td>
+        <th th:text="${user.realName}"></th>
+        <th th:text="${user.contacts}"></th>
+        <th th:text="${user.state}"></th>
+        <th th:text="${user.registerTime}"></th>
+    </tr>
+</table>
+</body>
+</html>

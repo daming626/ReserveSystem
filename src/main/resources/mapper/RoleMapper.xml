@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.RoleMapper">
+    <resultMap id="roleMap" type="role">
+        <id property="roleId" column="roleId"></id>
+        <result property="roleName" column="roleName"></result>
+        <result property="roleDesc" column="roleDesc"></result>
+        <collection property="treeList" column="roleId" select="com.example.springboot.mapper.TreeMapper.getTreeByRoleId"></collection>
+    </resultMap>
+    <select id="getRoleByUserId" resultMap="roleMap" parameterType="string">
+        SELECT r.* FROM tb_role r,tb_user_role ur WHERE r.roleId=ur.roleId AND ur.userId=#{value}
+    </select>
+</mapper>

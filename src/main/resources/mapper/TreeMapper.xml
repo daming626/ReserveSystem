@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.TreeMapper">
+    <resultMap id="treeMap" type="tree">
+        <id property="treeId" column="treeId"></id>
+        <result property="parentTreeId" column="Parenttreeid"></result>
+        <result property="title" column="title"></result>
+        <result property="treeDesc" column="treeDesc"></result>
+        <result property="url" column="url"></result>
+
+        <!-- <association property="parentTree" column="treeId" select="getParentTreeById" foreignColumn="parentId"></association>-->
+
+        <collection property="childTrees" column="treeId" select="getChildTrees" foreignColumn="parenttreeId">
+        </collection>
+    </resultMap>
+    <select id="getChildTrees" resultMap="treeMap" parameterType="string">
+		SELECT child.* FROM tb_tree child,tb_tree parent WHERE child.parenttreeId=parent.treeId AND parent.treeId=#{value}
+	</select>
+    <!--
+    <select id="getParentTreeById" resultMap="treeMap" parameterType="string">
+		SELECT parent.* FROM tb_tree child,tb_tree parent WHERE child.parentId=parent.treeId AND child.treeId=#{value}
+	</select>
+	-->
+    <select id="getTreeByRoleId" resultMap="treeMap" parameterType="string">
+        SELECT t.* FROM tb_tree t,tb_role_permission rp WHERE t.treeId=rp.treeId AND rp.roleId=#{value}
+    </select>
+</mapper>
