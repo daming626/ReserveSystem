@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>通知</title>
+    <link rel="shortcut icon" href="tu.ico"/>
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+<section class="tableBox">
+
+
+
+
+</section>
+
+<button id="fabu" >发布通知</button>
+<button id="chakang">查看通知</button>
+<button id="cexiao">撤销通知</button>
+
+<section class="tableBox">
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>发布时间</th>
+            <th>通知内容</th>
+
+        </tr>
+        <tr  th:each="notice: ${notice}" >
+            <td th:text="${notice.id}"></td>
+            <td th:text="${notice.time}"></td>
+            <th th:text="${notice.content}"></th>
+        </tr>
+    </table>
+
+
+</section>
+
+
+
+
+</body>
+</html>

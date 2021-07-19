@@ -31,7 +31,7 @@
                             <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"/></a>
                             <ul>
                                 <li th:each="child:${tree.getChildTrees()}">
-                                    <a th:href="@{'../'+${child.url}}" th:text="${child.title}"></a>
+                                    <a target="iframe" th:href="@{'../'+${child.url}}" th:text="${child.title}"></a>
                                 </li>
                             </ul>
                         </li>
@@ -39,6 +39,7 @@
                 </div>
             </div>
             <div class="right">
+                <iframe id="iframe" name="iframe" style="width: 80%;height: 80%"></iframe>
                 主题内容
             </div>
         </section>
