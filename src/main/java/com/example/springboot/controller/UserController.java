@@ -45,6 +45,6 @@ public class UserController {
 
     @GetMapping("login.html")
     public String login(){
-        return "login";
+        return "login.html";
     }
 }
