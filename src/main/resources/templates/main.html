@@ -13,7 +13,7 @@
             <h1>自习室预约系统</h1>
             <div class="publicHeaderR">
                 <p><span>下午好！</span><span style="color: #fff21b" th:text="${user.realName}"></span> , 欢迎你！</p>
-                <a>退出</a><!--<a href="${pageContext.request.contextPath }/jsp/logout.do">退出</a>-->
+                <a th:href="@{../login.html}">退出</a><!--<a href="${pageContext.request.contextPath }/jsp/logout.do">退出</a>-->
             </div>
         </header>
         <!--时间-->
@@ -28,10 +28,10 @@
                 <div id="leftTree">
                     <ul class="nav">
                         <li th:each="tree:${userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
-                            <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"/></a>
+                            <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"></a>
                             <ul>
                                 <li th:each="child:${tree.getChildTrees()}">
-                                    <a target="iframe" th:href="@{'../'+${child.url}}" th:text="${child.title}"></a>
+                                    <a target="right" th:href="@{'../'+${child.url}}" th:text="${child.title}"></a>
                                 </li>
                             </ul>
                         </li>
@@ -39,8 +39,7 @@
                 </div>
             </div>
             <div class="right">
-                <iframe id="iframe" name="iframe" style="width: 80%;height: 80%"></iframe>
-                主题内容
+                <iframe src="" width="100%" height="100%" name="right" frameborder="0"></iframe>
             </div>
         </section>
     </body>

@@ -1,7 +1,7 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.bean.User;
 import com.example.springboot.service.IUserService;
+import com.example.springboot.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +45,7 @@ public class UserController {
 
     @GetMapping("login.html")
     public String login(){
-        return "login";
+        return "login.html";
     }
 
 }
