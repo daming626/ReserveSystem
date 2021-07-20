@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.NoticeMapper">
+    <resultMap id="noticeMap" type="notice">
+        <id property="id" column="id"></id>
+        <result property="time" column="time"></result>
+        <result property="content" column="content"></result>
+    </resultMap>
+    <select id="getNoticeById" resultMap="noticeMap" parameterType="string">
+        SELECT * FROM tb_notice n WHERE  n.id=#{value}
+    </select>
+</mapper>
