@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{insertRoom}" method="POST">
+        <label for="roomId">自习室Id</label><input type="text" name="roomId" id="roomId">
+        <label for="roomName">自习室名称</label><input type="text" name="RoomName" id="roomName">
+        <label for="roomCapacity">自习室容量</label><input type="text" name="roomCapacity" id="roomCapacity">
+        <label for="roomDescribe">自习室描述</label><input type="text" name="roomDescribe" id="roomDescribe">
+        <input type="submit" value="添加">
+    </form>
+</body>
+</html>
