@@ -39,13 +39,13 @@ public class UserController {
             request.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             return "main";
         }else{
-            return "forward:../login.html";
+            return "redirect:../login.html";
         }
     }
 
     @GetMapping("login.html")
     public String login(){
-        return "login.html";
+        return "redirect:../login.html";
     }
 
 }
