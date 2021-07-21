@@ -6,6 +6,6 @@ function showMenu(ele) {
     }
     else {
         ele.nextSibling.nextSibling.style.display = "block";
-        ele.children[0].src="close.png";
+        ele.children[0].src="/static/img/close.png";
     }
 }
