@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>当前预约</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>序号</th>
+        <th>自习室Id</th>
+        <th>座位号</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+    </tr>
+    <tr  th:each="currentReservation: ${currentReservation}" >
+        <td th:text="${currentReservation.getSequence()}"></td>
+        <td th:text="${currentReservation.getRoomId()}"></td>
+        <td th:text="${currentReservation.getSeatNumber()}"></td>
+        <td th:text="${currentReservation.getStartTime()}"></td>
+        <td th:text="${currentReservation.getOverTime()}"></td>
+        <td>
+            <a href="javascript:if(window.confirm('是否？'))
+            {window.location.href='@{cancelReservation.do(sequence=${currentReservation.sequence})}'}">取消预约</a>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
