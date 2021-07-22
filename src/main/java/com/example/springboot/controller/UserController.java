@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -31,10 +32,10 @@ public class UserController {
     }
 
     @PostMapping("login.do")
-    public String login(String username, String password, HttpServletRequest request){
+    public String login(String username, String password, HttpServletRequest request, HttpSession session){
         User user = userService.login(username,password);
         if (user!=null){
-            request.setAttribute("user",user);
+            session.setAttribute("user",user);
             user = userService.getUserById(user.getUserId());//把用户的菜单取到
             request.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             return "main";
