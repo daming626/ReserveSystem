@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.mapper.ReservedMapper">
-    <resultMap id="ReservationMap" type="reserved">
+    <resultMap id="ReservationMap" type="reservate">
         <result property="sequence" column="sequence"></result>
         <result property="roomId" column="roomId"></result>
         <result property="seatNumber" column="seatNumber"></result>
@@ -11,11 +11,11 @@
     <delete id="cancelReservation" parameterType="int">
         DELETE FROM tb_reservate WhERE sequence=#{value}
     </delete>
-    <select id="getCurrentReservedById" resultType="reserved" parameterType="string">
+    <select id="getCurrentReservedById" resultType="reservate" parameterType="string">
         SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and startTime &gt; #{currentTime}
     </select>
 
-    <select id="getHistoryReservedById" resultType="reserved" parameterType="string">
+    <select id="getHistoryReservedById" resultType="reservate" parameterType="string">
     SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &lt; #{currentTime}
     </select>
 

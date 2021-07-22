@@ -2,19 +2,19 @@ package com.example.springboot.bean;
 
 import java.sql.Timestamp;
 
-public class Reserved {
-    private String roomId;
-    private int userId;
+public class Reservate {
     private int sequence;//序号
+    private String roomId;
     private int seatNumber;//座位号
+    private int userId;
     private Timestamp startTime;//开始时间
     private Timestamp overTime;//结束时间
     private static String currentTime;//当前时间
 
-    public Reserved() {
+    public Reservate() {
     }
 
-    public Reserved(String roomId, int userId, int sequence, int seatNumber, Timestamp startTime, Timestamp overTime) {
+    public Reservate(String roomId, int userId, int sequence, int seatNumber, Timestamp startTime, Timestamp overTime) {
         this.roomId = roomId;
         this.userId = userId;
         this.sequence = sequence;
@@ -76,6 +76,6 @@ public class Reserved {
     }
 
     public static void setCurrentTime(String currentTime) {
-        Reserved.currentTime = currentTime;
+        Reservate.currentTime = currentTime;
     }
 }
