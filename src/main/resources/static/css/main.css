@@ -107,7 +107,7 @@ li{
     margin-right: 10px;
     /*height: 520px;*/
     min-height: 520px;
-
+    /*float: left;*/
 }
 .leftH2{
     width: 140px;
@@ -192,7 +192,9 @@ img{
 
 /*右边*/
 .right{
-    width: 85%;
+    width: 84%;
+    /*float: left;*/
+    /*background-color: #fff21b;*/
 }
 /*右边结束*/
 
@@ -225,6 +227,7 @@ img{
     line-height: 40px;
     text-align: center;
     color: #fff;
+    /*float: left;*/
 }
 /*底部结束*/
 

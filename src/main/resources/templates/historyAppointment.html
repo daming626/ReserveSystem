@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>历史预约</title>
+    <link type="text/css" rel="stylesheet" href="/css/reserved.css"/>
 </head>
 <body>
+<div class="MyReservate">
 <table border="1">
     <tr>
         <th>序号</th>
@@ -20,5 +22,6 @@
         <td th:text="${historyAppointment.getOverTime()}"></td>
     </tr>
 </table>
+</div>
 </body>
 </html>

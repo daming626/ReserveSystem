@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.bean.Reserved;
+import com.example.springboot.bean.Reservate;
 import com.example.springboot.bean.User;
 import com.example.springboot.service.IReservedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +23,7 @@ public class ReservedController {
 
     private  String currentTime;
 
+//    当前预约
     @GetMapping("currentReservation.do")
     public String currentReserved(String userId, Model model, HttpSession session){
 
@@ -33,18 +33,20 @@ public class ReservedController {
 
         User user = (User) session.getAttribute("user");
         userId = user.getUserId();
-        List<Reserved> reservedList = reservedService.getCurrentReservedById(userId,currentTime);
-        model.addAttribute("currentReservation",reservedList);
+        List<Reservate> reservateList = reservedService.getCurrentReservedById(userId,currentTime);
+        model.addAttribute("currentReservation", reservateList);
         return "currentReservation";
     }
 
 
+//    取消预约
     @GetMapping("cancelReservation.do")
     public String cancelReservation(int sequence, Model model){
         reservedService.cancelReservation(sequence);
         return "redirect:currentReservation.do";
     }
 
+//    历史预约
     @GetMapping("historyAppointment.do")
     public String historyReserved(String userId, Model model, HttpSession session){
 
@@ -54,8 +56,8 @@ public class ReservedController {
 
         User user = (User) session.getAttribute("user");
         userId = user.getUserId();
-        List<Reserved> reservedList = reservedService.getHistoryReservedById(userId,currentTime);
-        model.addAttribute("historyAppointment",reservedList);
+        List<Reservate> reservateList = reservedService.getHistoryReservedById(userId,currentTime);
+        model.addAttribute("historyAppointment", reservateList);
         return "historyAppointment";
     }
 }

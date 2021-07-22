@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/reserving.css"/>
 </head>
 <body>
-    开始预约
+    <div class="main">
+        <div class="head">
+            <form th:action="@{test.do}" method="get" target="BODY">
+                <input type="date" class="selectDate" name="date">
+                <select name="roomId" class="selectClassRoom">
+                    <option value="">请选择</option>
+                    <!--循环遍历集合,下拉显示后台动态数据-->
+                    <option th:each="roomId:${allRoomId}"  th:text="${roomId}"></option>
+                </select>
+                <input type="submit" value="查询" >
+            </form>
+        </div>
+        <div class="body">
+            <iframe src="" width="100%" height="100%" name="BODY" ></iframe>
+        </div>
+    </div>
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.example.springboot.bean;
 
 import java.sql.Timestamp;
 
-public class Reserved {
+public class Reservate {
     private String roomId;
     private int userId;
     private int sequence;//序号
@@ -11,10 +11,10 @@ public class Reserved {
     private Timestamp overTime;//结束时间
     private static String currentTime;//当前时间
 
-    public Reserved() {
+    public Reservate() {
     }
 
-    public Reserved(String roomId, int userId, int sequence, int seatNumber, Timestamp startTime, Timestamp overTime) {
+    public Reservate(String roomId, int userId, int sequence, int seatNumber, Timestamp startTime, Timestamp overTime) {
         this.roomId = roomId;
         this.userId = userId;
         this.sequence = sequence;
@@ -76,6 +76,6 @@ public class Reserved {
     }
 
     public static void setCurrentTime(String currentTime) {
-        Reserved.currentTime = currentTime;
+        Reservate.currentTime = currentTime;
     }
 }
