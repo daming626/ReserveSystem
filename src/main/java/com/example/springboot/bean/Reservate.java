@@ -3,10 +3,10 @@ package com.example.springboot.bean;
 import java.sql.Timestamp;
 
 public class Reservate {
-    private int sequence;//序号
     private String roomId;
-    private int seatNumber;//座位号
     private int userId;
+    private int sequence;//序号
+    private int seatNumber;//座位号
     private Timestamp startTime;//开始时间
     private Timestamp overTime;//结束时间
     private static String currentTime;//当前时间

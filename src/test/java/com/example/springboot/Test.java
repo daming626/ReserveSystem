@@ -1,20 +1,9 @@
 package com.example.springboot;
 
-import com.example.springboot.mapper.ReservingMapper;
-import com.example.springboot.service.IReservingServise;
-import com.example.springboot.service.impl.ReservingService;
-import org.apache.ibatis.io.ResolverUtil;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-@MapperScan("com.example.springboot.mapper")
-@Service
 public class Test {
-
-    @Autowired
-    private IReservingServise reservingServise;
-
 //    @org.junit.jupiter.api.Test
 //    public void test(){
 //        String[] a =new ReservingMapper() {

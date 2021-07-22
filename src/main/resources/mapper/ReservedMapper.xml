@@ -8,13 +8,17 @@
         <result property="startTime" column="startTime"></result>
         <result property="overTime" column="overTime"></result>
     </resultMap>
+<!--    当前预约-->
+    <!--取消预约-->
     <delete id="cancelReservation" parameterType="int">
         DELETE FROM tb_reservate WhERE sequence=#{value}
     </delete>
+    <!--查询数据-->
     <select id="getCurrentReservedById" resultType="reservate" parameterType="string">
-        SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and startTime &gt; #{currentTime}
+        SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &gt; #{currentTime}
     </select>
-
+    
+<!--    历史预约-->
     <select id="getHistoryReservedById" resultType="reservate" parameterType="string">
     SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &lt; #{currentTime}
     </select>
