@@ -14,19 +14,23 @@
         <header class="loginHeader">
             <h1>自习室预约系统</h1>
         </header>
-        <div class="inputbox">
-            <input type="text" class="input-text" id="username" name="username" required/>
-            <label for="username">username</label>
-        </div>
-        <div class="inputbox">
-            <input type="password" id="password" name="password" required/>
-            <label for="password">password</label>
-        </div>
-        <div class="subBtn">
-            <input type="submit" value="登录"/>
-            <input type="reset" value="重置"/>
-        </div>
-    </form>
-</section>
+        <section class="loginCont">
+            <form class="loginForm" action="user/login.do" name="actionForm" id="actionForm" method="post">
+<!--                <div class="info">错误提示位置</div>-->
+                <div class="inputbox">
+                    <input type="text" class="input-text" id="username" name="username" required/>
+                    <label for="username">username</label>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="password" name="password" required/>
+                    <label for="password">password</label>
+                </div>
+                <div class="subBtn">
+                    <input type="submit" value="登录"/>
+                    <input type="reset" value="重置"/>
+                </div>
+            </form>
+        </section>
+    </section>
 </body>
 </html>
