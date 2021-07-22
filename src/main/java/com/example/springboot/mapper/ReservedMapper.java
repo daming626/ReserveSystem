@@ -9,3 +9,4 @@ public interface ReservedMapper {
     List<Reservate> getCurrentReservedById(String userId, String currentTime);//当前预约记录数组
     List<Reservate> getHistoryReservedById(String userId, String currentTime);//历史预约记录数组
 }
+

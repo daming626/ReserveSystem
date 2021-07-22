@@ -24,10 +24,21 @@ public class ReservingController {
     }
 
     @GetMapping("test.do")
-    public String  test(String date, String roomId){
+    public String  test(String date, String roomId,Model model){
         System.out.println("KKKKKKKKKKKKKKKKKKKK");
         System.out.println(date);
         System.out.println(roomId);
+        System.out.println(reservingServise.getRoomCapacity(roomId));
+        model.addAttribute("roomCapacity",reservingServise.getRoomCapacity(roomId));
+        model.addAttribute("reservingDate",date);
+        model.addAttribute("roomId",roomId);
         return "reservingReal";
+    }
+
+    @GetMapping("test1.do")
+    public void test1(String date,String roomId,Integer seatNumber){
+        System.out.println(date);
+        System.out.println(roomId);
+        System.out.println(seatNumber);
     }
 }

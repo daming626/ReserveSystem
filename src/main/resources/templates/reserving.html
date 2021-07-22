@@ -10,7 +10,7 @@
             <form th:action="@{test.do}" method="get" target="BODY">
                 <input type="date" class="selectDate" name="date">
                 <select name="roomId" class="selectClassRoom">
-                    <option value="">请选择</option>
+                    <option value="">请选择自习室</option>
                     <!--循环遍历集合,下拉显示后台动态数据-->
                     <option th:each="roomId:${allRoomId}"  th:text="${roomId}"></option>
                 </select>

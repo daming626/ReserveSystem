@@ -19,7 +19,6 @@
     </select>
     
 <!--    历史预约-->
-    <!--查询数据-->
     <select id="getHistoryReservedById" resultType="reservate" parameterType="string">
     SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &lt; #{currentTime}
     </select>

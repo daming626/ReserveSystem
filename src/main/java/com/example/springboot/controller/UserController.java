@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -32,21 +31,21 @@ public class UserController {
     }
 
     @PostMapping("login.do")
-    public String login(String username, String password, HttpServletRequest request, HttpSession session){
+    public String login(String username, String password, HttpSession session,Model model){
         User user = userService.login(username,password);
         if (user!=null){
             session.setAttribute("user",user);
             user = userService.getUserById(user.getUserId());//把用户的菜单取到
-            request.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
-            return "main";
+            session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
+            return "redirect:/main.html";
         }else{
-            return "redirect:..//login.html";
+            model.addAttribute("message","用户名或密码错误，请重新输入");
+            return "login";
         }
     }
 
     @GetMapping("login.html")
-    public String login(){
-        return "redirect:../login.html";
+    public String login() {
+        return "login";
     }
-
 }
