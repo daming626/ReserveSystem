@@ -27,7 +27,7 @@
                 <h2 class="leftH2"><span class="span1"></span>功能列表<span></span></h2>
                 <div id="leftTree">
                     <ul class="nav">
-                        <li th:each="tree:${userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
+                        <li th:each="tree:${session.userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
                             <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"></a>
                             <ul>
                                 <li th:each="child:${tree.getChildTrees()}">
