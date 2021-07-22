@@ -4,6 +4,8 @@
     <title>Title</title>
 </head>
 <body>
-KKKKKKKKKKKKKKKKKKKK
+    <span th:each="flag:${#numbers.sequence(1,roomCapacity)}">
+        <img  th:src="@{/img/yes.png}" th:title="${flag}+'号座位'">
+    </span>
 </body>
 </html>

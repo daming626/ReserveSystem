@@ -39,7 +39,7 @@ public class UserController {
             request.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             return "main";
         }else{
-            return "redirect:..//login.html";
+            return "redirect:../login.html";
         }
     }
 

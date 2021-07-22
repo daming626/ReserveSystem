@@ -4,4 +4,7 @@
     <select id="getAllRoomId" resultType="String">
         SELECT roomId From tb_study_room
     </select>
+    <select id="getRoomCapacity" parameterType="String" resultType="Integer">
+        SELECT roomCapacity FROM tb_study_room WHERE roomid=#{roomId}
+    </select>
 </mapper>

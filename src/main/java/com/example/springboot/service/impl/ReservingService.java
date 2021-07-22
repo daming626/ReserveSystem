@@ -16,4 +16,9 @@ public class ReservingService implements IReservingServise {
         return reservingMapper.getAllRoomId();
     }
 
+    @Override
+    public Integer getRoomCapacity(String roomId) {
+        return reservingMapper.getRoomCapacity(roomId);
+    }
+
 }
