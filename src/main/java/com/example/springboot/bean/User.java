@@ -9,22 +9,36 @@ public class User {
     private String username;
     private String password;
     private String realName;
+    private String sex;
+    private String tclass;
+    private String grade;
     private String contacts;
     private String state;
     private Timestamp registerTime;
     List<Role> roleList = new ArrayList<Role>();
 
-    public User(String userId, String username, String password, String realName, String contacts, String state, Timestamp registerTime) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.realName = realName;
-        this.contacts = contacts;
-        this.state = state;
-        this.registerTime = registerTime;
+    public String getSex() {
+        return sex;
     }
 
-    public User() {
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getTclass() {
+        return tclass;
+    }
+
+    public void setTclass(String tclass) {
+        this.tclass = tclass;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getUserId() {

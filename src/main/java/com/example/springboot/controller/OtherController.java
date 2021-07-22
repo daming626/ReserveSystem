@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/other")
-public class NoticeController {
+public class OtherController {
 
     @Autowired
     private INoticeService noticeService;

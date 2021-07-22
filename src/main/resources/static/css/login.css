@@ -1,148 +1,108 @@
-* {
-    margin: 0;
-    padding: 0;
+/*登录页面*/
 
+.login_bg{
+    margin:0px;
+    padding:0px;
+    font-family:sans-serif;
+    /*设置字体为sans-serif*/
+    background-image: url("../img/banner1.jpg");
+    background-repeat: no-repeat;
+    background-position-y: -30%;
+    background-size:cover;
+    /*背景图片尺寸为覆盖cover*/
 }
-
-/*公共样式*/
-.login_bg {
-    background: url("/img/loginBg.jpg") 0 0 repeat-x;
+.loginBox{
+    position:absolute;
+    /*定位方式绝对定位absolute*/
+    top:50%;
+    left:80%;
+    /*顶和高同时设置50%实现的是同时水平垂直居中效果*/
+    transform:translate(-50%,-50%);
+    /*实现块元素百分比下居中*/
+    width:450px;
+    padding:50px;
+    background: rgba(256,256,256,.8);
+    /*背景颜色为黑色，透明度为0.8*/
+    box-sizing:border-box;
+    /*box-sizing设置盒子模型的解析模式为怪异盒模型，
+    将border和padding划归到width范围内*/
+    box-shadow: 0px 15px 25px rgba(0,0,0,.7);
+    /*边框阴影  水平阴影0 垂直阴影15px 模糊25px 颜色黑色透明度0.5*/
+    border-radius:15px;
+    /*边框圆角，四个角均为15px*/
 }
-
-.loginBox {
-    width: 1000px;
-    margin: 0 auto;
-    background: url("/img/login_bg.jpg") 0 0 no-repeat;
+.loginBox h1{
+    margin:0 0 30px;
+    padding:0;
+    color: black;
+    text-align:center;
+    /*文字居中*/
 }
-/*公共样式结束*/
-
-.loginHeader {
-    padding-top: 102px;
-    text-align: center;
-    padding-bottom: 30px;
+.loginBox .inputbox{
+    position:relative;
 }
-
-.loginHeader h1 {
-    color: #fff;
-    text-shadow: 2px 2px #000;
+.loginBox .inputbox input{
+    width: 100%;
+    padding:10px 0;
+    font-size:16px;
+    color:black;
+    letter-spacing: 1px;
+    /*字符间的间距1px*/
+    margin-bottom: 30px;
+    border:none;
+    border-bottom: 1px solid black;
+    outline:none;
+    /*outline用于绘制元素周围的线
+    outline：none在这里用途是将输入框的边框的线条使其消失*/
+    background: transparent;
+    /*背景颜色为透明*/
 }
-
-.loginCont {
-    width: 388px;
-    height: 284px;
-    /*border: 1px solid red ;*/
-    margin: 0 auto;
+.loginBox .inputbox label{
+    /*<label> 标签为 input 元素定义标注（标记）*/
+    position:absolute;
+    top:0px;
+    left:0px;
+    padding:10px 0;
+    font-size: 16px;
+    color:black;
+    pointer-events:none;
+    /*鼠标事件消失，比如说选中文字，光标定位，超链接下划线*/
+    transition:.5s;
+    /*过渡时间5s*/
 }
-
-.formBox {
-    position: relative;
+.loginBox .inputbox input:focus ~ label,
+.loginBox .inputbox input:valid ~ label
+{
+    top:-18px;
+    left:0;
+    color:#03a9f4;
+    font-size:14px;
 }
-
-::-webkit-input-placeholder {
-    color: rgb(190, 188, 188);
-    /*font-style: italic;*/
-}
-
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-    color: rgb(190, 188, 188);
-    font-style: italic;
-}
-
-input {
-    outline: none;
-}
-
-.loginForm {
-    background: url("/img/formBg.png");
-    width: 320px;
-    height: 140px;
-    border-radius: 8px;
-    padding: 90px 38px 48px 30px;
-    /*border: 1px solid green;*/
-}
-
-.loginForm label {
-    width: 20%;
-    display: inline-block;
-}
-
-.inputbox {
-    height: 60px;
-}
-
-
-/*登录错误提示*/
-.info {
-    color: red;
-    font-weight:bold;
-}
-/*登陆错误提示结束*/
-
-
-
-.inputbox input {
-    width: 66%;
-    padding: 10px 5px 10px 20px;
-    border: 1px solid rgb(178, 178, 178);
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
-    -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
-    box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
-
-}
-
-/*输入框得到焦点的效果*/
-.inputbox input:active, .providerAdd input:focus,
-.inputbox input:focus {
-    border: 1px solid rgba(91, 90, 90, 0.7);
-    background: rgba(238, 236, 240, 0.2);
-    -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
-    -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
-    box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
-}
-
-.subBtn {
-    margin-left: 70px;
-}
-
-/*登录页登录和重置按钮 .providerView a是供应商管理页面下信息查看也得返回按钮的样式*/
-input[type='submit'], input[type='reset'], .providerView a {
-    width: 30%;
+.loginBox input[type="submit"]
+{
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size: 16px;
+    color:#fff;
+    background: #03a9f4;
+    padding:15px 20px;
     cursor: pointer;
-    background: #54a4d7;
-    padding: 6px 18px;
-    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-    color: #fff;
-    font-size: 18px;
-    border: 1px solid #4682be;
-    margin-bottom: 10px;
-    margin-right: 22px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 1px 4px 4px rgba(0, 0, 0, 0.07) inset,
-    0px 0px 0px 3px rgb(254, 254, 254),
-    0px 5px 3px 3px rgb(210, 210, 210);
-    -moz-box-shadow: 0px 1px 4px 4px rgba(0, 0, 0, 0.07) inset,
-    0px 0px 0px 3px rgb(254, 254, 254),
-    0px 5px 3px 3px rgb(210, 210, 210);
-    box-shadow: 0px 1px 4px 4px rgba(0, 0, 0, 0.07) inset,
-    0px 0px 0px 3px rgb(254, 254, 254),
-    0px 5px 3px 3px rgb(210, 210, 210);
-
+    /*光标呈现为指示链接的指针（一只手）*/
+    border-radius:10px;
 }
 
-input[type='submit']:hover, input[type='reset']:hover {
-    background: rgb(74, 179, 198);
+.loginBox input[type="reset"]
+{
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size: 16px;
+    color:#fff;
+    background: #03a9f4;
+    padding:15px 20px;
+    cursor: pointer;
+    /*光标呈现为指示链接的指针（一只手）*/
+    border-radius:10px;
 }
 
-input[type='submit']:active, input[type='submit']:focus,
-input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .providerView a:active {
-    background: #2a5989;
-    border: 1px solid rgb(12, 76, 87);
-    -webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-    -moz-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-    box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-}

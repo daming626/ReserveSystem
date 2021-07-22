@@ -16,12 +16,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> viewUser() {
-        return null;
+        return userMapper.viewUser();
     }
 
     @Override
     public User login(String username, String password) {
-        return userMapper.login(username,password);
+        return userMapper.login(username, password);
     }
 
     @Override
@@ -33,4 +33,5 @@ public class UserServiceImpl implements IUserService {
     public User getUserById(String userId) {
         return userMapper.getUserById(userId);
     }
+
 }
