@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.mapper.RoomMapper">
 
-    <select id="viewRoom"  resultType="room">
-		SELECT * FROM tb_study_room
+    <select id="viewRoom"  resultType="room" parameterType="int">
+		SELECT * FROM tb_study_room limit #{curPage},#{pageSize}
 	</select>
     <delete id="deleteRoom" parameterType="string">
 		DELETE FROM tb_study_room WHERE roomId=#{value }
@@ -21,4 +21,7 @@
 		set
 		roomName=#{roomName},roomCapacity=#{roomCapacity},roomDescribe=#{roomDescribe} WHERE roomId=#{roomId}
 	</update>
+	<select id="total" parameterType="int" resultType="int">
+		SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_study_room
+	</select>
 </mapper>
