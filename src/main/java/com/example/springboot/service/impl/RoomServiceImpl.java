@@ -7,6 +7,8 @@ import com.example.springboot.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,8 +17,8 @@ public class RoomServiceImpl implements IRoomService {
     @Autowired
     private RoomMapper roomMapper;
     @Override
-    public List<Room> viewRoom() {
-        return roomMapper.viewRoom();
+    public List<Room> viewRoom(int curPage,int pageSize) {
+        return roomMapper.viewRoom(curPage,pageSize);
     }
 
     @Override
@@ -36,7 +38,13 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
+    public int total(int pageSize) {
+        return roomMapper.total(pageSize);
+    }
+
+    @Override
     public Room getRoomById(String roomId) {
        return roomMapper.getRoomById(roomId);
    }
+
 }

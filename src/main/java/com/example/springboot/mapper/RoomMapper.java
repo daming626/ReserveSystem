@@ -7,10 +7,11 @@ import java.util.List;
 
 @Mapper
 public interface RoomMapper {
-    List<Room> viewRoom();
+    List<Room> viewRoom(int curPage,int pageSize);
     void deleteRoom(String roomId);
     void addRoom(Room room);
     Room getRoomById(String roomId);
     void updateRoom(Room room);
+    int total(int pageSize);
 
 }
