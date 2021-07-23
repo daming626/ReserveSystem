@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
+    <link rel="stylesheet" href="/css/Room.css"/>
 </head>
 <body>
 <table border="1">
-    <tr>
+    <tr class="123">
         <th>房间ID</th>
         <th>房间名</th>
         <th>房间容量</th>
@@ -18,10 +19,10 @@
         <td th:text="${room.roomCapacity}"></td>
         <td th:text="${room.roomDescribe}"></td>
         <td>
-            <a th:href="@{deleteRoom(roomId=${room.roomId})}">删除自习室</a>
+            <a th:href="@{deleteRoom.do(roomId=${room.roomId})}">删除自习室</a>
         </td>
         <td>
-            <a th:href="@{insertRoom.do}">添加自习室</a>
+            <a th:href="@{addRoom.do}">添加自习室</a>
         </td>
         <td>
             <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>

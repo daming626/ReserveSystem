@@ -8,7 +8,7 @@
     <delete id="deleteRoom" parameterType="string">
 		DELETE FROM tb_study_room WHERE roomId=#{value }
 	</delete>
-	<insert id="insertRoom" parameterType="com.example.springboot.bean.Room">
+	<insert id="addRoom" parameterType="com.example.springboot.bean.Room">
 		insert into tb_study_room (roomId,roomName,roomCapacity,roomDescribe
 		)
 		value (#{roomId},#{roomName},#{roomCapacity},#{roomDescribe})

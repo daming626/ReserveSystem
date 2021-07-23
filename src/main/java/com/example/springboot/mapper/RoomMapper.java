@@ -9,7 +9,7 @@ import java.util.List;
 public interface RoomMapper {
     List<Room> viewRoom();
     void deleteRoom(String roomId);
-    void insertRoom(Room room);
+    void addRoom(Room room);
     Room getRoomById(String roomId);
     void updateRoom(Room room);
 
