@@ -7,18 +7,18 @@ public class Reservate {
     private String roomId;
     private int seatNumber;//座位号
     private int userId;
-    private Timestamp startTime;//开始时间
-    private Timestamp overTime;//结束时间
+    private String startTime;//开始时间
+    private String overTime;//结束时间
     private static String currentTime;//当前时间
 
     public Reservate() {
     }
 
-    public Reservate(String roomId, int userId, int sequence, int seatNumber, Timestamp startTime, Timestamp overTime) {
-        this.roomId = roomId;
-        this.userId = userId;
+    public Reservate(int sequence, String roomId, int seatNumber, int userId, String startTime, String overTime) {
         this.sequence = sequence;
+        this.roomId = roomId;
         this.seatNumber = seatNumber;
+        this.userId = userId;
         this.startTime = startTime;
         this.overTime = overTime;
     }
@@ -55,19 +55,19 @@ public class Reservate {
         this.seatNumber = seatNumber;
     }
 
-    public Timestamp getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Timestamp getOverTime() {
+    public String getOverTime() {
         return overTime;
     }
 
-    public void setOverTime(Timestamp overTime) {
+    public void setOverTime(String overTime) {
         this.overTime = overTime;
     }
 

@@ -34,4 +34,9 @@ public class ReservingService implements IReservingServise {
         return reservingMapper.getAllReservedSeatNumber(timestamp,roomId);
     }
 
+    @Override
+    public void insertReservate(Reservate reservate) {
+        reservingMapper.insertReservate(reservate);
+    }
+
 }

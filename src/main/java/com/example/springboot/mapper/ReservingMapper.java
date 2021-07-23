@@ -11,4 +11,5 @@ public interface ReservingMapper {
     Integer getRoomCapacity(String roomId);
     List<Reservate> viewAllReservedBySome(String date, String roomId,String seatNumber);
     Integer[] getAllReservedSeatNumber(String timestamp,String roomId);
+    void insertReservate(Reservate reservate);
 }

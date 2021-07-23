@@ -13,4 +13,7 @@
     <select id="getAllReservedSeatNumber" parameterType="String" resultType="Integer">
         SELECT seatNumber FROM tb_reservate WHERE #{timestamp} BETWEEN startTime AND overTime AND roomId=#{roomId}
     </select>
+    <insert id="insertReservate" parameterType="reservate">
+        INSERT INTO tb_reservate VALUES(#{sequence},#{roomId},#{seatNumber},#{startTime},#{overTime},#{userId})
+    </insert>
 </mapper>
