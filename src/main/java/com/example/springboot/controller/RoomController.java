@@ -44,10 +44,6 @@ public class RoomController {
         if (curPage > totalPage) {//确定上界
             curPage = totalPage;
         }
-//        List<Room> roomList = roomService.viewRoom(curPage, 4);
-      //  request.setAttribute("roomname", roomname);
-//        request.setAttribute("roomList", roomList);
-        //request.getRequestDispatcher("user/viewUser.jsp").forward(request);
         request.setAttribute("rooms",roomService.viewRoom(curPage,4));//作用域把对象request.setAttribute作用域中
         return "viewRoom";
     }
@@ -88,42 +84,4 @@ public class RoomController {
        // model.addAttribute("room",roomService.getRoomById(roomId));
         return "updateRoom";
     }
-//    protected void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String url = request.getRequestURI();
-//        if (url.contains("View")) {
-//            String roomname = request.getParameter("roomname");
-//            RoomMapper roomMapper = new RoomMapper();
-//            int totalPage = roomMapper.total(5);
-//
-//            String firstPage = request.getParameter("firstPage");
-//            String lastPage = request.getParameter("lastPage");
-//            String nextPage = request.getParameter("nextPage");
-//            String finalPage = request.getParameter("finalPage");
-//
-//            if (firstPage != null) {//首页
-//                curPage = 1;
-//            }
-//            if (lastPage != null) {//上一页
-//                curPage--;
-//            }
-//            if (nextPage != null) {//下一页
-//                curPage++;
-//            }
-//            if (finalPage != null) {//尾页
-//                curPage = totalPage;
-//            }
-//            if (curPage < 1) {//确定下界
-//                curPage = 1;
-//            }
-//            if (curPage > totalPage) {//确定上界
-//                curPage = totalPage;
-//            }
-//
-//            List<Room> roomList = roomMapper.viewRoom(curPage, 5);
-//
-//            request.setAttribute("roomname", roomname);
-//            request.setAttribute("roomList", roomList);
-//            request.getRequestDispatcher("user/viewUser.jsp").forward(request, response);
-//        }
-//    }
 }
