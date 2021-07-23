@@ -5,9 +5,9 @@ import com.example.springboot.bean.Room;
 import java.util.List;
 
 public interface IRoomService {
-    List<Room> viewRoom();
-    void deleteRoom(String roomId);
-    void insertRoom(Room room);
+    List<Room> viewRoom();//返回一个数组
+    void deleteRoom(String roomId);//返回一个roomId
+    void addRoom(Room room);//无返回类型
     Room getRoomById(String roomId);
     void updateRoom(Room room);
 }

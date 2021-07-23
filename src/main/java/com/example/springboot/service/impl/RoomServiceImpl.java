@@ -26,8 +26,8 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-    public void insertRoom(Room room) {
-        roomMapper.insertRoom(room);
+    public void addRoom(Room room) {
+        roomMapper.addRoom(room);
     }
 
     @Override
