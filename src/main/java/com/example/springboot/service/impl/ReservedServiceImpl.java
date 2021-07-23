@@ -14,15 +14,17 @@ public class ReservedServiceImpl implements IReservedService{
     @Autowired
     private ReservedMapper reservedMapper;
 
-
+    //取消预约
     @Override
     public void cancelReservation(int sequence) { reservedMapper.cancelReservation(sequence); }
 
+    //当前预约
     @Override
     public List<Reservate> getCurrentReservedById(String userId, String currentTime) {
         return reservedMapper.getCurrentReservedById(userId,currentTime);
     }
 
+    //历史预约
     @Override
     public List<Reservate> getHistoryReservedById(String userId, String currentTime) {
         return reservedMapper.getHistoryReservedById(userId,currentTime);

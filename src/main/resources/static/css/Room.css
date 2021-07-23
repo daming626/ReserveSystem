@@ -1,0 +1,14 @@
+
+/*调节表格大小*/
+table {
+    width: 100%;
+    height: 350px;
+}
+
+/*<!--给选定的属性添加颜色-->*/
+th {
+    background-color: #4caf50;
+    color: white;
+}
+/*<!--分页-->*/
+

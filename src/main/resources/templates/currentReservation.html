@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>当前预约</title>
+    <link type="text/css" rel="stylesheet" href="/css/reserved.css"/>
 </head>
 <body>
+<div class="MyReservate">
 <table border="1">
     <tr>
         <th>序号</th>
@@ -19,10 +21,11 @@
         <td th:text="${currentReservation.getStartTime()}"></td>
         <td th:text="${currentReservation.getOverTime()}"></td>
         <td>
-            <a href="javascript:if(window.confirm('是否？'))
+            <a href="javascript:if(window.confirm('是否要取消预约？'))
             {window.location.href='@{cancelReservation.do(sequence=${currentReservation.sequence})}'}">取消预约</a>
         </td>
     </tr>
+</div>
 </table>
 </body>
 </html>

@@ -23,6 +23,7 @@ public class ReservedController {
 
     private  String currentTime;
 
+//    当前预约
     @GetMapping("currentReservation.do")
     public String currentReserved(String userId, Model model, HttpSession session){
 
@@ -38,12 +39,14 @@ public class ReservedController {
     }
 
 
+//    取消预约
     @GetMapping("cancelReservation.do")
     public String cancelReservation(int sequence, Model model){
         reservedService.cancelReservation(sequence);
         return "redirect:currentReservation.do";
     }
 
+//    历史预约
     @GetMapping("historyAppointment.do")
     public String historyReserved(String userId, Model model, HttpSession session){
 
