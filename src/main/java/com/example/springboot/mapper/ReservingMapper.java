@@ -9,5 +9,6 @@ import java.util.List;
 public interface ReservingMapper {
     String[] getAllRoomId();
     Integer getRoomCapacity(String roomId);
-//    List<Reservate> viewReserved(String date, String roomId,int seatNumber);
+    List<Reservate> viewAllReservedBySome(String date, String roomId,String seatNumber);
+    Integer[] getAllReservedSeatNumber(String timestamp,String roomId);
 }

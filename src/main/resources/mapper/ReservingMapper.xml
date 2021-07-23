@@ -7,4 +7,10 @@
     <select id="getRoomCapacity" parameterType="String" resultType="Integer">
         SELECT roomCapacity FROM tb_study_room WHERE roomid=#{roomId}
     </select>
+    <select id="viewAllReservedBySome" parameterType="String" resultType="reservate">
+        SELECT * FROM tb_reservate where date(startTime)=#{date} and roomId =#{roomId} and seatNumber=#{seatNumber}
+    </select>
+    <select id="getAllReservedSeatNumber" parameterType="String" resultType="Integer">
+        SELECT seatNumber FROM tb_reservate WHERE #{timestamp} BETWEEN startTime AND overTime AND roomId=#{roomId}
+    </select>
 </mapper>

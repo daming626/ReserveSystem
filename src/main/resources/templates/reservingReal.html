@@ -29,7 +29,7 @@
         #log_window {
             width:600px;
             height:400px;
-            background-color:red;
+            background-color:white;
             margin: auto;
             position: absolute;
             z-index:3;
@@ -39,14 +39,37 @@
             right: 0;
             display:none;
         }
+
+        .seatnumber{
+            float: left;
+        }
     </style>
     <script>
-        function shield(){
+        function shield(a,b,c){
             var s = document.getElementById("test");
             s.style.display = "block";
 
             var l = document.getElementById("log_window");
             l.style.display = "block";
+
+            // var url = '/reserving/viewAllReservedBySome.do?date='+a+'&roomId='+b+'&seatNumber='+c;
+            // $("#kkkkk").loal(url);
+
+            var xmlhttp = new XMLHttpRequest();
+            var seraddrs = 'http://localhost:9090/reserving/viewAllReservedBySome.do?date='+a+'&roomId='+b+'&seatNumber='+c;
+            xmlhttp.open("GET", seraddrs);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xmlhttp.onreadystatechange=function (ev) {
+                if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    var items=document.getElementById("items");
+                    if(items==null)
+                        window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date='+a+'&roomId='+b+'&seatNumber='+c);
+                    else
+                        items.innerHTML=xmlhttp.response;
+                }
+            };
+            xmlhttp.send(null);
         }
 
         function cancel_shield(){
@@ -60,17 +83,34 @@
 </head>
 <body>
     <span th:each="flag:${#numbers.sequence(1,roomCapacity)}">
-        <!--<a th:href="@{test1.do(date=${reservingDate},roomId=${roomId},seatNumber=${flag})}"><img  th:src="@{/img/yes.png}" th:title="${flag}+'号座位'"></a>-->
-        <a href="javascript:shield()"><img th:src="@{/img/yes.png}" th:title="${flag}+'号座位'"></a>
+        <div class="seatnumber" th:switch="${#arrays.contains(allSeatNumber,flag)}">
+            <a th:case="false" href="#" th:onclick="shield([[${reservingDate}]],[[${roomId}]],[[${flag}]])"><img th:src="@{/img/yes.png}" th:title="${flag}+'号座位'"></a>
+            <a th:case="true" href="#" th:onclick="shield([[${reservingDate}]],[[${roomId}]],[[${flag}]])"><img th:src="@{/img/no.png}" th:title="${flag}+'号座位'"></a>
+            <div th:text="${flag+'号座位'}"></div>
+        </div>
         <div id="test"></div>
         <div id="log_window">
-        <a href="javascript:cancel_shield()">关闭</a>
-            <form action="">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="submit" value="提交">
-            </form>
+            <a href="#" onclick="cancel_shield()">❌</a>
+            <div>该座位今日预约信息</div>
+            <!--<a th:href="@{test1.do(date=${reservingDate},roomId=${roomId},seatNumber=${flag})}"></a>-->
+            <div class="reservedTable" id="items" th:fragment="reservedTable">
+                <table border="1">
+                    <tr>
+                    <th>预约人id</th>
+                    <th>自习室Id</th>
+                    <th>座位号</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    </tr>
+                    <tr  th:each="AllReserved : ${AllReserved}" >
+                        <td th:text="${AllReserved.getUserId()}"></td>
+                        <td th:text="${AllReserved.getRoomId()}"></td>
+                        <td th:text="${AllReserved.getSeatNumber()}"></td>
+                        <td th:text="${AllReserved.getStartTime()}"></td>
+                        <td th:text="${AllReserved.getOverTime()}"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </span>
 </body>

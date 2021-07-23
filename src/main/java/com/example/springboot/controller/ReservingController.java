@@ -23,22 +23,33 @@ public class ReservingController {
         return "reserving";
     }
 
-    @GetMapping("test.do")
-    public String  test(String date, String roomId,Model model){
+    @GetMapping("getRoomInformation.do")
+    public String  test(String date, String time,String roomId,Model model){
         System.out.println("KKKKKKKKKKKKKKKKKKKK");
         System.out.println(date);
+        System.out.println(time);
         System.out.println(roomId);
+        if (time!=null){
+            String timestamp = date+" "+time;
+            System.out.println(timestamp);
+            model.addAttribute("allSeatNumber",reservingServise.getAllReservedSeatNumber(timestamp,roomId));
+            model.addAttribute("roomCapacity",reservingServise.getRoomCapacity(roomId));
+        }else{
+            model.addAttribute("roomCapacity",reservingServise.getRoomCapacity(roomId));
+        }
         System.out.println(reservingServise.getRoomCapacity(roomId));
-        model.addAttribute("roomCapacity",reservingServise.getRoomCapacity(roomId));
         model.addAttribute("reservingDate",date);
         model.addAttribute("roomId",roomId);
         return "reservingReal";
     }
 
-    @GetMapping("test1.do")
-    public void test1(String date,String roomId,Integer seatNumber){
+    @GetMapping("viewAllReservedBySome.do")
+    public String viewAllReservedBySome(String date, String roomId,String seatNumber,Model model){
         System.out.println(date);
         System.out.println(roomId);
         System.out.println(seatNumber);
+        model.addAttribute("AllReserved",reservingServise.viewAllReservedBySome(date,roomId,seatNumber));
+        return "reservingReal::reservedTable";
     }
+
 }
