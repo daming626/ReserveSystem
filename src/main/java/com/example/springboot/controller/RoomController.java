@@ -35,7 +35,7 @@ public class RoomController {
             curPage++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage+4;
+            curPage = totalPage;
         }
         if (curPage < 1) {//确定下界
             curPage = 1;
