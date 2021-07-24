@@ -17,8 +17,8 @@ public class RoomServiceImpl implements IRoomService {
     @Autowired
     private RoomMapper roomMapper;
     @Override
-    public List<Room> viewRoom(int curPage,int pageSize) {
-        return roomMapper.viewRoom(curPage,pageSize);
+    public List<Room> viewRoom(int startRow,int pageSize) {
+        return roomMapper.viewRoom(startRow,pageSize);
     }
 
     @Override

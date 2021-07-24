@@ -21,7 +21,6 @@
         <td th:text="${room.roomDescribe}"></td>
         <td>
             <a th:href="@{deleteRoom.do(roomId=${room.roomId})}">删除自习室</a>
-            <a href="@{deleteRoom.do(roomId=${room.roomId})}" οnclick="return confirm('确定要删除吗?')"></a>
             <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>
             <a th:href="@{addRoom.do}">添加自习室</a>
         </td>
