@@ -16,6 +16,9 @@ public class RoomServiceImpl implements IRoomService {
 
     @Autowired
     private RoomMapper roomMapper;
+
+
+
     @Override
     public List<Room> viewRoom(int startRow,int pageSize) {
         return roomMapper.viewRoom(startRow,pageSize);
@@ -46,5 +49,17 @@ public class RoomServiceImpl implements IRoomService {
     public Room getRoomById(String roomId) {
        return roomMapper.getRoomById(roomId);
    }
+
+
+    @Override
+    public List<Room> getAllRoom() {
+        return roomMapper.getAllRoom();
+    }
+
+    @Override
+    public void insertRepairInfo(String id,String roomName,  String time,String types,String userId, String description) {
+        roomMapper.insertRepairInfo(id,roomName,time,types,userId,description);
+    }
+
 
 }

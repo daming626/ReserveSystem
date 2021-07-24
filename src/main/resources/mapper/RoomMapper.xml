@@ -24,4 +24,13 @@
 	<select id="total" parameterType="int" resultType="int">
 		SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_study_room
 	</select>
+
+	<select id="getAllRoom" resultType="room">
+		SELECT * FROM tb_study_room
+	</select>
+
+	<insert id="insertRepairInfo" parameterType="string">
+		INSERT INTO tb_repair VALUE (#{id},#{roomName},#{time},#{types},#{userId},#{description})
+	</insert>
+
 </mapper>
