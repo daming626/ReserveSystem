@@ -5,23 +5,46 @@
     <link type="text/css" rel="stylesheet" href="/css/reserved.css"/>
 </head>
 <body>
-<div class="MyReservate">
-<table border="1">
-    <tr>
-        <th>序号</th>
-        <th>自习室Id</th>
-        <th>座位号</th>
-        <th>开始时间</th>
-        <th>结束时间</th>
-    </tr>
-    <tr  th:each="historyAppointment: ${historyAppointment}" >
-        <td th:text="${historyAppointment.getSequence()}"></td>
-        <td th:text="${historyAppointment.getRoomId()}"></td>
-        <td th:text="${historyAppointment.getSeatNumber()}"></td>
-        <td th:text="${historyAppointment.getStartTime()}"></td>
-        <td th:text="${historyAppointment.getOverTime()}"></td>
-    </tr>
-</table>
-</div>
+    <div class="MyReservate">
+        <table id="Reservate" border="1">
+            <tr>
+                <th>序号</th>
+                <th>自习室Id</th>
+                <th>座位号</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+            </tr>
+            <tr  th:each="historyAppointment: ${historyAppointment}" >
+                <td th:text="${historyAppointment.getSequence()}"></td>
+                <td th:text="${historyAppointment.getRoomId()}"></td>
+                <td th:text="${historyAppointment.getSeatNumber()}"></td>
+                <td th:text="${historyAppointment.getStartTime()}"></td>
+                <td th:text="${historyAppointment.getOverTime()}"></td>
+            </tr>
+        </table>
+        <div id="but-box">
+            <input type="button" value="首页" id="k">
+            <input type="button" value="上一页" id="kk">
+            <input type="button" value="下一页" id="kkk">
+            <input type="button" value="尾页" id="kkkk">
+        </div>
+        <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#k").click(function () {
+                    window.location.href = "historyAppointment.do?firstPage=1"
+                })
+                $("#kk").click(function () {
+                    window.location.href ="historyAppointment.do?lastPage=1"
+                })
+                $("#kkk").click(function () {
+                    window.location.href = "historyAppointment.do?nextPage=1"
+                })
+                $("#kkkk").click(function () {
+                    window.location.href = "historyAppointment.do?finalPage=1"
+                })
+            })
+        </script>
+    </div>
 </body>
 </html>
