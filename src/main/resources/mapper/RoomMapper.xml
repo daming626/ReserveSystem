@@ -3,7 +3,7 @@
 <mapper namespace="com.example.springboot.mapper.RoomMapper">
 
     <select id="viewRoom"  resultType="room" parameterType="int">
-		SELECT * FROM tb_study_room limit #{curPage},#{pageSize}
+		SELECT * FROM tb_study_room limit #{startRow},#{pageSize}
 	</select>
     <delete id="deleteRoom" parameterType="string">
 		DELETE FROM tb_study_room WHERE roomId=#{value }

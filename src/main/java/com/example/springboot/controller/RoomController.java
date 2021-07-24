@@ -1,6 +1,5 @@
 package com.example.springboot.controller;
 
-
 import com.example.springboot.bean.Room;
 
 import com.example.springboot.service.IRoomService;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 @RequestMapping("/room")
@@ -25,7 +23,8 @@ public class RoomController {
     //查看自习室
     @GetMapping("viewRoom.do")
     public String viewRoom(String firstPage,String lastPage,String nextPage,String finalPage,HttpServletRequest request){
-        int totalPage = roomService.total(4);
+        int pageSize=6;
+        int totalPage = roomService.total(6);
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -36,22 +35,26 @@ public class RoomController {
             curPage++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPage = totalPage+4;
         }
         if (curPage < 1) {//确定下界
             curPage = 1;
         }
-        if (curPage > totalPage) {//确定上界
+        if (curPage >= totalPage) {//确定上界
             curPage = totalPage;
         }
-        request.setAttribute("rooms",roomService.viewRoom(curPage,4));//作用域把对象request.setAttribute作用域中
+
+
+        int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
+        request.setAttribute("rooms",roomService.viewRoom(startRow,6));
+        //作用域把对象request.setAttribute作用域中
         return "viewRoom";
     }
     //删除自习室
     @GetMapping("deleteRoom.do")
     public String deleteRoom(String roomId,HttpServletRequest request){
         roomService.deleteRoom(roomId);
-        request.setAttribute("rooms",roomService.viewRoom(1,4));
+        request.setAttribute("rooms",roomService.viewRoom(1,6));
         return "viewRoom";
     }
     //添加自习室
