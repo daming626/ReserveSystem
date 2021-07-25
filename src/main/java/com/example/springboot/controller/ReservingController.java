@@ -32,10 +32,6 @@ public class ReservingController {
 
     @GetMapping("getRoomInformation.do")
     public String test(String date, String time, String roomId, Model model) {
-        System.out.println("KKKKKKKKKKKKKKKKKKKK");
-        System.out.println(date);
-        System.out.println(time);
-        System.out.println(roomId);
         if (time != null) {
             String timestamp = date + " " + time;
             System.out.println(timestamp);
@@ -52,9 +48,6 @@ public class ReservingController {
 
     @GetMapping("viewAllReservedBySome.do")
     public String viewAllReservedBySome(String date, String roomId, String seatNumber, Model model) {
-        System.out.println(date);
-        System.out.println(roomId);
-        System.out.println(seatNumber);
         model.addAttribute("AllReserved", reservingServise.viewAllReservedBySome(date, roomId, seatNumber));
         return "reservingReal::reservedTable";
     }
@@ -92,8 +85,6 @@ public class ReservingController {
 
     @GetMapping("getSomeoneOver.do")
     public void getSomeoneOver(String reservingDate, String roomId, String seatNumber, String startTime,String overTime, HttpServletResponse response){
-        System.out.println(startTime);
-        System.out.println(overTime);
         response.setContentType("application/json;charset=UTF-8");
         Gson gson=new Gson();
         PrintWriter out= null;
