@@ -39,4 +39,14 @@ public class ReservingService implements IReservingServise {
         reservingMapper.insertReservate(reservate);
     }
 
+    @Override
+    public Reservate getSomeoneStart(String timestampStart, String roomId, String seatNumber) {
+        return reservingMapper.getSomeoneStart(timestampStart,roomId,seatNumber);
+    }
+
+    @Override
+    public Reservate getSomeoneOver(String timestampStart, String timestampOver, String roomId, String seatNumber) {
+        return reservingMapper.getSomeoneOver(timestampStart,timestampOver,roomId,seatNumber);
+    }
+
 }
