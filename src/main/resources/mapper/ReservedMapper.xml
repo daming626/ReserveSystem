@@ -14,13 +14,16 @@
         DELETE FROM tb_reservate WhERE sequence=#{value}
     </delete>
     <!--查询数据-->
-    <select id="getCurrentReservedById" resultType="reservate" parameterType="string">
-        SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &gt; #{currentTime}
+    <select id="getCurrentReservedById" resultType="reservate">
+        SELECT * FROM tb_reservate WHERE userId=#{userId} and overTime &gt; #{currentTime} limit #{startPage},#{pageSize}
     </select>
-    
-<!--    历史预约-->
-    <select id="getHistoryReservedById" resultType="reservate" parameterType="string">
-    SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &lt; #{currentTime}
+    <select id="total" parameterType="int" resultType="int">
+        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_reservate
+    </select>
+
+    <!--    历史预约-->
+    <select id="getHistoryReservedById" resultType="reservate">
+        SELECT * FROM tb_reservate r WHERE  r.userId=#{userId} and overTime &lt; #{currentTime} limit #{startPage},#{pageSize}
     </select>
 
 </mapper>

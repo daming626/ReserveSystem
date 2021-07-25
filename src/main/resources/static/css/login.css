@@ -1,108 +1,156 @@
 /*登录页面*/
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
 
-.login_bg{
-    margin:0px;
-    padding:0px;
-    font-family:sans-serif;
+}
+
+.header {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center
+}
+
+.loginContent {
+    width: 100%;
+    height: 520px;
+    position: relative;
+    font-family: sans-serif;
+    text-align: center;
     /*设置字体为sans-serif*/
     background-image: url("../img/banner1.jpg");
-    background-repeat: no-repeat;
-    background-position-y: -30%;
-    background-size:cover;
-    /*背景图片尺寸为覆盖cover*/
+    background-repeat: round;
+    background-size: cover;
 }
-.loginBox{
-    position:absolute;
+
+.loginBox {
+    position: relative;
     /*定位方式绝对定位absolute*/
-    top:50%;
-    left:80%;
+    top: 15%;
+    left: 65%;
     /*顶和高同时设置50%实现的是同时水平垂直居中效果*/
-    transform:translate(-50%,-50%);
+    /*transform: translate(-50%, -50%);*/
     /*实现块元素百分比下居中*/
-    width:450px;
-    padding:50px;
-    background: rgba(256,256,256,.8);
+    width: 450px;
+    padding: 50px;
+    background: rgba(256, 256, 256, .8);
     /*背景颜色为黑色，透明度为0.8*/
-    box-sizing:border-box;
+    box-sizing: border-box;
     /*box-sizing设置盒子模型的解析模式为怪异盒模型，
     将border和padding划归到width范围内*/
-    box-shadow: 0px 15px 25px rgba(0,0,0,.7);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, .7);
     /*边框阴影  水平阴影0 垂直阴影15px 模糊25px 颜色黑色透明度0.5*/
-    border-radius:15px;
+    border-radius: 15px;
     /*边框圆角，四个角均为15px*/
 }
-.loginBox h1{
-    margin:0 0 30px;
-    padding:0;
+
+.loginBox h1 {
+    margin: 0 0 30px;
+    padding: 0;
     color: black;
-    text-align:center;
+    text-align: center;
     /*文字居中*/
 }
-.loginBox .inputbox{
-    position:relative;
+
+.loginBox .inputbox {
+    position: relative;
 }
-.loginBox .inputbox input{
+
+.loginBox .inputbox input {
     width: 100%;
-    padding:10px 0;
-    font-size:16px;
-    color:black;
+    padding: 10px 0;
+    font-size: 16px;
+    color: black;
     letter-spacing: 1px;
     /*字符间的间距1px*/
     margin-bottom: 30px;
-    border:none;
+    border: none;
     border-bottom: 1px solid black;
-    outline:none;
+    outline: none;
     /*outline用于绘制元素周围的线
     outline：none在这里用途是将输入框的边框的线条使其消失*/
     background: transparent;
     /*背景颜色为透明*/
 }
-.loginBox .inputbox label{
+
+.loginBox .inputbox label {
     /*<label> 标签为 input 元素定义标注（标记）*/
-    position:absolute;
-    top:0px;
-    left:0px;
-    padding:10px 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 10px 0;
     font-size: 16px;
-    color:black;
-    pointer-events:none;
+    color: black;
+    pointer-events: none;
     /*鼠标事件消失，比如说选中文字，光标定位，超链接下划线*/
-    transition:.5s;
+    transition: .5s;
     /*过渡时间5s*/
 }
+
 .loginBox .inputbox input:focus ~ label,
-.loginBox .inputbox input:valid ~ label
-{
-    top:-18px;
-    left:0;
-    color:#03a9f4;
-    font-size:14px;
-}
-.loginBox input[type="submit"]
-{
-    background: transparent;
-    border:none;
-    outline:none;
-    font-size: 16px;
-    color:#fff;
-    background: #03a9f4;
-    padding:15px 20px;
-    cursor: pointer;
-    /*光标呈现为指示链接的指针（一只手）*/
-    border-radius:10px;
+.loginBox .inputbox input:valid ~ label {
+    top: -18px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 14px;
 }
 
-.loginBox input[type="reset"]
-{
+.loginBox input[type="submit"] {
     background: transparent;
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
     font-size: 16px;
-    color:#fff;
+    color: #fff;
     background: #03a9f4;
-    padding:15px 20px;
+    padding: 15px 20px;
     cursor: pointer;
     /*光标呈现为指示链接的指针（一只手）*/
-    border-radius:10px;
+    border-radius: 10px;
 }
 
+.loginBox input[type="reset"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    background: #03a9f4;
+    padding: 15px 20px;
+    cursor: pointer;
+    /*光标呈现为指示链接的指针（一只手）*/
+    border-radius: 10px;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 125px;
+
+}
+
+.foot {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerList {
+    position: absolute;
+    /* border: 1px solid #999;  */
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+
+    width: 650px;
+    height: 100px;
+
+}
+
+.footerInfo {
+    position: relative;
+    text-align: center
+}
