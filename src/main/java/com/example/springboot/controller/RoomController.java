@@ -44,7 +44,6 @@ public class RoomController {
             curPage = totalPage;
         }
 
-
         int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
         request.setAttribute("rooms",roomService.viewRoom(startRow,6));
         //作用域把对象request.setAttribute作用域中
