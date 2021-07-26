@@ -20,9 +20,8 @@
         <td th:text="${room.roomCapacity}"></td>
         <td th:text="${room.roomDescribe}"></td>
         <td>
-            <a th:href="@{deleteRoom.do(roomId=${room.roomId})}">删除自习室</a>
+            <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
             <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>
-            <a th:href="@{addRoom.do}">添加自习室</a>
         </td>
     </tr>
 </table>
@@ -46,6 +45,15 @@
         $("#kkkk").click(function () {
             window.location.href = "viewRoom.do?finalPage=1"
         })
+
+       //  $("#test").click(function () {
+       //      var msg = "您真的确定要删除吗？\n\n请确认！";
+       //      if (confirm(msg)==true){
+       //           return true;
+       //           }else{
+       //           return false;
+       //      }
+       // })
     })
 
 </script>
