@@ -22,11 +22,20 @@
                 <td th:text="${currentReservation.getStartTime()}"></td>
                 <td th:text="${currentReservation.getOverTime()}"></td>
                 <td>
-                    <a href="javascript:if(window.confirm('是否要取消预约？'))
-                    {window.location.href='@{cancelReservation.do(sequence=${currentReservation.sequence})}'}">取消预约</a>
+                    <a th:href="@{cancelReservation.do(sequence=${currentReservation.sequence})}" onclick="javascript:return cancel()" >取消预约</a>
                 </td>
             </tr>
         </table>
+        <script>
+            function cancel() {
+                var msg = "是否要取消预约？";
+                if (confirm(msg)==true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        </script>
         <div id="but-box">
             <input type="button" value="首页" id="k">
             <input type="button" value="上一页" id="kk">

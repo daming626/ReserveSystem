@@ -12,6 +12,4 @@ public interface ReservedMapper {
     List<Reservate> getHistoryReservedById(String userId, String currentTime,int startPage,int pageSize);//历史预约记录数组
 
     int total(int pageSize);
-//    List<Reservate> getCurrentReservedById(int curPage,int pageSize);
-
 }
