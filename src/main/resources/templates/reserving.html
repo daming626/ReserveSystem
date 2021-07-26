@@ -3,19 +3,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="/css/reserving.css"/>
+    <script>
+        //日期或自习室为空，返回false 即不执行submit，反之返回true 即执行submit
+        function check() {
+            var reservingDate = document.getElementById("reservingDate").value;
+            var roomId = document.getElementById("roomId").value;
+            var error = document.getElementById("error");
+            if (reservingDate==''||roomId==''){
+                error.innerText='请同时选择日期和自习室'
+                return false
+            }else {
+                error.innerText=''
+                return true
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="main">
         <div class="head">
             <form th:action="@{getRoomInformation.do}" method="get" target="BODY">
-                <input type="date" class="selectDate" name="date">
+                <input id="reservingDate" type="date" class="selectDate" name="date">
                 <input type="time" class="selectTime" name="time">
-                <select name="roomId" class="selectClassRoom">
+                <select id="roomId" name="roomId" class="selectClassRoom">
                     <option value="">请选择自习室</option>
                     <!--循环遍历集合,下拉显示后台动态数据-->
                     <option th:each="roomId:${allRoomId}"  th:text="${roomId}"></option>
                 </select>
-                <input type="submit" value="查询" >
+                <input type="submit" value="查询" onclick="return check()"><!--点击事件判断是否执行submit-->
+                <span id="error"></span>
             </form>
         </div>
         <div class="body">
