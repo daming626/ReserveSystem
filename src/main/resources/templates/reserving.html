@@ -25,6 +25,7 @@
             <form th:action="@{getRoomInformation.do}" method="get" target="BODY">
                 <input id="reservingDate" type="date" class="selectDate" name="date">
                 <input type="time" class="selectTime" name="time">
+                <input th:value="${session.user.userId}" th:placeholder="${session.user.userId}">
                 <select id="roomId" name="roomId" class="selectClassRoom">
                     <option value="">请选择自习室</option>
                     <!--循环遍历集合,下拉显示后台动态数据-->

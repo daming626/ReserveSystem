@@ -25,7 +25,7 @@ public class ReservedController {
 
 //    当前预约
     @GetMapping("currentReservation.do")
-    public String currentReserved(String userId, Model model, String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
+    public String currentReserved(Model model, String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
 
         int curPage=1;
         int pageSize = 8;
@@ -56,7 +56,7 @@ public class ReservedController {
         currentTime=format.format(date);
 
         User user = (User) session.getAttribute("user");
-        userId = user.getUserId();
+        String userId = user.getUserId();
 
         model.addAttribute("currentReservation", reservedService.getCurrentReservedById(userId,currentTime,startPage,pageSize));
         return "currentReservation";
@@ -72,7 +72,7 @@ public class ReservedController {
 
 //    历史预约
     @GetMapping("historyAppointment.do")
-    public String historyReserved(String userId, Model model,String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
+    public String historyReserved(Model model,String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
 
         int curPage=1;
         int pageSize = 8;
@@ -103,7 +103,7 @@ public class ReservedController {
         currentTime = format.format(date);
 
         User user = (User) session.getAttribute("user");
-        userId = user.getUserId();
+        String userId = user.getUserId();
 
         model.addAttribute("historyAppointment", reservedService.getHistoryReservedById(userId,currentTime,startPage,pageSize));
         return "historyAppointment";

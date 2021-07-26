@@ -14,7 +14,6 @@ public class User {
     private String grade;
     private String contacts;
     private String state;
-    private Timestamp registerTime;
     List<Role> roleList = new ArrayList<Role>();
 
     public String getSex() {
@@ -87,14 +86,6 @@ public class User {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public Timestamp getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(Timestamp registerTime) {
-        this.registerTime = registerTime;
     }
 
     public List<Role> getRoleList() {
