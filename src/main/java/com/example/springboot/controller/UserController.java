@@ -19,8 +19,8 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("viewUser.do")
-    public String viewUser(Model model){
-        model.addAttribute("users",userService.viewUser());
+    public String viewUser(Model model) {
+        model.addAttribute("users", userService.viewUser());
         return "viewUser";
     }
 
@@ -31,17 +31,23 @@ public class UserController {
     }
 
     @PostMapping("login.do")
-    public String login(String username, String password, HttpSession session,Model model){
-        User user = userService.login(username,password);
-        if (user!=null){
-            session.setAttribute("user",user);
+    public String login(String username, String password, HttpSession session, Model model) {
+        User user = userService.login(username, password);
+        if (user != null) {
+            session.setAttribute("user", user);
             user = userService.getUserById(user.getUserId());//把用户的菜单取到
             session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             return "redirect:/main.html";
-        }else{
-            model.addAttribute("message","用户名或密码错误，请重新输入");
+        } else {
+            model.addAttribute("message", "用户名或密码错误，请重新输入");
             return "login";
         }
+    }
+
+    @GetMapping("logout.do")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/user/login.html";
     }
 
     @GetMapping("login.html")

@@ -16,4 +16,10 @@
     <insert id="insertReservate" parameterType="reservate">
         INSERT INTO tb_reservate VALUES(#{sequence},#{roomId},#{seatNumber},#{startTime},#{overTime},#{userId})
     </insert>
+    <select id="getSomeoneStart" parameterType="String" resultType="reservate">
+        SELECT * FROM tb_reservate WHERE #{timestampStart} BETWEEN startTime AND overTime AND roomId=#{roomId} AND seatNumber=#{seatNumber}
+    </select>
+    <select id="getSomeoneOver" parameterType="String" resultType="reservate">
+        SELECT * FROM tb_reservate WHERE (#{timestampOver} BETWEEN startTime AND overTime OR #{timestampStart} &lt; startTime AND #{timestampOver} &gt; overTime) AND roomId=#{roomId} AND seatNumber=#{seatNumber}
+    </select>
 </mapper>

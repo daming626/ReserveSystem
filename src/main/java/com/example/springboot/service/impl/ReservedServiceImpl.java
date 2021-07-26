@@ -9,24 +9,31 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ReservedServiceImpl implements IReservedService{
+public class ReservedServiceImpl implements IReservedService {
 
     @Autowired
     private ReservedMapper reservedMapper;
 
     //取消预约
     @Override
-    public void cancelReservation(int sequence) { reservedMapper.cancelReservation(sequence); }
+    public void cancelReservation(int sequence) {
+        reservedMapper.cancelReservation(sequence);
+    }
 
     //当前预约
     @Override
-    public List<Reservate> getCurrentReservedById(String userId, String currentTime) {
-        return reservedMapper.getCurrentReservedById(userId,currentTime);
+    public List<Reservate> getCurrentReservedById(String userId, String currentTime, int startPage, int pageSize) {
+        return reservedMapper.getCurrentReservedById(userId, currentTime, startPage, pageSize);
     }
 
     //历史预约
     @Override
-    public List<Reservate> getHistoryReservedById(String userId, String currentTime) {
-        return reservedMapper.getHistoryReservedById(userId,currentTime);
+    public List<Reservate> getHistoryReservedById(String userId, String currentTime, int startPage, int pageSize) {
+        return reservedMapper.getHistoryReservedById(userId, currentTime, startPage, pageSize);
+    }
+
+    @Override
+    public int total(int pageSize) {
+        return reservedMapper.total(pageSize);
     }
 }
