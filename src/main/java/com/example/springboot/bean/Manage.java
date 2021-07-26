@@ -1,36 +1,33 @@
 package com.example.springboot.bean;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Manage {
     private String userId;
-    private String username;
-    private String password;
+    private String userName;
     private String realName;
     private String sex;
     private String tclass;
     private String grade;
     private String contacts;
     private String state;
-    private Timestamp registerTime;
+    private String roleId;
     List<Role> roleList = new ArrayList<Role>();
 
-    public User() {
+    public Manage() {
     }
 
-    public User(String userId, String username, String password, String realName, String sex, String tclass, String grade, String contacts, String state, Timestamp registerTime, List<Role> roleList) {
+    public Manage(String userId, String userName, String realName, String sex, String tclass, String grade, String contacts, String state, String roleId, List<Role> roleList) {
         this.userId = userId;
-        this.username = username;
-        this.password = password;
+        this.userName = userName;
         this.realName = realName;
         this.sex = sex;
         this.tclass = tclass;
         this.grade = grade;
         this.contacts = contacts;
         this.state = state;
-        this.registerTime = registerTime;
+        this.roleId = roleId;
         this.roleList = roleList;
     }
 
@@ -42,20 +39,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getRealName() {
@@ -106,12 +95,12 @@ public class User {
         this.state = state;
     }
 
-    public Timestamp getRegisterTime() {
-        return registerTime;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRegisterTime(Timestamp registerTime) {
-        this.registerTime = registerTime;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public List<Role> getRoleList() {
