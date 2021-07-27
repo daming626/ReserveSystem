@@ -16,28 +16,21 @@ public class User {
     private String state;
     List<Role> roleList = new ArrayList<Role>();
 
-    public String getSex() {
-        return sex;
+    public User() {
     }
 
-    public void setSex(String sex) {
+    public User(String userId, String username, String password, String realName, String sex, String tclass, String grade, String contacts, String state, Timestamp registerTime, List<Role> roleList) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.realName = realName;
         this.sex = sex;
-    }
-
-    public String getTclass() {
-        return tclass;
-    }
-
-    public void setTclass(String tclass) {
         this.tclass = tclass;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
         this.grade = grade;
+        this.contacts = contacts;
+        this.state = state;
+        this.registerTime = registerTime;
+        this.roleList = roleList;
     }
 
     public String getUserId() {
@@ -70,6 +63,30 @@ public class User {
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getTclass() {
+        return tclass;
+    }
+
+    public void setTclass(String tclass) {
+        this.tclass = tclass;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getContacts() {
