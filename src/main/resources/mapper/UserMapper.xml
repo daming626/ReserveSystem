@@ -20,7 +20,6 @@
         <result property="grade" column="grade"></result>
         <result property="contacts" column="contacts"></result>
         <result property="state" column="state"></result>
-        <result property="registerTime" column="registerTime"></result>
         <collection property="roleList" column="userId" select="com.example.springboot.mapper.RoleMapper.getRoleByUserId">
         </collection>
     </resultMap>
