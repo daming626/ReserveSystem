@@ -12,4 +12,7 @@
     <select id="getAllNotice" resultMap="noticeMap">
         SELECT * FROM tb_notice
     </select>
+    <insert id="insertNotice" parameterType="string">
+        INSERT INTO tb_notice VALUE (null,#{time},#{content})
+    </insert>
 </mapper>

@@ -14,7 +14,6 @@ public class NoticeServiceImpl implements INoticeService {
     @Autowired
     private NoticeMapper noticeMapper;
 
-
     @Override
     public Notice getNoticeById(String id) {
         return noticeMapper.getNoticeById(id);
@@ -23,5 +22,10 @@ public class NoticeServiceImpl implements INoticeService {
     @Override
     public List<Notice> getAllNotice() {
         return noticeMapper.getAllNotice();
+    }
+
+    @Override
+    public void insertNotice(String time, String content) {
+        noticeMapper.insertNotice(time,content);
     }
 }

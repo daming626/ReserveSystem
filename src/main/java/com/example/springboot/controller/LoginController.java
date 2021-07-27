@@ -31,7 +31,7 @@ public class LoginController {
         if (user != null) {
             session.setAttribute("user", user);
             user = userService.getUserById(user.getUserId());//把用户的菜单取到
-            System.out.println(user.getRoleList().get(0).getRoleId());
+            session.setAttribute("user", user);
             if (flag == 0) {
                 session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             } else if (flag == 1 && user.getRoleList().size()>1) {//若用户拥有多个权限，则以管理员权限运行
