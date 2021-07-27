@@ -3,35 +3,35 @@
     margin: 0;
 }
 
-#Reservate {
+#seven {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#Reservate table, th, td {
+#seven table, th, td {
     border: 1px solid black;
 }
 
 /*控制边框和表格内容之间的间距，内容居中*/
-#Reservate th, td {
+#seven th, td {
     padding: 15px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
 /*为了实现斑马纹表格效果，请使用 nth-child() 选择器，并为所有偶数（或奇数）表行添加 background-color*/
-#Reservate tr:nth-child(even){background-color: #f2f2f2;}
+#seven tr:nth-child(even){background-color: #f2f2f2;}
 
 /*在 <tr> 元素上使用 :hover 选择器，以突出显示鼠标悬停时的表格行*/
-#Reservate tr:hover {background-color: #ddd;}
+#seven tr:hover {background-color: #ddd;}
 
-#Reservate tr{
+#seven tr{
     background-color: #ddd;
     text-align: center;
 }
 /*指定了 <th> 元素的背景颜色和文本颜色*/
-#Reservate th {
+#seven th {
     background-color: #4CAF50;
     color: white;
 }

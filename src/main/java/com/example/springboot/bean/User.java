@@ -29,7 +29,6 @@ public class User {
         this.grade = grade;
         this.contacts = contacts;
         this.state = state;
-        this.registerTime = registerTime;
         this.roleList = roleList;
     }
 
