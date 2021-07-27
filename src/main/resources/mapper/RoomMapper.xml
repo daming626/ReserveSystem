@@ -30,7 +30,7 @@
 	</select>
 
 	<insert id="insertRepairInfo" parameterType="string">
-		INSERT INTO tb_repair VALUE (#{id},#{roomName},#{time},#{types},#{userId},#{description})
+		INSERT INTO tb_repair VALUE (null,#{roomName},#{time},#{types},#{userId},#{description})
 	</insert>
 
 </mapper>
