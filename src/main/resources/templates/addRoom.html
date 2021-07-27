@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
-    <link rel="stylesheet" href="/css/Room.css"/>
+    <link rel="stylesheet" href="/css/addRoom.css"/>
 </head>
 <body>
+<table id="Room1">
     <form th:action="@{addRoom}" method="POST">
         <label for="roomId">自习室Id</label><input type="text" name="roomId" id="roomId">
         <label for="roomName">自习室名称</label><input type="text" name="RoomName" id="roomName">
@@ -12,5 +13,6 @@
         <label for="roomDescribe">自习室描述</label><input type="text" name="roomDescribe" id="roomDescribe">
         <input type="submit" value="添加">
     </form>
+</table>
 </body>
 </html>

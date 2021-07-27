@@ -6,7 +6,7 @@
 </head>
 <body>
     <form th:action="@{updateRoom}" method="post">
-        <input type="text" name="roomId" th:value="${room.roomId}">
+        <input hidden type="text" name="roomId" th:value="${room.roomId}">
         <input type="text" name="RoomName" th:value="${room.roomName}">
         <input type="text" name="roomCapacity" th:value="${room.roomCapacity}">
         <input type="text" name="roomDescribe" th:value="${room.roomDescribe}">

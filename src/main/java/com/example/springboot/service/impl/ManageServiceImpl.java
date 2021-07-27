@@ -35,4 +35,9 @@ public class ManageServiceImpl implements IManageService {
     public int total(int pageSize) {
         return manageMapper.total(pageSize);
     }
+
+    @Override
+    public void insertAdministrator(User user) {
+        manageMapper.insertAdministrator(user);
+    }
 }

@@ -13,4 +13,6 @@ public interface ManageMapper {
     void deleteManage(String userId);
 
     int total(int pageSize);
+
+    void insertAdministrator(User user);
 }

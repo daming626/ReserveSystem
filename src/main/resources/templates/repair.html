@@ -9,7 +9,8 @@
     <script src="/js/showMenu.js"></script>
 </head>
 <form action="updateRepair.do" method="post">
-    <input name="userId" type="text" th:value="${session.user.userId}">
+    <input name="userId" type="text" th:value="${session.user.userId}" th:if="${session.user.getRoleList().get(0)"
+    )}">
 <!--    <p>-->
 <!--        <a name="time" th:text="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd HH:mm:ss')}"></a>-->
 <!--    </p>-->

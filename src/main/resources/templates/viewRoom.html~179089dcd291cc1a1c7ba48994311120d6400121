@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
-    <link rel="stylesheet" href="/css/Room.css"/>
+    <link rel="stylesheet" href="/css/seven.css"/>
 </head>
 <body>
-    <div class="MyRoom">
-        <table id="Room" border="1">
+    <div class="seven">
+        <table id="seven" border="1">
             <tr>
                 <th>房间ID</th>
                 <th>房间名</th>
@@ -20,7 +20,7 @@
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
-                    <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
+                    <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删要除该自习室吗?')">删除自习室</a>
                     <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>
                 </td>
             </tr>
@@ -33,20 +33,19 @@
         </div>
         <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
         <script>
-    $(document).ready(function () {
-        $("#k").click(function () {
-            window.location.href = "viewRoom.do?firstPage=1"
-        })
-        $("#kk").click(function () {
-            window.location.href ="viewRoom.do?lastPage=1"
-        })
-        $("#kkk").click(function () {
-            window.location.href = "viewRoom.do?nextPage=1"
-        })
-        $("#kkkk").click(function () {
-            window.location.href = "viewRoom.do?finalPage=1"
-        })
-    })
+            $(document).ready(function () {
+                $("#k").click(function () {
+                    window.location.href = "viewRoom.do?firstPage=1"
+                })
+                $("#kk").click(function () {
+                    window.location.href ="viewRoom.do?lastPage=1"
+                })
+                $("#kkk").click(function () {
+                    window.location.href = "viewRoom.do?nextPage=1"
+                })
+                $("#kkkk").click(function () {
+                    window.location.href = "viewRoom.do?finalPage=1"
+                })
         </script>
     </div>
 </body>
