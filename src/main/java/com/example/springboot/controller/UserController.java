@@ -51,4 +51,9 @@ public class UserController {
         out.flush();
         out.close();
     }
+
+    @GetMapping("kkkk")
+    public String login1() {
+        return "login";
+    }
 }
