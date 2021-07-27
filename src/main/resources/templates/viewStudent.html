@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf demo</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>用户ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>真实姓名</th>
+        <th>性别</th>
+        <th>班级</th>
+        <th>年级</th>
+        <th>联系方式</th>
+        <th>删除用户</th>
+        <th>增加用户</th>
+        <th>修改信息</th>
+    </tr>
+    <tr th:each="user,userStat : ${users}">
+        <td th:text="${user.userid}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.realname}"></td>
+        <td th:text="${user.sex}"></td>
+        <td th:text="${user.tclass}"></td>
+        <td th:text="${user.grade}"></td>
+        <td th:text="${user.contacts}"></td>
+
+        <td>
+            <a th:href="@{deleteStudent(userid=${user.userid})}">删除</a>
+        </td>
+        <td>
+            <a th:href="@{insertStudent(user=${user})}">增加</a>
+        </td>
+        <td>
+            <a th:href="@{getStudentbyId(userid=${user.userid})}">修改</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

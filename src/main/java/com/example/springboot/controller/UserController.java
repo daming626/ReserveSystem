@@ -21,12 +21,12 @@ public class UserController {
     @GetMapping("viewUser.do")
     public String viewUser(Model model){
         model.addAttribute("users",userService.viewUser());
-        return "viewUser";
+        return "viewStudent";
     }
 
     @GetMapping("deleteUser.do")
-    public String deleteUser(String userId) {
-        userService.deleteUser(userId);
+    public String deleteUser(String userid) {
+        userService.deleteUser(userid);
         return "redirect:viewUser";
     }
 
@@ -35,7 +35,7 @@ public class UserController {
         User user = userService.login(username,password);
         if (user!=null){
             session.setAttribute("user",user);
-            user = userService.getUserById(user.getUserId());//把用户的菜单取到
+            user = userService.getUserById(user.getUserid());//把用户的菜单取到
             session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             return "redirect:/main.html";
         }else{

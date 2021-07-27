@@ -11,20 +11,20 @@
 		DELETE FROM tb_user WHERE userId=#{value}
 	</delete>
     <resultMap id="userMap" type="user">
-        <id property="userId" column="userId"></id>
+        <id property="userid" column="userid"></id>
         <result property="username" column="username"></result>
         <result property="password" column="password"></result>
-        <result property="realName" column="realName"></result>
+        <result property="realname" column="realname"></result>
         <result property="sex" column="sex"></result>
         <result property="tclass" column="tclass"></result>
         <result property="grade" column="grade"></result>
         <result property="contacts" column="contacts"></result>
         <result property="state" column="state"></result>
-        <result property="registerTime" column="registerTime"></result>
-        <collection property="roleList" column="userId" select="com.example.springboot.mapper.RoleMapper.getRoleByUserId">
+
+        <collection property="roleList" column="userid" select="com.example.springboot.mapper.RoleMapper.getRoleByUserId">
         </collection>
     </resultMap>
     <select id="getUserById" resultMap="userMap" parameterType="string">
-		SELECT * FROM tb_user WHERE userId=#{value}
+		SELECT * FROM tb_user WHERE userid=#{value}
 	</select>
 </mapper>

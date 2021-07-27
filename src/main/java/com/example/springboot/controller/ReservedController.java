@@ -32,7 +32,7 @@ public class ReservedController {
         currentTime=format.format(date);
 
         User user = (User) session.getAttribute("user");
-        userId = user.getUserId();
+        userId = user.getUserid();
         List<Reservate> reservateList = reservedService.getCurrentReservedById(userId,currentTime);
         model.addAttribute("currentReservation", reservateList);
         return "currentReservation";
@@ -55,7 +55,7 @@ public class ReservedController {
         currentTime = format.format(date);
 
         User user = (User) session.getAttribute("user");
-        userId = user.getUserId();
+        userId = user.getUserid();
         List<Reservate> reservateList = reservedService.getHistoryReservedById(userId,currentTime);
         model.addAttribute("historyAppointment", reservateList);
         return "historyAppointment";
