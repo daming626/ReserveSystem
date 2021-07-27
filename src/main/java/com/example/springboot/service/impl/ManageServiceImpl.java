@@ -20,11 +20,6 @@ public class ManageServiceImpl implements IManageService {
         return manageMapper.getUserById(roleId,startPage,pageSize);
     }
 
-    @Override
-    public void deleteUser(String userId) {
-        manageMapper.deleteUser(userId);
-    }
-
 
     @Override
     public List<User> getManageById(String roleId,int startPage, int pageSize) {

@@ -19,10 +19,6 @@
         SELECT * FROM tb_user u,tb_user_role ur  WHERE u.userId=ur.userId and ur.roleId = #{roleId} limit #{startPage},#{pageSize}
 	</select>
 
-<!--    删除用户-->
-    <delete id="deleteUser" parameterType="string">
-		DELETE FROM tb_user WHERE userId=#{value }
-	</delete>
 
 <!--    查看管理员-->
     <select id="getManageById" resultType="user">
@@ -31,8 +27,11 @@
 
 <!--    删除管理员-->
     <delete id="deleteManage" parameterType="string">
-		DELETE FROM tb_user WHERE userId=#{value }
+		DELETE FROM tb_user_role WHERE userId=#{value }
 	</delete>
+<!--    <update id="deleteManage" parameterType="string">-->
+<!--        UPDATE tb_user_role SET roleId = 'r1000' WHERE userId = #{userId}-->
+<!--	</update>-->
 
     <select id="total" parameterType="int" resultType="int">
         SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_reservate

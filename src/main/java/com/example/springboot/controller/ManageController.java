@@ -50,12 +50,6 @@ public class ManageController {
         return "viewUser";
     }
 
-    @GetMapping("deleteUser.do")
-    public String deleteUser(String userId, Model model){
-        manageService.deleteManage(userId);
-        return "redirect:viewUser.do";
-    }
-
     //查看管理员
     @GetMapping("viewManager.do")
     public String viewManage(Model model, String firstPage, String lastPage, String nextPage, String finalPage){
