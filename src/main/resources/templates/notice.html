@@ -3,39 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>通知</title>
-    <link rel="shortcut icon" href="tu.ico"/>
-    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/addManager.css">
 </head>
 <body>
 <section class="tableBox">
-
-
+    <button id="open_btn" class="btn" th:if="${session.user.roleList.get(0)} ne 'r1000'">发布通知</button>
 </section>
+<div>
+    <div>
+        故障通告
+        <ul class="nav">
+            <li th:each="notice:${noticeList}">
+                <a href="#" onclick="showMenu(this);return false;" th:text="${notice.getTime()}+${notice.getContent()}"></a>
+            </li>
+        </ul>
+    </div>
 
-<button id="fabu" >发布通知</button>
-<button id="chakang">查看通知</button>
-<button id="cexiao">撤销通知</button>
+    <div id="leftTree" >校内通知
+    <div>
 
-<section class="tableBox">
-    <table border="1">
-        <tr>
-            <th>序号</th>
-            <th>发布时间</th>
-            <th>通知内容</th>
-
-        </tr>
-        <tr  th:each="notice: ${notice}" >
-            <td th:text="${notice.id}"></td>
-            <td th:text="${notice.time}"></td>
-            <th th:text="${notice.content}"></th>
-        </tr>
-    </table>
-
-
-</section>
-
-
-
-
+    </div>
+</div>
+</div>
+<div id="background" class="back">
+    <div id="formBox" class="content">
+        <div id="close">
+            <span id="close-button">×</span>
+            <h2>发布通知</h2>
+        </div>
+        <div id="formContent">
+            <div><span id="message" value="" text="信息"></span></div>
+            <form th:action="@{insertNotice.do}" method="post">
+                <p>
+                    通知内容
+                    <textarea name="content" id="content" placeholder="请填写内容" cols="50" rows="10"></textarea>
+                </p>
+                <input type="submit" value="提交">
+            </form>
+        </div>
+        <h3 id="foot">底部内容</h3>
+    </div>
+</div>
+<script src="/js/notice.js"></script>
 </body>
 </html>

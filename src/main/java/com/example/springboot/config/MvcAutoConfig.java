@@ -16,6 +16,7 @@ public class MvcAutoConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/main.html").setViewName("main");//将所有/main.html的请求，表现至main视图下
+        registry.addViewController("/login.html").setViewName("login");
     }
 
 
@@ -24,6 +25,6 @@ public class MvcAutoConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")//被拦截的请求，/**表示所有请求
-                .excludePathPatterns("/user/login.html", "/", "/user/login.do", "/css/**", "/img/**", "/js/**");//予以放行的请求、页面、静态资源
+                .excludePathPatterns("/login.html", "/", "/login.do", "/css/**", "/img/**", "/js/**");//予以放行的请求、页面、静态资源
     }
 }
