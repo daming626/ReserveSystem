@@ -1,10 +1,12 @@
 package com.example.springboot.service.impl;
 
 import com.example.springboot.bean.Reservate;
+import com.example.springboot.exception.UserException;
 import com.example.springboot.mapper.ReservingMapper;
 import com.example.springboot.service.IReservingServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,8 +37,13 @@ public class ReservingService implements IReservingServise {
     }
 
     @Override
-    public void insertReservate(Reservate reservate) {
-        reservingMapper.insertReservate(reservate);
+    @Transactional(rollbackFor = UserException.class)
+    public void insertReservate(Reservate reservate) throws UserException {
+        try {
+            reservingMapper.insertReservate(reservate);
+        } catch (Exception e) {
+            throw new UserException("预约失败");
+        }
     }
 
     @Override
