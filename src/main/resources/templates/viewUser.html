@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>当前预约</title>
+    <title>查看用户</title>
     <link type="text/css" rel="stylesheet" href="/css/seven.css"/>
 </head>
 <body>
     <div class="seven">
         <table id="seven" border="1">
             <tr>
-                <th>序号</th>
-                <th>自习室Id</th>
-                <th>座位号</th>
-                <th>开始时间</th>
-                <th>结束时间</th>
+                <th>用户ID</th>
+                <th>用户名称</th>
+                <th>密码</th>
+                <th>真实名称</th>
+                <th>性别</th>
+                <th>所在班级</th>
+                <th>所在年级</th>
+                <th>电话</th>
                 <th>操作</th>
             </tr>
-            <tr  th:each="currentReservation: ${currentReservation}" >
-                <td th:text="${currentReservation.getSequence()}"></td>
-                <td th:text="${currentReservation.getRoomId()}"></td>
-                <td th:text="${currentReservation.getSeatNumber()}"></td>
-                <td th:text="${currentReservation.getStartTime()}"></td>
-                <td th:text="${currentReservation.getOverTime()}"></td>
+            <tr  th:each="viewUser: ${viewUser}" >
+                <td th:text="${viewUser.getUserId()}"></td>
+                <td th:text="${viewUser.getUsername()}"></td>
+                <td th:text="${viewUser.getPassword()}"></td>
+                <td th:text="${viewUser.getRealName()}"></td>
+                <td th:text="${viewUser.getSex()}"></td>
+                <td th:text="${viewUser.getTclass()}"></td>
+                <td th:text="${viewUser.getGrade()}"></td>
+                <td th:text="${viewUser.getContacts()}"></td>
                 <td>
-                    <a th:href="@{cancelReservation.do(sequence=${currentReservation.sequence})}" onclick="javascript:return cancel()" >取消预约</a>
+                    <a th:href="@{deleteUser.do(userId=${viewUser.userId})}" onclick="javascript:return del()" >删除用户</a>
                 </td>
             </tr>
         </table>
         <script>
-            function cancel() {
-                var msg = "是否要取消预约？";
+            function del() {
+                var msg = "是否要删除该用户？";
                 if (confirm(msg)==true){
                     return true;
                 }else{

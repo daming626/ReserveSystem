@@ -57,4 +57,9 @@ public class UserController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("kkkk")
+    public String login1() {
+        return "login";
+    }
 }

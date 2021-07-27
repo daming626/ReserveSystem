@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>故障保修</title>
+    <link rel="shortcut icon" href="tu.ico"/>
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+    <!--<script src="http://cdn.staticfile.org/jquery/3.6.0/jquery.js"></script>-->
+    <script src="/js/showMenu.js"></script>
+</head>
+<form action="updateRepair.do" method="post">
+    <input name="userId" type="text" th:value="${session.user.userId}" th:if="${session.user.getRoleList().get(0)"
+    )}">
+<!--    <p>-->
+<!--        <a name="time" th:text="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd HH:mm:ss')}"></a>-->
+<!--    </p>-->
+    <p>选择自习室
+        <select name="roomName" id="roomName">
+            <option th:each="room:${roomList}" th:text="${room.getRoomName()}"></option>
+        </select>
+    </p>
+    <p>
+        报修类型
+        <select name="types" id="type">
+            <option th:value="电路">电路</option>
+            <option th:value="其他">其他</option>
+        </select>
+    </p>
+
+    <p>
+        问题描述
+        <textarea name="description" id="description" placeholder="请描述故障细节" cols="50" rows="10"></textarea>
+    </p>
+
+
+    <div>
+        <input type="submit" value="提交">
+        <input type="reset" value="清空表单">
+    </div>
+</form>
+
+</body>
+</html>
