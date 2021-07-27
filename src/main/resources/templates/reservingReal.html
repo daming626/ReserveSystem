@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
     <style>
-        html,body {
-            margin:0;
-            height:1000px;
+        html, body {
+            margin: 0;
+            height: 1000px;
             /* background-color: aqua; */
         }
 
@@ -13,64 +15,249 @@
             background-color: black;
         } */
         #test {
-            width:100%;
-            height:100%;
-            background-color:#000;
-            position:absolute;
-            top:0;
-            left:0;
-            z-index:2;
-            opacity:0.3;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
             /*兼容IE8及以下版本浏览器*/
             filter: alpha(opacity=30);
-            display:none;
+            display: none;
         }
 
         #log_window {
-            width:600px;
-            height:400px;
-            background-color:red;
+            width: 600px;
+            height: 400px;
+            background-color: white;
             margin: auto;
             position: absolute;
-            z-index:3;
+            z-index: 3;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            display:none;
+            display: none;
+        }
+
+        .seatnumber {
+            float: left;
+        }
+
+        #message{
+            color: red;
+            background-color: #70c2f4;
         }
     </style>
     <script>
-        function shield(){
+        // 弹出窗口(遮罩层)
+        function shield(reservingDate, roomId, seatNumber) {
             var s = document.getElementById("test");
             s.style.display = "block";
 
             var l = document.getElementById("log_window");
             l.style.display = "block";
+
+            // 根据点击图标自动获取对应座位号并放入预约中
+            var seatNum = document.getElementById("seatNum");
+            seatNum.value = seatNumber;
+            seatNum.placeholder = seatNumber;
+
+            // var url = '/reserving/viewAllReservedBySome.do?date='+a+'&roomId='+b+'&seatNumber='+c;
+            // $("#kkkkk").loal(url);
+
+            // ajax获取某座位的当天预约信息
+            var xmlhttp = new XMLHttpRequest();
+            var seraddrs = 'http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber;
+            xmlhttp.open("GET", seraddrs);
+            xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xmlhttp.onreadystatechange = function (ev) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var items = document.getElementById("items");
+                    if (items == null)
+                        window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + a + '&roomId=' + b + '&seatNumber=' + c);
+                    else
+                        items.innerHTML = xmlhttp.response;
+                }
+            };
+            xmlhttp.send(null);
         }
 
-        function cancel_shield(){
+        // 关闭遮罩层
+        function cancel_shield() {
             var s = document.getElementById("test");
             s.style.display = "none";
 
             var l = document.getElementById("log_window");
             l.style.display = "none";
+
+            //关闭遮罩层后将所有内容清空
+            // var reservingDate = document.getElementById("reservingDate");
+            // reservingDate.value='';
+            // reservingDate.placeholder='';
+            // var sequence = document.getElementById("sequence");
+            // sequence.value='';
+            // sequence.placeholder='';
+            // var roomId = document.getElementById("roomId");
+            // roomId.value='';
+            // roomId.placeholder='';
+            // var seatNum = document.getElementById("seatNum");
+            // seatNum.value='';
+            // seatNum.placeholder='';
+            var startTime = document.getElementById("startTime");
+            startTime.value='';
+            startTime.placeholder='';
+            var overTime = document.getElementById("overTime");
+            overTime.value='';
+            overTime.placeholder='';
+            // var userId = document.getElementById("userId");
+            // userId.value='';
+            // userId.placeholder='';
+            var displayImg1 = document.getElementById("displayImg1");
+            displayImg1.src='';
+            var displayImg2 = document.getElementById("displayImg2");
+            displayImg2.src='';
+            var message = document.getElementById("message");
+            message.innerText='';
+        }
+
+        // $(document).ready(function () {
+        //
+        // }
+
+        // 检测输入的开始预约时间是否合格
+        function displayImgOne(reservingDate, roomId) {
+            var img1 = document.getElementById("displayImg1");
+            var seatNum = document.getElementById("seatNum").value;
+            var start = document.getElementById("startTime").value;
+
+            //判断输入的开始预约时间是否为空，是则给其赋值'null'
+            if (start == '') {
+                start = 'null'
+            }
+
+            xmlHttp = new XMLHttpRequest();//创建request对象
+            xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
+            xmlHttp.open("GET", "getSomeoneStart.do?reservingDate=" + reservingDate + "&roomId=" + roomId + "&seatNumber=" + seatNum + "&startTime=" + start);  // 開啟連結
+            xmlHttp.send(null);  // 傳送請求
+
+            function checkReserve() {
+                if (xmlHttp.readyState == 4) {
+                    if (xmlHttp.status == 200) {
+                        // console.log(typeof xmlHttp.responseText);//服务器响应的原始数据
+                        // console.log(typeof eval('('+xmlHttp.responseText+')'));//不推荐使用
+                        // console.log(typeof JSON.parse(xmlHttp.responseText));
+                        rel = JSON.parse(xmlHttp.responseText);
+                        if (rel.result == "reserveToYes") {
+                            img1.src = "/img/y.png";
+                        } else if (rel.result == "reserveToNo") {
+                            img1.src = "/img/n.png";
+                        }
+                    }
+                }
+            }
+        }
+
+        // 检测输入的结束预约时间是否合格
+        function displayImgTwo(reservingDate, roomId) {
+            var img2 = document.getElementById("displayImg2");
+            var seatNum = document.getElementById("seatNum").value;
+            var start = document.getElementById("startTime").value;
+            var over = document.getElementById("overTime").value;
+
+            //判断输入的开始预约时间是否为空，是则给其赋值'null'
+            if (start == '') {
+                start = 'null'
+            }
+            //判断输入的结束预约时间是否为空，是则给其赋值'null'
+            if (over == '') {
+                over = 'null'
+            }
+
+            xmlHttp = new XMLHttpRequest();//创建request对象
+            xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
+            xmlHttp.open("GET", "getSomeoneOver.do?reservingDate=" + reservingDate + "&roomId=" + roomId + "&seatNumber=" + seatNum + "&startTime=" + start + "&overTime=" + over);  // 開啟連結
+            xmlHttp.send(null);  // 傳送請求
+
+            function checkReserve() {
+                if (xmlHttp.readyState == 4) {
+                    if (xmlHttp.status == 200) {
+                        // console.log(typeof xmlHttp.responseText);//服务器响应的原始数据
+                        // console.log(typeof eval('('+xmlHttp.responseText+')'));//不推荐使用
+                        // console.log(typeof JSON.parse(xmlHttp.responseText));
+                        rel = JSON.parse(xmlHttp.responseText);
+                        if (rel.result == "reserveToYes") {
+                            img2.src = "/img/y.png";
+                        } else if (rel.result == "reserveToNo") {
+                            img2.src = "/img/n.png";
+                        }
+                    }
+                }
+            }
+        }
+
+        function conservation() {
+            console.log("LLLLLLLLLLLLL")
+            var message = document.getElementById("message");
+            message.innerText ='预约成功'
         }
     </script>
 </head>
 <body>
-    <span th:each="flag:${#numbers.sequence(1,roomCapacity)}">
-        <!--<a th:href="@{test1.do(date=${reservingDate},roomId=${roomId},seatNumber=${flag})}"><img  th:src="@{/img/yes.png}" th:title="${flag}+'号座位'"></a>-->
-        <a href="javascript:shield()"><img th:src="@{/img/yes.png}" th:title="${flag}+'号座位'"></a>
-        <div id="test"></div>
-        <div id="log_window">
-        <a href="javascript:cancel_shield()">关闭</a>
-            <form action="">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="submit" value="提交">
-            </form>
+<span th:each="seatNumber:${#numbers.sequence(1,roomCapacity)}"><!--根据自习室容量循环显示座位信息-->
+        <span class="seatnumber" th:switch="${#arrays.contains(allSeatNumber,seatNumber)}"><!--条件判断座位是否被预约，已预约为红色，未预约为绿色-->
+            <!--点击事件作用于图片，点击弹出窗口显示该座位当天所有预约信息-->
+            <a th:case="false" href="#" th:onclick="shield([[${reservingDate}]],[[${roomId}]],[[${seatNumber}]])">
+                <img th:src="@{/img/yes.png}" th:title="${seatNumber}+'号座位'"></a>
+            <a th:case="true" href="#" th:onclick="shield([[${reservingDate}]],[[${roomId}]],[[${seatNumber}]])">
+                <img th:src="@{/img/no.png}" th:title="${seatNumber}+'号座位'"></a>
+            <div th:text="${seatNumber+'号座位'}"></div>
+        </span>
+        <div id="test"></div><!--用于锁定全局，只能处理遮罩层信息-->
+        <div id="log_window"><!--弹窗(遮罩层)显示内容-->
+            <a href="#" onclick="cancel_shield()">❌</a>
+            <div>该座位今日预约信息</div>
+            <div class="reservedTable" id="items" th:fragment="reservedTable">
+                <table border="1">
+                    <tr>
+                    <th>预约人id</th>
+                    <th>自习室Id</th>
+                    <th>座位号</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    </tr>
+                    <tr th:each="AllReserved : ${AllReserved}">
+                        <td th:text="${AllReserved.getUserId()}"></td>
+                        <td th:text="${AllReserved.getRoomId()}"></td>
+                        <td th:text="${AllReserved.getSeatNumber()}"></td>
+                        <td th:text="${AllReserved.getStartTime()}"></td>
+                        <td th:text="${AllReserved.getOverTime()}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <form th:action="@{insertReservate.do}" method="post">
+                    <div><label>日期</label><input id="reservingDate" type="text" name="reservingDate" th:value="${reservingDate}"
+                                                 th:placeholder="${reservingDate}"></div>
+                    <div><label>序号:</label><input id="sequence" type="text" name="sequence" value="" placeholder=""></div>
+                    <div><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}"
+                                                     th:placeholder="${roomId}"></div>
+                    <div><label>座位号:</label><input id="seatNum" type="text" name="seatNumber"></div>
+                    <div><label>预约开始时间:</label><input id="startTime" type="time" name="startTime" value=""
+                                                      placeholder=""
+                                                      th:onblur="displayImgOne([[${reservingDate}]],[[${roomId}]])"><img
+                            id="displayImg1" src=""></div>
+                    <div><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder=""
+                                                      th:onblur="displayImgTwo([[${reservingDate}]],[[${roomId}]])"><img
+                            id="displayImg2" src=""></div>
+                    <div><label>预约人id:</label><input id="userId" type="text" name="userId" value="" placeholder=""></div>
+<!--                    <div><input type="submit" value="申请预约"></div>-->
+                    <div><input type="button" value="申请预约" onclick="conservation()"></div>
+                    <div><span id="message" value="" text=""></span></div>
+                </form>
+            </div>
         </div>
     </span>
 </body>
