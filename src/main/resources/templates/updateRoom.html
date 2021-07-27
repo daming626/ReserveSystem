@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function shield(){
+            var s = document.getElementById("test");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window");
+            l.style.display = "block";
+        }
+
+        function cancel_shield(){
+            var s = document.getElementById("test");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window");
+            l.style.display = "none";
+        }
+    </script>
 </head>
 <body>
+    <table id="updateRoom">
     <form th:action="@{updateRoom}" method="post">
         <input hidden type="text" name="roomId" th:value="${room.roomId}">
         <input type="text" name="RoomName" th:value="${room.roomName}">
@@ -12,5 +30,12 @@
         <input type="text" name="roomDescribe" th:value="${room.roomDescribe}">
         <input type="submit" value="保存">
     </form>
+    <a href="javascript:shield()">打开遮罩</a>
+    <div id="test"></div>
+
+    <div id="log_window">
+        <a href="javascript:cancel_shield()">关闭</a>
+    </div>
+    </table>
 </body>
 </html>
