@@ -11,6 +11,26 @@
 
 
 </section>
+<div>
+    <div>
+        故障通告
+        <ul class="nav">
+            <li th:each="tree:${session.userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
+                <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="leftTree" >校内通知
+        <ul class="nav">
+            <li th:each="tree:${session.userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
+                <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"></a>
+            </li>
+        </ul>
+    <div>
+
+    </div>
+</div>
 
 <button id="fabu" >发布通知</button>
 <button id="chakang">查看通知</button>

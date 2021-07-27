@@ -9,4 +9,7 @@
     <select id="getNoticeById" resultMap="noticeMap" parameterType="string">
         SELECT * FROM tb_notice n WHERE  n.id=#{value}
     </select>
+    <select id="getAllNotice" resultMap="noticeMap">
+        SELECT * FROM tb_notice
+    </select>
 </mapper>

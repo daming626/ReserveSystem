@@ -6,6 +6,8 @@ import com.example.springboot.service.INoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NoticeServiceImpl implements INoticeService {
 
@@ -16,5 +18,10 @@ public class NoticeServiceImpl implements INoticeService {
     @Override
     public Notice getNoticeById(String id) {
         return noticeMapper.getNoticeById(id);
+    }
+
+    @Override
+    public List<Notice> getAllNotice() {
+        return noticeMapper.getAllNotice();
     }
 }

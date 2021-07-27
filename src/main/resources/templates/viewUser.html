@@ -28,6 +28,7 @@
             <td th:text="${viewUser.getGrade()}"></td>
             <td th:text="${viewUser.getContacts()}"></td>
             <td>
+                <a th:href="@{deleteUser.do(userId=${viewUser.userId})}" th:if="${session.user.getRealName()}=='超级管理员'" onclick="javascript:return del()" >授予管理员权限</a>
                 <a th:href="@{deleteUser.do(userId=${viewUser.userId})}" onclick="javascript:return del()" >删除用户</a>
             </td>
         </tr>

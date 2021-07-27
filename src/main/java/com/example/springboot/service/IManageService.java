@@ -14,4 +14,6 @@ public interface IManageService {
     void deleteManage(String userId);
 
     int total(int pageSize);
+
+    void insertAdministrator(User user);
 }

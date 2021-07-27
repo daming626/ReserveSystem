@@ -34,6 +34,13 @@ public class OtherController {
         return "notice";
     }
 
+    @GetMapping("getAllNotice.do")
+    public String getAllNotice(Model model){
+        List<Notice> noticeList = noticeService.getAllNotice();
+        model.addAttribute("noticeList",noticeList);
+        return "viewNotice";
+    }
+
 
     @GetMapping("repair.do")
     public String Report(Room room, Model model){
