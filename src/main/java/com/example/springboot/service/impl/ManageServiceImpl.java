@@ -42,6 +42,6 @@ public class ManageServiceImpl implements IManageService {
 
     @Override
     public void insertAdministrator(User user) {
-        manageMapper.insertAdministrator(user);
+
     }
 }

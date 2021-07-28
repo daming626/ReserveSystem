@@ -83,7 +83,7 @@ public class RoomController {
     public String updateRoom(String roomId, Model model){
         Room room=roomService.getRoomById(roomId);
         model.addAttribute("room",room);
-       // model.addAttribute("room",roomService.getRoomById(roomId));
+        // model.addAttribute("room",roomService.getRoomById(roomId));
         return "updateRoom";
     }
 }
