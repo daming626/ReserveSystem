@@ -27,9 +27,17 @@ public class ReservedController {
     @GetMapping("currentReservation.do")
     public String currentReserved(Model model, String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
 
-        int curPage=1;
+        User user = (User) session.getAttribute("user");
+        String userId = user.getUserId();
+
+        Date date=new Date();
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        currentTime=format.format(date);
+
+        int curPage = 1;
         int pageSize = 8;
-        int totalPage = reservedService.total(pageSize);
+        int totalPage = reservedService.totalc(pageSize,userId,currentTime);
+
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -46,17 +54,11 @@ public class ReservedController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
-
-        Date date=new Date();
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        currentTime=format.format(date);
-
-        User user = (User) session.getAttribute("user");
-        String userId = user.getUserId();
+        int startPage = (curPage - 1) * pageSize;
 
         model.addAttribute("currentReservation", reservedService.getCurrentReservedById(userId,currentTime,startPage,pageSize));
         return "currentReservation";
@@ -74,9 +76,17 @@ public class ReservedController {
     @GetMapping("historyAppointment.do")
     public String historyReserved(Model model,String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
 
-        int curPage=1;
+        User user = (User) session.getAttribute("user");
+        String userId = user.getUserId();
+
+        Date date=new Date();
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        currentTime = format.format(date);
+
+        int curPage = 1;
         int pageSize = 8;
-        int totalPage = reservedService.total(pageSize);
+        int totalPage = reservedService.totalh(pageSize,userId,currentTime);
+
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -93,17 +103,11 @@ public class ReservedController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
-
-        Date date=new Date();
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        currentTime = format.format(date);
-
-        User user = (User) session.getAttribute("user");
-        String userId = user.getUserId();
+        int startPage = (curPage - 1) * pageSize;
 
         model.addAttribute("historyAppointment", reservedService.getHistoryReservedById(userId,currentTime,startPage,pageSize));
         return "historyAppointment";

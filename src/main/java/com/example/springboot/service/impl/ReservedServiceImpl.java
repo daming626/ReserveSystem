@@ -26,6 +26,11 @@ public class ReservedServiceImpl implements IReservedService {
         return reservedMapper.getCurrentReservedById(userId, currentTime, startPage, pageSize);
     }
 
+    @Override
+    public int totalc(int pageSize, String userId, String currentTime) {
+        return reservedMapper.totalc(pageSize,userId,currentTime);
+    }
+
     //历史预约
     @Override
     public List<Reservate> getHistoryReservedById(String userId, String currentTime, int startPage, int pageSize) {
@@ -33,7 +38,8 @@ public class ReservedServiceImpl implements IReservedService {
     }
 
     @Override
-    public int total(int pageSize) {
-        return reservedMapper.total(pageSize);
+    public int totalh(int pageSize, String userId, String currentTime) {
+        return reservedMapper.totalh(pageSize,userId,currentTime);
     }
+
 }

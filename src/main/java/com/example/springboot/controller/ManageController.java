@@ -24,7 +24,7 @@ public class ManageController {
 
         int curPage=1;
         int pageSize = 8;
-        int totalPage = manageService.total(pageSize);
+        int totalPage = manageService.totalu(pageSize,"r1000");
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -41,7 +41,8 @@ public class ManageController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
         int startPage = (curPage-1) * pageSize;
@@ -56,7 +57,7 @@ public class ManageController {
 
         int curPage=1;
         int pageSize = 8;
-        int totalPage = manageService.total(pageSize);
+        int totalPage = manageService.totalm(pageSize,"r1001");
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -73,7 +74,8 @@ public class ManageController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
         int startPage = (curPage-1) * pageSize;

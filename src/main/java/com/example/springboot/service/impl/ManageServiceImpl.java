@@ -20,6 +20,10 @@ public class ManageServiceImpl implements IManageService {
         return manageMapper.getUserById(roleId,startPage,pageSize);
     }
 
+    @Override
+    public int totalu(int pageSize, String roleId) {
+        return manageMapper.totalu(pageSize,roleId);
+    }
 
     @Override
     public List<User> getManageById(String roleId,int startPage, int pageSize) {
@@ -32,7 +36,7 @@ public class ManageServiceImpl implements IManageService {
     }
 
     @Override
-    public int total(int pageSize) {
-        return manageMapper.total(pageSize);
+    public int totalm(int pageSize, String roleId) {
+        return manageMapper.totalm(pageSize,roleId);
     }
 }
