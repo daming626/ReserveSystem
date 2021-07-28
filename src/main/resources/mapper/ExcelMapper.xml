@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.ExcelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="projectItemResultMap" type="com.example.springboot.entity.Users">
+        <id column="userid" property="userid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="realname" property="realname"/>
+        <result column="sex" property="sex"/>
+        <result column="tclass" property="tclass"/>
+        <result column="grade" property="grade"/>
+        <result column="contacts" property="contacts"/>
+        <result column="state" property="state"/>
+    </resultMap>
+
+    <insert id="insertProjectItem">
+        insert tb_user (userid,username,password,realname,sex,tclass,grade,contacts)
+        values(#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts})
+    </insert>
+
+</mapper>
