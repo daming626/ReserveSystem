@@ -38,4 +38,8 @@
     <select id="totalm" resultType="int">
         SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
     </select>
+
+    <insert id="insertAdministrator" parameterType="user">
+        INSERT INTO tb_user VALUE (#{userId},#{username},#{password},#{realName},#{sex},#{tclass},#{grade},#{contacts},#{state})
+    </insert>
 </mapper>

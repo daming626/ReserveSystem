@@ -44,7 +44,6 @@
                     <div><label>日期</label><input id="reservingDate" type="text" name="reservingDate"
                                                  th:value="${reservingDate}"
                                                  th:placeholder="${reservingDate}"></div>
-                    <!--                    <div><label>序号:</label><input id="sequence" type="text" name="sequence" value="" placeholder=""></div>-->
                     <div><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}"
                                                      th:placeholder="${roomId}"></div>
                     <div><label>座位号:</label><input id="seatNum" type="text" name="seatNumber"></div>
@@ -55,8 +54,6 @@
                     <div><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder=""
                                                       th:onblur="displayImgTwo([[${reservingDate}]],[[${roomId}]])"><img
                             id="displayImg2" src=""></div>
-                    <!--                    <div><label>预约人id:</label><input id="userId" type="text" name="userId" value="" placeholder=""></div>-->
-                    <!--                    <div><input type="submit" value="申请预约"></div>-->
                     <div><input type="button" value="申请预约" onclick="conservation()"></div>
                     <div><span id="message" value="" text=""></span></div>
                 </form>

@@ -13,6 +13,6 @@ public interface IRoomService {
     int total(int pageSize);
 
     List<Room> getAllRoom();
-    void insertRepairInfo(String id,String roomName, String time, String types,String userId, String description);
+    void insertRepairInfo(String roomName, String time, String types,String userId, String description);
 
 }
