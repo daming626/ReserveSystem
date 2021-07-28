@@ -8,7 +8,6 @@ import java.util.List;
 public interface IManageService {
 
     List<User> getUserById(String roleId,int startPage, int pageSize);
-    void deleteUser(String userId);
 
     List<User> getManageById(String roleId,int startPage, int pageSize);
     void deleteManage(String userId);
