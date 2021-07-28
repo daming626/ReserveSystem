@@ -6,7 +6,7 @@ spring:
         url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: root
-        password: hjj1234
+        password: 123456
 
 
     thymeleaf:

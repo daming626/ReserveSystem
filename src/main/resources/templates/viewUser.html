@@ -16,6 +16,7 @@
                 <th>所在班级</th>
                 <th>所在年级</th>
                 <th>电话</th>
+                <th>操作</th>
             </tr>
             <tr  th:each="viewUser: ${viewUser}" >
                 <td th:text="${viewUser.getUserid()}"></td>
@@ -26,8 +27,31 @@
                 <td th:text="${viewUser.getTclass()}"></td>
                 <td th:text="${viewUser.getGrade()}"></td>
                 <td th:text="${viewUser.getContacts()}"></td>
+                <td>
+                    <a th:href="@{insertManagerById.do(userId=${viewUser.userid})}" th:if="${session.user.getRealname()=='超级管理员'}" onclick="javascript:return del1()">授予管理员</a>
+                    <a th:href="@{deleteUser.do(userId=${viewUser.userid})}" onclick="javascript:return del()" >删除用户</a>
+                </td>
             </tr>
         </table>
+        <script>
+            function del() {
+                var msg = "是否要删除该用户？";
+                if (confirm(msg)==true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            function del1() {
+                var msg = "是否要授予管理员？";
+                if (confirm(msg)==true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        </script>
         <div id="but-box">
             <input type="button" value="首页" id="k">
             <input type="button" value="上一页" id="kk">

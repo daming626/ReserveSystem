@@ -8,6 +8,7 @@
 <body>
 <section class="tableBox">
     <button id="open_btn" class="btn" th:if="${session.user.roleList.get(0)} ne 'r1000'">发布通知</button>
+    <button id="open_btn" class="btn" th:if="${session.user.roleList.get(0)} ne 'r1000'">定时发送</button>
 </section>
 <div>
     <div>
