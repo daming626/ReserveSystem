@@ -3,6 +3,79 @@
 <head>
     <title>Thymeleaf demo</title>
     <link rel="stylesheet" href="/css/Room.css"/>
+    <style>
+        html,body {
+            margin:0;
+            height:100%;
+        }
+        #test {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+
+        #log_window {
+            width:1200px;
+            height:400px;
+            background-color: #44e2ff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+    </style>
+    <script>
+        function shield(a,b,c,d){
+            var roomId1 = document.getElementById("RoomId1")
+            roomId1.value=a;
+            var roomName1 = document.getElementById("RoomName1")
+            roomName1.value=b;
+            var roomCapacity1 = document.getElementById("roomCapacity1")
+            roomCapacity1.value=c;
+            var roomDescribe1 = document.getElementById("roomDescribe1")
+            roomDescribe1.value=d;
+
+
+
+            var s = document.getElementById("test");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window");
+            l.style.display = "block";
+
+            // 根据点击修改自习室信息自动获取对应座位号并放入对应的框中
+            var roomId = document.getElementById("RoomId").innerText;
+            console.log(roomId)
+
+
+            xmlHttp = new XMLHttpRequest();//创建request对象
+            xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
+            xmlHttp.open("GET", "getRoomById.do?roomId=" + roomId);  // 開啟連結
+            xmlHttp.send(null);  // 傳送請求
+
+
+        }
+
+        function cancel_shield(){
+            var s = document.getElementById("test");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window");
+            l.style.display = "none";
+        }
+    </script>
 </head>
 <body>
     <div class="MyRoom">
@@ -15,16 +88,30 @@
                 <th>操作</th>
             </tr>
             <tr  th:each="room,roomStat : ${rooms}" >
-                <td th:text="${room.roomId}"></td>
+                <td id="RoomId" th:text="${room.roomId}"></td>
                 <td th:text="${room.roomName}"></td>
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
+<!--                    <a th:href="@{getRoomById(roomId=${room.roomId})}">-->
+                    <a href="#" th:onclick="shield([[${room.roomId}]],[[${room.roomName}]],[[${room.roomCapacity}]],[[${room.roomDescribe}]])">修改自习室</a>
                     <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
-                    <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>
                 </td>
             </tr>
         </table>
+        <div id="test"></div>
+        <div id="log_window">
+            <a href="javascript:cancel_shield()">❌</a>
+            <div>
+                <form action="updateRoom" method="post">
+                    <input hidden id="RoomId1" type="text" name="RoomId" value="">
+                    <input id="RoomName1" type="text" name="RoomName" value="">
+                    <input id="roomCapacity1" type="text" name="roomCapacity" value="">
+                    <input id="roomDescribe1" type="text" name="roomDescribe" value="">
+                    <input type="submit" value="保存">
+                </form>
+            </div>
+        </div>
         <div id="but-box">
             <input type="button" value="首页" id="k">
             <input type="button" value="上一页" id="kk">
@@ -33,20 +120,20 @@
         </div>
         <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
         <script>
-    $(document).ready(function () {
-        $("#k").click(function () {
-            window.location.href = "viewRoom.do?firstPage=1"
-        })
-        $("#kk").click(function () {
-            window.location.href ="viewRoom.do?lastPage=1"
-        })
-        $("#kkk").click(function () {
-            window.location.href = "viewRoom.do?nextPage=1"
-        })
-        $("#kkkk").click(function () {
-            window.location.href = "viewRoom.do?finalPage=1"
-        })
-    })
+            $(document).ready(function () {
+                $("#k").click(function () {
+                    window.location.href = "viewRoom.do?firstPage=1"
+                })
+                $("#kk").click(function () {
+                    window.location.href ="viewRoom.do?lastPage=1"
+                })
+                $("#kkk").click(function () {
+                    window.location.href = "viewRoom.do?nextPage=1"
+                })
+                $("#kkkk").click(function () {
+                    window.location.href = "viewRoom.do?finalPage=1"
+                })
+            })
         </script>
     </div>
 </body>
