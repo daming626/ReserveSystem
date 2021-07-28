@@ -1,20 +1,25 @@
 package com.example.springboot.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
     private  String roomId;
     private String roomName;
     private String roomCapacity;
     private String roomDescribe;
+    List<Repair> repairList = new ArrayList<Repair>();
 
     public Room(){
 
     }
 
-    public Room(String roomId,String roomName,String roomCapacity,String roomDescribe){
-        this.roomId=roomId;
-        this.roomName=roomName;
-        this.roomCapacity=roomCapacity;
-        this.roomDescribe=roomDescribe;
+    public Room(String roomId, String roomName, String roomCapacity, String roomDescribe, List<Repair> repairList) {
+        this.roomId = roomId;
+        this.roomName = roomName;
+        this.roomCapacity = roomCapacity;
+        this.roomDescribe = roomDescribe;
+        this.repairList = repairList;
     }
 
     public String getRoomId() {
@@ -47,5 +52,13 @@ public class Room {
 
     public void setRoomDescribe(String roomDescribe) {
         this.roomDescribe = roomDescribe;
+    }
+
+    public List<Repair> getRepairList() {
+        return repairList;
+    }
+
+    public void setRepairList(List<Repair> repairList) {
+        this.repairList = repairList;
     }
 }

@@ -6,13 +6,12 @@
 .main{
     width: 100%;
     height: 100%;
-    background-color: #2b4906;
 }
 
 .head{
     width: 100%;
     height: 15%;
-    background-color: #c2ccd5;
+    background-color:#44bbff;
 }
 
 .body{
@@ -20,3 +19,147 @@
     height: 85%;
     background-color: #ffffff;
 }
+
+/* 文字左右横线1提示 */
+.wrap1 {
+    position: relative;
+    text-align: center;
+    width: 46%;
+    float: left;
+    /* margin: 0px; */
+}
+/*CSS伪类用法*/
+.wrap1:after, .wrap1:before {
+    position: absolute;
+    top: 50%;
+    background: #ddd;
+    content: "";
+    height: 2px;
+    width: 20%;
+}
+/*调整背景横线的左右距离*/
+.wrap1:before {left: 0;}
+.wrap1:after {right: 0;}
+
+.wrap2 {
+    position: relative;
+    text-align: center;
+    width: 45%;
+    float: right;
+    right: 0;
+    /* margin: 0px; */
+}
+/*CSS伪类用法*/
+.wrap2:after, .wrap2:before {
+    position: absolute;
+    top: 50%;
+    background: #ddd;
+    content: "";
+    height: 2px;
+    width: 20%;
+}
+/*调整背景横线的左右距离*/
+.wrap2:before {left: 0;}
+.wrap2:after {right: 0;}
+/* 文字左右横线1提示 结束*/
+
+
+/* 日期时间自习室选择样式 */
+#time,#reservingDate,#roomId {
+    top: 10px;
+    padding: 4px 10px;
+    height: 30px;
+    width: 138px;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    background: #44bbff;
+    color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+/* 日期时间自习室选择样式 结束*/
+
+/*查询按钮样式*/
+#search{
+    top: 10px;
+    padding: 4px 10px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    /* line-height: 40px; */
+    position: relative;
+    cursor: pointer;
+    background: #44bbff;
+    color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+/*查询按钮样式结束*/
+
+/*错误信息提示*/
+#error{
+    top: 10px;
+    padding: 4px 10px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    /* line-height: 40px; */
+    position: relative;
+    cursor: pointer;
+    background: #44bbff;
+    color: #FFFFFF;
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    overflow: hidden;
+    /* display: inline-block; */
+    *display: inline;
+    *zoom: 1;
+}
+/*错误信息提示结束*/
+
+/*文字左右横线2*/
+.wrap3{
+    position: absolute;
+    text-align: center;
+    top: 25px;
+    width: 15%;
+    right: 0;
+}
+.wrap4{
+    position: absolute;
+    text-align: center;
+    top: 45px;
+    width: 15%;
+    right: 0;
+
+}
+/*CSS伪类用法*/
+.wrap3:before{
+    position: absolute;
+    top: 35%;
+    background: #9cd055;
+    content: "";
+    height: 10px;
+    width: 25%;
+}
+.wrap4:before{
+    position: absolute;
+    top: 35%;
+    background-color: red;
+    content: "";
+    height: 10px;
+    width: 25%;
+}
+/*调整背景横线的左右距离*/
+.wrap3:before,.wrap4:before {left: 0;}
+/*文字左右横线2结束*/

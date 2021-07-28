@@ -37,4 +37,8 @@
     <select id="total" parameterType="int" resultType="int">
         SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_reservate
     </select>
+
+    <insert id="insertAdministrator" parameterType="user">
+        INSERT INTO tb_user VALUE (#{userId},#{username},#{password},#{realName},#{sex},#{tclass},#{grade},#{contacts},#{state})
+    </insert>
 </mapper>

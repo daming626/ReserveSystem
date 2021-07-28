@@ -24,6 +24,6 @@ public class MvcAutoConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")//被拦截的请求，/**表示所有请求
-                .excludePathPatterns("/user/login.html", "/", "/user/login.do", "/css/**", "/img/**", "/js/**");//予以放行的请求、页面、静态资源
+                .excludePathPatterns("/login.html", "/", "/login.do", "/css/**", "/img/**", "/js/**");//予以放行的请求、页面、静态资源
     }
 }
