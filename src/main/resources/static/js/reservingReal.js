@@ -23,7 +23,6 @@ function shield(reservingDate, roomId, seatNumber) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var items = document.getElementById("items");
             if (items == null) {
-                console.log("KKKKKKKKKKKKKlll")
                 window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber);
             } else {
                 items.innerHTML = xmlhttp.response;
@@ -72,7 +71,7 @@ function displayImgOne(reservingDate, roomId) {
     if (start == '') {
         start = 'null'
     }
-
+//我需要参考的数据
     xmlHttp = new XMLHttpRequest();//创建request对象
     xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
     xmlHttp.open("GET", "getSomeoneStart.do?reservingDate=" + reservingDate + "&roomId=" + roomId + "&seatNumber=" + seatNum + "&startTime=" + start);  // 開啟連結

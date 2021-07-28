@@ -60,7 +60,6 @@ public class RoomController {
     @PostMapping("addRoom")
     public String addRoom(Room room){
         roomService.addRoom(room);
-//        request.setAttribute("rooms",room);
         return "redirect:viewRoom.do";//重定向返回viewRoom.do重新查询
     }
     @GetMapping("addRoom.do")
@@ -71,19 +70,15 @@ public class RoomController {
     //修改自习室
     @PostMapping("updateRoom")
     public String updateRoom(Room room){
-        System.out.println(room.getRoomId());
-        System.out.println(room.getRoomCapacity());
-        System.out.println(room.getRoomDescribe());
         roomService.updateRoom(room);
-//        request.setAttribute("rooms",room);
         return "redirect:viewRoom.do";
     }
 
-    @RequestMapping ("getRoomById")
-    public String updateRoom(String roomId, Model model){
+    @GetMapping ("getRoomById.do")
+    public String updateRoom(String roomId,String roomName,String roomCapacity,String roomDescribe, Model model){
+        System.out.println("kkkkk");
         Room room=roomService.getRoomById(roomId);
         model.addAttribute("room",room);
-        // model.addAttribute("room",roomService.getRoomById(roomId));
-        return "updateRoom";
+        return "viewRoom";
     }
 }

@@ -16,7 +16,6 @@ public class MvcAutoConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/main.html").setViewName("main");//将所有/main.html的请求，表现至main视图下
-        registry.addViewController("/login.html").setViewName("login");
     }
 
 

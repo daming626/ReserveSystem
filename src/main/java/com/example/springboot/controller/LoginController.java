@@ -30,7 +30,7 @@ public class LoginController {
         User user = userService.login(username, password);
         if (user != null) {
             session.setAttribute("user", user);
-            user = userService.getUserById(user.getUserId());//把用户的菜单取到
+            user = userService.getUserById(user.getUserid());//把用户的菜单取到
             session.setAttribute("user", user);
             if (flag == 0) {
                 session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
@@ -53,5 +53,14 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:login.html";
+    }
+
+    @GetMapping("login.html")
+    public String login(String message,Model model){
+        if (message!=null){
+            model.addAttribute("message","没有权限,请先登录");
+            return "login";
+        }
+        return "login";
     }
 }

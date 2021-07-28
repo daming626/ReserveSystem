@@ -20,18 +20,16 @@
         <div id="test"></div><!--用于锁定全局，只能处理遮罩层信息-->
         <div id="log_window"><!--弹窗(遮罩层)显示内容-->
             <a href="#" onclick="cancel_shield()">❌</a>
-            <div>该座位今日预约信息</div>
+            <div id="head1">该座位今日预约信息</div>
             <div class="reservedTable" id="items" th:fragment="reservedTable">
-                <table border="1">
+                <table border="1" id="reservedTable1">
                     <tr>
-                    <th>预约人id</th>
                     <th>自习室Id</th>
                     <th>座位号</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
                     </tr>
                     <tr th:each="AllReserved : ${AllReserved}">
-                        <td th:text="${AllReserved.getUserId()}"></td>
                         <td th:text="${AllReserved.getRoomId()}"></td>
                         <td th:text="${AllReserved.getSeatNumber()}"></td>
                         <td th:text="${AllReserved.getStartTime()}"></td>
@@ -40,22 +38,22 @@
                 </table>
             </div>
             <div>
-                <form th:action="@{insertReservate.do}" method="post">
-                    <div><label>日期</label><input id="reservingDate" type="text" name="reservingDate"
+                <form id="form">
+                    <div id="k1"><label>日期</label><input id="reservingDate" type="text" name="reservingDate"
                                                  th:value="${reservingDate}"
                                                  th:placeholder="${reservingDate}"></div>
-                    <div><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}"
+                    <div id="k2"><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}"
                                                      th:placeholder="${roomId}"></div>
-                    <div><label>座位号:</label><input id="seatNum" type="text" name="seatNumber"></div>
-                    <div><label>预约开始时间:</label><input id="startTime" type="time" name="startTime" value=""
+                    <div id="k3"><label>座位号:</label><input id="seatNum" type="text" name="seatNumber"></div>
+                    <div id="k4"><label>预约开始时间:</label><input id="startTime" type="time" name="startTime" value=""
                                                       placeholder=""
                                                       th:onblur="displayImgOne([[${reservingDate}]],[[${roomId}]])"><img
                             id="displayImg1" src=""></div>
-                    <div><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder=""
+                    <div id="k5"><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder=""
                                                       th:onblur="displayImgTwo([[${reservingDate}]],[[${roomId}]])"><img
                             id="displayImg2" src=""></div>
-                    <div><input type="button" value="申请预约" onclick="conservation()"></div>
-                    <div><span id="message" value="" text=""></span></div>
+                    <div id="k6"><input id="res" type="button" value="申请预约" onclick="conservation()"></div>
+                    <div id="k7"><span id="message" value="" text=""></span></div>
                 </form>
             </div>
         </div>

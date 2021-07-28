@@ -97,7 +97,7 @@ public class ManageController {
 
     @PostMapping("insertAdministrator.do")
     public String insertAdministrator(User user){
-        System.out.println(user.getUserId());
+        System.out.println(user.getUserid());
         System.out.println(user.getPassword());
         System.out.println(user.getUsername());
         manageService.insertAdministrator(user);

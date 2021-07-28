@@ -18,10 +18,10 @@
                 <th>电话</th>
             </tr>
             <tr  th:each="viewUser: ${viewUser}" >
-                <td th:text="${viewUser.getUserId()}"></td>
+                <td th:text="${viewUser.getUserid()}"></td>
                 <td th:text="${viewUser.getUsername()}"></td>
                 <td th:text="${viewUser.getPassword()}"></td>
-                <td th:text="${viewUser.getRealName()}"></td>
+                <td th:text="${viewUser.getRealname()}"></td>
                 <td th:text="${viewUser.getSex()}"></td>
                 <td th:text="${viewUser.getTclass()}"></td>
                 <td th:text="${viewUser.getGrade()}"></td>
