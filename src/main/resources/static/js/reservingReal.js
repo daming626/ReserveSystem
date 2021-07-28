@@ -23,7 +23,6 @@ function shield(reservingDate, roomId, seatNumber) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var items = document.getElementById("items");
             if (items == null) {
-                console.log("KKKKKKKKKKKKKlll")
                 window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber);
             } else {
                 items.innerHTML = xmlhttp.response;

@@ -20,11 +20,11 @@
     background-color: #ffffff;
 }
 
-/* 提示 */
+/* 文字左右横线1提示 */
 .wrap1 {
     position: relative;
     text-align: center;
-    width: 45%;
+    width: 46%;
     float: left;
     /* margin: 0px; */
 }
@@ -61,13 +61,15 @@
 /*调整背景横线的左右距离*/
 .wrap2:before {left: 0;}
 .wrap2:after {right: 0;}
+/* 文字左右横线1提示 结束*/
+
 
 /* 日期时间自习室选择样式 */
 #time,#reservingDate,#roomId {
     top: 10px;
     padding: 4px 10px;
     height: 30px;
-    width: 120px;
+    width: 138px;
     text-align: center;
     line-height: 40px;
     position: relative;
@@ -81,7 +83,9 @@
     *display: inline;
     *zoom: 1;
 }
+/* 日期时间自习室选择样式 结束*/
 
+/*查询按钮样式*/
 #search{
     top: 10px;
     padding: 4px 10px;
@@ -100,7 +104,9 @@
     *display: inline;
     *zoom: 1;
 }
+/*查询按钮样式结束*/
 
+/*错误信息提示*/
 #error{
     top: 10px;
     padding: 4px 10px;
@@ -119,8 +125,9 @@
     *display: inline;
     *zoom: 1;
 }
+/*错误信息提示结束*/
 
-
+/*文字左右横线2*/
 .wrap3{
     position: absolute;
     text-align: center;
@@ -140,7 +147,7 @@
 .wrap3:before{
     position: absolute;
     top: 35%;
-    background: green;
+    background: #9cd055;
     content: "";
     height: 10px;
     width: 25%;
@@ -148,10 +155,11 @@
 .wrap4:before{
     position: absolute;
     top: 35%;
-    background: red;
+    background-color: red;
     content: "";
     height: 10px;
     width: 25%;
 }
 /*调整背景横线的左右距离*/
 .wrap3:before,.wrap4:before {left: 0;}
+/*文字左右横线2结束*/
