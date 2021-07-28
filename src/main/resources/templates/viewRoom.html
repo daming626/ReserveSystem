@@ -3,6 +3,7 @@
 <head>
     <title>Thymeleaf demo</title>
     <link rel="stylesheet" href="/css/Room.css"/>
+    <script src="/js/updateRoom.js"></script>
     <style>
         html,body {
             margin:0;
@@ -23,9 +24,9 @@
         }
 
         #log_window {
-            width:1200px;
+            width:500px;
             height:400px;
-            background-color: #44e2ff;
+            background-color: #dddddd;
             margin: auto;
             position: absolute;
             z-index:3;
@@ -35,47 +36,38 @@
             right: 0;
             display:none;
         }
+        .a{
+            position: absolute;
+            right: 0;
+        }
+        .RoomName1{
+            position: relative;
+            top: 20px;
+            left: 22%;
+            margin: auto;
+        }
+        .roomCapacity1{
+            position: relative;
+            top: 80px;
+            left: 22%;
+            margin: auto;
+
+        }
+        .roomDescribe1{
+            position: relative;
+            top: 140px;
+            left: 22%;
+            margin: auto;
+
+        }
+
+        #sub{
+            position: relative;
+            top: 200px;
+            left: 45%;
+            margin: auto;
+        }
     </style>
-    <script>
-        function shield(a,b,c,d){
-            var roomId1 = document.getElementById("RoomId1")
-            roomId1.value=a;
-            var roomName1 = document.getElementById("RoomName1")
-            roomName1.value=b;
-            var roomCapacity1 = document.getElementById("roomCapacity1")
-            roomCapacity1.value=c;
-            var roomDescribe1 = document.getElementById("roomDescribe1")
-            roomDescribe1.value=d;
-
-
-
-            var s = document.getElementById("test");
-            s.style.display = "block";
-
-            var l = document.getElementById("log_window");
-            l.style.display = "block";
-
-            // 根据点击修改自习室信息自动获取对应座位号并放入对应的框中
-            var roomId = document.getElementById("RoomId").innerText;
-            console.log(roomId)
-
-
-            xmlHttp = new XMLHttpRequest();//创建request对象
-            xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
-            xmlHttp.open("GET", "getRoomById.do?roomId=" + roomId);  // 開啟連結
-            xmlHttp.send(null);  // 傳送請求
-
-
-        }
-
-        function cancel_shield(){
-            var s = document.getElementById("test");
-            s.style.display = "none";
-
-            var l = document.getElementById("log_window");
-            l.style.display = "none";
-        }
-    </script>
 </head>
 <body>
     <div class="MyRoom">
@@ -93,7 +85,6 @@
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
-<!--                    <a th:href="@{getRoomById(roomId=${room.roomId})}">-->
                     <a href="#" th:onclick="shield([[${room.roomId}]],[[${room.roomName}]],[[${room.roomCapacity}]],[[${room.roomDescribe}]])">修改自习室</a>
                     <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
                 </td>
@@ -101,14 +92,14 @@
         </table>
         <div id="test"></div>
         <div id="log_window">
-            <a href="javascript:cancel_shield()">❌</a>
+            <a class="a" href="javascript:cancel_shield()">❌</a>
             <div>
                 <form action="updateRoom" method="post">
-                    <input hidden id="RoomId1" type="text" name="RoomId" value="">
-                    <input id="RoomName1" type="text" name="RoomName" value="">
-                    <input id="roomCapacity1" type="text" name="roomCapacity" value="">
-                    <input id="roomDescribe1" type="text" name="roomDescribe" value="">
-                    <input type="submit" value="保存">
+                    <input id="RoomId1" type="hidden" name="RoomId" value=""><br>
+                    <div class="RoomName1"><label for="RoomName1">房间名：</label><input id="RoomName1" type="text" name="RoomName" value=""></div>
+                    <div class="roomCapacity1"><label for="roomCapacity1">房间容量：</label><input id="roomCapacity1"  type="text" name="roomCapacity" value=""></div>
+                    <div class="roomDescribe1"><label for="roomDescribe1">房间描述：</label><input id="roomDescribe1"  type="text" name="roomDescribe" value=""></div>
+                    <input id="sub" type="submit" value="保存">
                 </form>
             </div>
         </div>
