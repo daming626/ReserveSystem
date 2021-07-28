@@ -40,7 +40,7 @@ public class UserController {
         String id = null;
         try {
             out = response.getWriter();
-            id = userService.getUserById(userId).getUserId();
+            id = userService.getUserById(userId).getUserid();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NullPointerException e){

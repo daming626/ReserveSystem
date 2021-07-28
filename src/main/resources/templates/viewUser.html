@@ -19,16 +19,16 @@
                 <th>操作</th>
             </tr>
             <tr  th:each="viewUser: ${viewUser}" >
-                <td th:text="${viewUser.getUserId()}"></td>
+                <td th:text="${viewUser.getUserid()}"></td>
                 <td th:text="${viewUser.getUsername()}"></td>
                 <td th:text="${viewUser.getPassword()}"></td>
-                <td th:text="${viewUser.getRealName()}"></td>
+                <td th:text="${viewUser.getRealname()}"></td>
                 <td th:text="${viewUser.getSex()}"></td>
                 <td th:text="${viewUser.getTclass()}"></td>
                 <td th:text="${viewUser.getGrade()}"></td>
                 <td th:text="${viewUser.getContacts()}"></td>
                 <td>
-                    <a th:href="@{deleteUser.do(userId=${viewUser.userId})}" onclick="javascript:return del()" >删除用户</a>
+                    <a th:href="@{deleteUser.do(userId=${viewUser.userid})}" onclick="javascript:return del()" >删除用户</a>
                 </td>
             </tr>
         </table>

@@ -14,13 +14,13 @@ spring:
         # 取消模板文件缓存
         cache: false
 
-    #设定thymeleaf文件路径 默认为src/main/resources/templates
-    freemarker:
-        template-loader-path: classpath:/templates
+#    #设定thymeleaf文件路径 默认为src/main/resources/templates
+#    freemarker:
+#        template-loader-path: classpath:/templates
 
-    #设定静态文件路径，js,css等
-    mvc:
-        static-path-pattern: /static/**
+#    #设定静态文件路径，js,css等
+#    mvc:
+#        static-path-pattern: /static/**
 
     servlet:
         multipart:

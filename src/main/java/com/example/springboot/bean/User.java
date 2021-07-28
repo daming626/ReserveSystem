@@ -13,7 +13,6 @@ import java.util.List;
 
 
 public class User{
-
     private String userid;
     private String username;
     private String password;
@@ -23,12 +22,11 @@ public class User{
     private String grade;
     private String contacts;
     private String state;
-    List<Role> roleList = new ArrayList<Role>();
 
     public String getUserid() {
         return userid;
     }
-  
+
     public void setUserid(String userid) {
         this.userid = userid;
     }
@@ -105,21 +103,6 @@ public class User{
         this.roleList = roleList;
     }
 
-    public User(){
-
-    }
-
-    public User(String userid, String username, String password, String realname, String sex, String tclass, String grade, String contacts, String state) {
-        this.userid = userid;
-        this.username = username;
-        this.password = password;
-        this.realname = realname;
-        this.sex = sex;
-        this.tclass = tclass;
-        this.grade = grade;
-        this.contacts = contacts;
-        this.state = state;
-    }
-
+    List<Role> roleList = new ArrayList<Role>();
 
 }
