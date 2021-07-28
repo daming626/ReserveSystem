@@ -2,7 +2,72 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
-    <link rel="stylesheet" href="/css/seven.css"/>
+    <link rel="stylesheet" href="/css/Room.css"/>
+    <script src="/js/updateRoom.js"></script>
+    <style>
+        html,body {
+            margin:0;
+            height:100%;
+        }
+        #test {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+
+        #log_window {
+            width:500px;
+            height:400px;
+            background-color: #dddddd;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        .a{
+            position: absolute;
+            right: 0;
+        }
+        .RoomName1{
+            position: relative;
+            top: 20px;
+            left: 22%;
+            margin: auto;
+        }
+        .roomCapacity1{
+            position: relative;
+            top: 80px;
+            left: 22%;
+            margin: auto;
+
+        }
+        .roomDescribe1{
+            position: relative;
+            top: 140px;
+            left: 22%;
+            margin: auto;
+
+        }
+
+        #sub{
+            position: relative;
+            top: 200px;
+            left: 45%;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="seven">
@@ -15,16 +80,29 @@
                 <th>操作</th>
             </tr>
             <tr  th:each="room,roomStat : ${rooms}" >
-                <td th:text="${room.roomId}"></td>
+                <td id="RoomId" th:text="${room.roomId}"></td>
                 <td th:text="${room.roomName}"></td>
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
-                    <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删要除该自习室吗?')">删除自习室</a>
-                    <a th:href="@{getRoomById(roomId=${room.roomId})}">修改自习室</a>
+                    <a href="#" th:onclick="shield([[${room.roomId}]],[[${room.roomName}]],[[${room.roomCapacity}]],[[${room.roomDescribe}]])">修改自习室</a>
+                    <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
                 </td>
             </tr>
         </table>
+        <div id="test"></div>
+        <div id="log_window">
+            <a class="a" href="javascript:cancel_shield()">❌</a>
+            <div>
+                <form action="updateRoom" method="post">
+                    <input id="RoomId1" type="hidden" name="RoomId" value=""><br>
+                    <div class="RoomName1"><label for="RoomName1">房间名：</label><input id="RoomName1" type="text" name="RoomName" value=""></div>
+                    <div class="roomCapacity1"><label for="roomCapacity1">房间容量：</label><input id="roomCapacity1"  type="text" name="roomCapacity" value=""></div>
+                    <div class="roomDescribe1"><label for="roomDescribe1">房间描述：</label><input id="roomDescribe1"  type="text" name="roomDescribe" value=""></div>
+                    <input id="sub" type="submit" value="保存">
+                </form>
+            </div>
+        </div>
         <div id="but-box">
             <input type="button" value="首页" id="k">
             <input type="button" value="上一页" id="kk">
@@ -46,6 +124,7 @@
                 $("#kkkk").click(function () {
                     window.location.href = "viewRoom.do?finalPage=1"
                 })
+            })
         </script>
     </div>
 </body>
