@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.entity.Results;
+import com.example.springboot.bean.Results;
 import com.example.springboot.service.ExcelService;
 import com.example.springboot.utils.ExcelTool;
 import com.example.springboot.utils.FileUtils;

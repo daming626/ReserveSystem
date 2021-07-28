@@ -2,8 +2,8 @@ package com.example.springboot.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.springboot.entity.Results;
-import com.example.springboot.entity.Users;
+import com.example.springboot.bean.Results;
+import com.example.springboot.bean.Users;
 import com.example.springboot.mapper.ExcelMapper;
 import com.example.springboot.service.ExcelService;
 import com.example.springboot.utils.ExcelTool;

@@ -1,6 +1,4 @@
-package com.example.springboot.entity;
-
-import com.example.springboot.bean.User;
+package com.example.springboot.bean;
 
 import java.io.Serializable;
 import java.util.List;

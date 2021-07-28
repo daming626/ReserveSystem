@@ -3,7 +3,7 @@
 <mapper namespace="com.example.springboot.mapper.ExcelMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="projectItemResultMap" type="com.example.springboot.entity.Users">
+    <resultMap id="projectItemResultMap" type="com.example.springboot.bean.Users">
         <id column="userid" property="userid"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>

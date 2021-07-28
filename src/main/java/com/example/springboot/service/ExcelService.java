@@ -1,8 +1,8 @@
 package com.example.springboot.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.springboot.entity.Results;
-import com.example.springboot.entity.Users;
+import com.example.springboot.bean.Results;
+import com.example.springboot.bean.Users;
 import org.springframework.web.multipart.MultipartFile;
 
 
