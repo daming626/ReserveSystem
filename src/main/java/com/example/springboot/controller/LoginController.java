@@ -54,4 +54,13 @@ public class LoginController {
         session.invalidate();
         return "redirect:login.html";
     }
+
+    @GetMapping("login.html")
+    public String login(String message,Model model){
+        if (message!=null){
+            model.addAttribute("message","没有权限,请先登录");
+            return "login";
+        }
+        return "login";
+    }
 }
