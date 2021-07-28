@@ -2,6 +2,7 @@ package com.example.springboot.controller;
 
 import com.example.springboot.bean.User;
 import com.example.springboot.service.IManageService;
+import com.example.springboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class ManageController {
 
     @Autowired
     private IManageService manageService;
+
+    @Autowired
+    private IUserService userService;
 
     //查看用户
     @GetMapping("viewUser.do")
@@ -47,6 +51,12 @@ public class ManageController {
 
         model.addAttribute("viewUser", manageService.getUserById("r1000",startPage,pageSize));
         return "viewUser";
+    }
+
+    @GetMapping("deleteUser.do")
+    public String deleteUser(String userId, Model model){
+        manageService.deleteManage(userId);
+        return "redirect:viewUser.do";
     }
 
     //查看管理员
@@ -100,5 +110,13 @@ public class ManageController {
         System.out.println(user.getUsername());
         manageService.insertAdministrator(user);
         return "viewManager";
+    }
+
+    @GetMapping("insertManagerById.do")
+    public String insertManagerById(String userId){
+        userService.insertManagerById(userId);
+        System.out.println(userId);
+        System.out.println("a");
+        return "redirect:viewUser.do";
     }
 }
