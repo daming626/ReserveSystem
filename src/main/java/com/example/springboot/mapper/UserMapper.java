@@ -10,6 +10,6 @@ import java.util.List;
 public interface UserMapper {
     List<User> viewUser();
     User login(@Param("username") String username, @Param("password") String password);
-    void deleteUser(String userId);
-    User getUserById(String userId);
+    void deleteUser(String userid);
+    User getUserById(String userid);
 }

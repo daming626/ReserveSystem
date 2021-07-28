@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -15,8 +16,6 @@ public class ManageController {
 
     @Autowired
     private IManageService manageService;
-
-//    private String roleId = "r1000";
 
     //查看用户
     @GetMapping("viewUser.do")
@@ -92,5 +91,20 @@ public class ManageController {
     public String deleteManage(String userId, Model model){
         manageService.deleteManage(userId);
         return "redirect:viewManager.do";
+    }
+
+    @GetMapping("addManager.do")
+    public String addManager(){
+
+        return "addManager";
+    }
+
+    @PostMapping("insertAdministrator.do")
+    public String insertAdministrator(User user){
+        System.out.println(user.getUserid());
+        System.out.println(user.getPassword());
+        System.out.println(user.getUsername());
+        manageService.insertAdministrator(user);
+        return "viewManager";
     }
 }

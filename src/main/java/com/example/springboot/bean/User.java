@@ -1,43 +1,34 @@
 package com.example.springboot.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
-    private String userId;
+
+
+public class User{
+    private String userid;
     private String username;
     private String password;
-    private String realName;
+    private String realname;
     private String sex;
     private String tclass;
     private String grade;
     private String contacts;
     private String state;
-    List<Role> roleList = new ArrayList<Role>();
 
-    public User() {
+    public String getUserid() {
+        return userid;
     }
-
-    public User(String userId, String username, String password, String realName, String sex, String tclass, String grade, String contacts, String state, Timestamp registerTime, List<Role> roleList) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.realName = realName;
-        this.sex = sex;
-        this.tclass = tclass;
-        this.grade = grade;
-        this.contacts = contacts;
-        this.state = state;
-        this.roleList = roleList;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
+  
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -56,12 +47,12 @@ public class User {
         this.password = password;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getSex() {
@@ -111,4 +102,7 @@ public class User {
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
+
+    List<Role> roleList = new ArrayList<Role>();
+
 }

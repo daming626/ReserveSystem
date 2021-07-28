@@ -1,12 +1,33 @@
 html, body {
     margin: 0;
-    height: 1000px;
+    height: 100%;
     /* background-color: aqua; */
 }
+
+/*座位样式*/
+.seatnumber {
+    float: left;
+    text-align: center;
+    border: 1px solid blue;
+    background-color: #83d1f5;
+    /*border-bottom: #2b4906;*/
+}
+
+/*座位样式 结束*/
+
+
+/*预约结果信息样式*/
+#message {
+    color: red;
+    /*background-color: #70c2f4;*/
+}
+
+/*预约结果信息样式 结束*/
 
 /* .op{
     background-color: black;
 } */
+/*弹窗视图设置*/
 #test {
     width: 100%;
     height: 100%;
@@ -33,13 +54,156 @@ html, body {
     left: 0;
     right: 0;
     display: none;
+
+    box-sizing: border-box;
+    background: rgba(256, 256, 256, .9);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, .7);
+    border-radius: 15px;
+    /* background: transparent; */
 }
 
-.seatnumber {
+/*弹窗试图设置 结束*/
+
+/*弹窗关闭按钮*/
+#log_window > a {
+    position: absolute;
+    right: 0;
+}
+
+/*弹窗关闭按钮 结束*/
+
+/*弹窗标题*/
+#head1 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*弹窗标题 结束*/
+
+/*弹窗表格样式*/
+.reservedTable {
+    height: 70%;
+    margin: auto;
+}
+
+#reservedTable1 {
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#reservedTable1 table, th, td {
+    border: 1px solid black;
+}
+
+/*控制边框和表格内容之间的间距，内容居中*/
+#reservedTable1 th, td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/*为了实现斑马纹表格效果，请使用 nth-child() 选择器，并为所有偶数（或奇数）表行添加 background-color*/
+#reservedTable1 tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/*在 <tr> 元素上使用 :hover 选择器，以突出显示鼠标悬停时的表格行*/
+#reservedTable1 tr:hover {
+    background-color: #ddd;
+}
+
+#reservedTable1 tr {
+    background-color: #ddd;
+    text-align: center;
+}
+
+/*指定了 <th> 元素的背景颜色和文本颜色*/
+#reservedTable1 th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*弹窗表格样式 结束*/
+
+/*弹窗上的预约样式*/
+#form label {
+    display: inline;
+    color: lightskyblue;
+}
+
+/*预约div布局*/
+#k1, #k2, #k5 {
     float: left;
 }
 
-#message {
-    color: red;
-    background-color: #70c2f4;
+#k4, #k5 {
+    position: relative;
+    top: 3px;
 }
+
+#k6 {
+    top: -23px;
+    position: relative;
+    left: 35%;
+    height: 45px;
+    width: 80px;
+    /* background: #000; */
+}
+
+#k7 {
+    position: absolute;
+    top: 85.5%;
+    left: 50%;
+}
+
+/*预约div布局 结束*/
+
+/*预约按钮*/
+#res {
+    top: -20px;
+    /* padding: 4px 10px; */
+    height: 45px;
+    width: 80px;
+    text-align: center;
+    /* line-height: 40px; */
+    position: relative;
+    /* cursor: pointer; */
+    background: #44bbff;
+    color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/*预约输入框*/
+#reservingDate, #roomId, #seatNum, #startTime, #overTime {
+    /* top: 10px; */
+    /* padding: 4px 10px; */
+    height: 20px;
+    width: 80px;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+    /* cursor: pointer; */
+    background: #44bbff;
+    color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    /* overflow: hidden; */
+    /* display: inline-block; */
+    /* *display: inline; */
+    /* *zoom: 1; */
+}
+
+/*时间选择反馈图片样式*/
+#k4 img, #k5 img {
+    position: absolute;
+    top: 2px;
+}
+
+/*弹窗上的预约样式 结束*/
