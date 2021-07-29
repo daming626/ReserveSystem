@@ -14,8 +14,8 @@ public class StudentServiceImpl implements IStudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public List<User> viewStudent() {
-        return studentMapper.viewStudent();
+    public List<User> viewStudent(int startRow,int pageSize) {
+        return studentMapper.viewStudent(startRow,pageSize);
     }
     @Override
     public void deleteStudent(String userid) {
@@ -32,5 +32,9 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public User getStudentbyId(String userid) {
         return studentMapper.getStudentbyId(userid);
+    }
+    @Override
+    public int total(int pageSize) {
+        return studentMapper.total(pageSize);
     }
 }
