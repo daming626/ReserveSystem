@@ -18,6 +18,7 @@
                 <header class="loginHeader">
                     <h1>自习室预约系统</h1>
                     <p style="color: red" th:text="${message}" th:if="${not #strings.isEmpty(message)}"></p>
+                    <div><span id="message" value="" text=""></span></div>
                 </header>
                 <div class="inputbox">
                     <input type="text" class="input-text" id="username" name="username" required/>
@@ -68,5 +69,27 @@
         </div>
     </section>
 </div>
+<script>
+    window.onload = function (msg) {
+        var message = document.getElementById("message");
+        xmlHttp = new XMLHttpRequest();//创建request对象
+        xmlHttp.onreadystatechange = load();
+
+        function load() {
+            console.log("aaa")
+            console.log(xmlHttp.responseText)
+            // rel = JSON.parse(xmlHttp.responseText);
+            console.log(rel)
+            if (rel != "null") {
+                message.innerText = rel.result
+                console.log('id已存在')
+            } else {
+                message.innerText = '合法id'
+                console.log('合法id')
+            }
+
+        }
+    }
+</script>
 </body>
 </html>
