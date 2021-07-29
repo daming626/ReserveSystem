@@ -28,6 +28,7 @@
                 <td th:text="${viewUser.getGrade()}"></td>
                 <td th:text="${viewUser.getContacts()}"></td>
                 <td>
+                    <a th:href="@{insertManagerById.do(userId=${viewUser.userid})}" th:if="${session.user.getRealname()=='超级管理员'}" onclick="javascript:return del1()">授予管理员</a>
                     <a th:href="@{deleteUser.do(userId=${viewUser.userid})}" onclick="javascript:return del()" >删除用户</a>
                 </td>
             </tr>
@@ -35,6 +36,15 @@
         <script>
             function del() {
                 var msg = "是否要删除该用户？";
+                if (confirm(msg)==true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            function del1() {
+                var msg = "是否要授予管理员？";
                 if (confirm(msg)==true){
                     return true;
                 }else{

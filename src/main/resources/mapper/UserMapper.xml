@@ -27,4 +27,7 @@
     <select id="getUserById" resultMap="userMap" parameterType="string">
 		SELECT * FROM tb_user WHERE userid=#{value}
 	</select>
+    <insert id="insertManagerById" parameterType="string">
+        INSERT INTO tb_user_role VALUE (#{userId},'r1001')
+    </insert>
 </mapper>

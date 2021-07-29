@@ -31,7 +31,7 @@
 
 <!--    删除管理员-->
     <delete id="deleteManage" parameterType="string">
-		DELETE FROM tb_user WHERE userId=#{value }
+		DELETE FROM tb_user_role WHERE userId=#{value} AND roleId='r1001'
 	</delete>
 
     <select id="total" parameterType="int" resultType="int">

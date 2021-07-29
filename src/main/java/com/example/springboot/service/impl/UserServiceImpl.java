@@ -34,4 +34,9 @@ public class UserServiceImpl implements IUserService {
         return userMapper.getUserById(userid);
     }
 
+    @Override
+    public void insertManagerById(String userId) {
+        userMapper.insertManagerById(userId);
+    }
+
 }
