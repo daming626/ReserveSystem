@@ -7,9 +7,10 @@ import java.util.List;
 
 @Mapper
 public interface StudentMapper {
-    List<User> viewStudent();
+    List<User> viewStudent(int startRow,int pageSize);
     void deleteStudent(String userid);
     void insertStudent(User user);
     void updateStudent(User user);
     User getStudentbyId(String userid);
+    int total(int pageSize);
 }

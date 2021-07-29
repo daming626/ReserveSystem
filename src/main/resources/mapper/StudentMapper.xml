@@ -3,10 +3,11 @@
 <mapper namespace="com.example.springboot.mapper.StudentMapper">
 
 
-    <select id="viewStudent" resultType="user">
-        select * from tb_user
+    <select id="viewStudent" resultType="user" parameterType="int">
+        select * from tb_user limit #{startRow},#{pageSize}
     </select>
     <delete id="deleteStudent" parameterType="string">
+        DELETE FROM tb_user_role WHERE userid=#{value} AND roleId='r1000';
         DELETE FROM tb_user WHERE userid=#{value}
     </delete>
     <insert id="insertStudent" parameterType="user">
@@ -19,4 +20,7 @@
     <update id="updateStudent" parameterType="user">
         UPDATE tb_user SET username=#{username},password=#{password},realname=#{realname},sex=#{sex},tclass=#{tclass},grade=#{grade},contacts=#{contacts} WHERE userid=#{userid}
     </update>
+    <select id="total" parameterType="int" resultType="int">
+		SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user
+	</select>
 </mapper>

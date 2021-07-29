@@ -16,22 +16,45 @@ import javax.servlet.http.HttpServletRequest;
 public class StudentController {
     @Autowired
     private IStudentService studentService;
+    private int curPage=1;
 
     @GetMapping("manualEntry.do")
-    public String viewStudent(HttpServletRequest request){//HttpServletRequest request获取客户端请求参数
-        request.setAttribute("users",studentService.viewStudent());
+    public String viewStudent(String firstPage,String lastPage,String nextPage,String finalPage,HttpServletRequest request){//HttpServletRequest request获取客户端请求参数
+        int pageSize=8;
+        int totalPage = studentService.total(8);
+        if (firstPage != null) {//首页
+            curPage = 1;
+        }
+        if (lastPage != null) {//上一页
+            curPage--;
+        }
+        if (nextPage != null) {//下一页
+            curPage++;
+        }
+        if (finalPage != null) {//尾页
+            curPage = totalPage;
+        }
+        if (curPage < 1) {//确定下界
+            curPage = 1;
+        }
+        if (curPage >= totalPage) {//确定上界
+            curPage = totalPage;
+        }
+
+        int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
+        request.setAttribute("users",studentService.viewStudent(startRow,8));
         return "viewStudent";
     }
     @GetMapping("deleteStudent")
     public String deleteStudent(String userid,HttpServletRequest request){
         studentService.deleteStudent(userid);
-        request.setAttribute("users",studentService.viewStudent());
+        request.setAttribute("users",studentService.viewStudent(0,8));
         return "viewStudent";
     }
     @PostMapping("insertStudent")
     public String insertStudent(User user,HttpServletRequest request){
         studentService.insertStudent(user);
-        request.setAttribute("users",studentService.viewStudent());
+        request.setAttribute("users",studentService.viewStudent(0,8));
         return "viewStudent";
     }
     @GetMapping("insertStudent")
@@ -52,7 +75,7 @@ public class StudentController {
         System.out.println(user.getContacts());
         studentService.updateStudent(user);
         System.out.println("LLLLLLLLLLLL");
-        request.setAttribute("users",studentService.viewStudent());
+        request.setAttribute("users",studentService.viewStudent(0,8));
         return "viewStudent";
     }
     @GetMapping ("getStudentbyId")
