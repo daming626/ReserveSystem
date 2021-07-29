@@ -17,7 +17,8 @@
 
     <insert id="insertProjectItem">
         insert tb_user (userid,username,password,realname,sex,tclass,grade,contacts)
-        values(#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts})
+        values(#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts});
+        insert into tb_user_role values(#{userid},'r1000')
     </insert>
 
 </mapper>
