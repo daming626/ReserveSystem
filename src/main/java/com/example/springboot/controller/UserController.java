@@ -1,18 +1,17 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.service.IUserService;
-import com.example.springboot.bean.User;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/user")
@@ -33,28 +32,28 @@ public class UserController {
         return "redirect:viewUser";
     }
 
-    @PostMapping("login.do")
-    public String login(String username, String password, HttpSession session, Model model) {
-        User user = userService.login(username, password);
-        if (user != null) {
-            session.setAttribute("user", user);
-            user = userService.getUserById(user.getUserId());//把用户的菜单取到
-            session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
-            return "redirect:/main.html";
-        } else {
-            model.addAttribute("message", "用户名或密码错误，请重新输入");
-            return "login";
+    @PostMapping("checkUserId.do")
+    public void checkUserId(String userId, HttpServletResponse response){
+        response.setContentType("application/json;charset=UTF-8");
+        Gson gson = new Gson();
+        PrintWriter out = null;
+        String id = null;
+        try {
+            out = response.getWriter();
+            id = userService.getUserById(userId).getUserid();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e){
+            id = "null";
+            System.out.println("用户不存在");
         }
+        out.write(gson.toJson(id));
+        out.flush();
+        out.close();
     }
 
-    @GetMapping("logout.do")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/user/login.html";
-    }
-
-    @GetMapping("login.html")
-    public String login() {
+    @GetMapping("kkkk")
+    public String login1() {
         return "login";
     }
 }

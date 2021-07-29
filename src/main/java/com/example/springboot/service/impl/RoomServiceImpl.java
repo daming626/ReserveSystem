@@ -57,8 +57,8 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-    public void insertRepairInfo(String id,String roomName,  String time,String types,String userId, String description) {
-        roomMapper.insertRepairInfo(id,roomName,time,types,userId,description);
+    public void insertRepairInfo(String roomName,  String time,String types,String userId, String description) {
+        roomMapper.insertRepairInfo(roomName,time,types,userId,description);
     }
 
 

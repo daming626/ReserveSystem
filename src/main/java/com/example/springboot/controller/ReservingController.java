@@ -141,7 +141,7 @@ public class ReservingController {
         }
 
         User user = (User) session.getAttribute("user");//通过全局作用域session拿用户ID
-        reservate.setUserId(user.getUserId());
+        reservate.setUserId(user.getUserid());
 
         //拼时间戳
         String startTime = reservingDate + " " + reservate.getStartTime();

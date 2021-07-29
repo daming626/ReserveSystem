@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf demo</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/addManager.css">
+</head>
+<body>
+<button id="open_btn" class="btn">弹窗</button>
+<a href="">查看管理员</a>
+
+<!-- 弹窗内容开始 -->
+<div id="background" class="back">
+    <div id="formBox" class="content">
+        <div id="close">
+            <span id="close-button">×</span>
+            <h2>新增管理员</h2>
+        </div>
+        <div id="formContent">
+            <h3>请输入相关信息</h3>
+            <div><span id="message" value="" text="信息"></span></div>
+            <form th:action="@{insertAdministrator.do}" method="post">
+                <label>管理员账号</label>
+                <input name="userId" id="userId" type="text" onblur="checkUserId(this)"><br>
+                <label>管理员名称</label>
+                <input name="userName" type="text"><br>
+                <label>管理员密码</label>
+                <input name="password" ype="password"><br>
+                <label>确认密码</label>
+                <input type="password">
+                <input type="submit" value="提交">
+            </form>
+        </div>
+        <h3 id="foot">底部内容</h3>
+    </div>
+</div>
+<!-- 弹窗内容结束 -->
+<script src="/js/addManager.js"></script>
+</body>
+</html>

@@ -56,7 +56,7 @@ public class ReservedController {
         currentTime=format.format(date);
 
         User user = (User) session.getAttribute("user");
-        String userId = user.getUserId();
+        String userId = user.getUserid();
 
         model.addAttribute("currentReservation", reservedService.getCurrentReservedById(userId,currentTime,startPage,pageSize));
         return "currentReservation";
@@ -103,7 +103,7 @@ public class ReservedController {
         currentTime = format.format(date);
 
         User user = (User) session.getAttribute("user");
-        String userId = user.getUserId();
+        String userId = user.getUserid();
 
         model.addAttribute("historyAppointment", reservedService.getHistoryReservedById(userId,currentTime,startPage,pageSize));
         return "historyAppointment";

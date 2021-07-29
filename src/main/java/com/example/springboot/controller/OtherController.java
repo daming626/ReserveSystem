@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,34 +28,45 @@ public class OtherController {
 
     @GetMapping("notice.do")
     public String getNotice(String id, Model model){
-
-        Notice notice = noticeService.getNoticeById(id);
-        model.addAttribute("notice",notice);
+        List<Notice> noticeList = noticeService.getAllNotice();
+        model.addAttribute("noticeList",noticeList);
 
         return "notice";
+    }
+
+    @GetMapping("getAllNotice.do")
+    public String getAllNotice(Model model){
+        List<Notice> noticeList = noticeService.getAllNotice();
+        model.addAttribute("noticeList",noticeList);
+        return "viewNotice";
     }
 
 
     @GetMapping("repair.do")
     public String Report(Room room, Model model){
-
         List<Room> roomList = roomService.getAllRoom();
         model.addAttribute("roomList",roomList);
         return "repair";
     }
 
     @PostMapping("updateRepair.do")
+    @ResponseBody
     public String UpdateRepair(String roomName,String types, String userId, String description){
-
-        System.out.println(roomName);
         Date date = new Date();
         String strDateFormat = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
         String time  = sdf.format(date);
-        String id = "5";
+        roomService.insertRepairInfo(roomName,time,types,userId,description);
+        return "提交成功";
+    }
 
-        roomService.insertRepairInfo(id,roomName,time,types,userId,description);
-
-        return "success";
+    @PostMapping("insertNotice.do")
+    public String insertNotice(String content){
+        Date date = new Date();
+        String strDateFormat = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        String time  = sdf.format(date);
+        noticeService.insertNotice(time,content);
+        return "提交成功";
     }
 }

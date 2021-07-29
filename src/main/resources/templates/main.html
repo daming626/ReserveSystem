@@ -12,8 +12,8 @@
         <header class="publicHeader">
             <h1>自习室预约系统</h1>
             <div class="publicHeaderR">
-                <p><span>下午好！</span><span style="color: #fff21b" th:text="${session.user.realName}"></span> , 欢迎你！</p>
-                <a th:href="@{/user/logout.do}">退出</a><!--<a href="${pageContext.request.contextPath }/jsp/logout.do">退出</a>-->
+                <p><span>下午好！</span><span style="color: #fff21b" th:text="${session.user.realname}"></span> , 欢迎你！</p>
+                <a th:href="@{logout.do}">退出</a>
             </div>
         </header>
         <!--时间-->

@@ -25,13 +25,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(String userId) {
-        userMapper.deleteUser(userId);
+    public void deleteUser(String userid) {
+        userMapper.deleteUser(userid);
     }
 
     @Override
-    public User getUserById(String userId) {
-        return userMapper.getUserById(userId);
+    public User getUserById(String userid) {
+        return userMapper.getUserById(userid);
     }
 
 }

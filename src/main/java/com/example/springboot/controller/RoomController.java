@@ -23,8 +23,8 @@ public class RoomController {
     //查看自习室
     @GetMapping("viewRoom.do")
     public String viewRoom(String firstPage,String lastPage,String nextPage,String finalPage,HttpServletRequest request){
-        int pageSize=6;
-        int totalPage = roomService.total(6);
+        int pageSize=8;
+        int totalPage = roomService.total(8);
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -45,7 +45,7 @@ public class RoomController {
         }
 
         int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
-        request.setAttribute("rooms",roomService.viewRoom(startRow,6));
+        request.setAttribute("rooms",roomService.viewRoom(startRow,8));
         //作用域把对象request.setAttribute作用域中
         return "viewRoom";
     }
@@ -53,7 +53,7 @@ public class RoomController {
     @GetMapping("deleteRoom.do")
     public String deleteRoom(String roomId,HttpServletRequest request){
         roomService.deleteRoom(roomId);
-        request.setAttribute("rooms",roomService.viewRoom(1,6));
+        request.setAttribute("rooms",roomService.viewRoom(1,8));
         return "viewRoom";
     }
     //添加自习室
