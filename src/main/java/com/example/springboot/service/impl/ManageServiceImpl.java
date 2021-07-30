@@ -46,8 +46,8 @@ public class ManageServiceImpl implements IManageService {
     }
 
     @Override
-    public List<User> searchUser(String kkk, String roleId,int startPage, int pageSize) {
-        return manageMapper.searchUser(kkk,roleId,startPage,pageSize);
+    public List<User> searchUser(String txt, String roleId,int startPage, int pageSize) {
+        return manageMapper.searchUser(txt,roleId,startPage,pageSize);
     }
 
     @Override

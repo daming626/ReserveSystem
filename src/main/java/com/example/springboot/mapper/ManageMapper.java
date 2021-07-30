@@ -15,7 +15,7 @@ public interface ManageMapper {
     int totalm(int pageSize, String roleId);
     void insertAdministrator(User user);
 
-    List<User> searchUser(@Param("kkk") String kkk,String roleId,int startPage, int pageSize);
+    List<User> searchUser(@Param("txt") String txt,String roleId,int startPage, int pageSize);
 
     int totals(int pageSize, String roleId);
 }

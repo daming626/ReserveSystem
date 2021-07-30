@@ -16,7 +16,7 @@ public interface IManageService {
 
     void insertAdministrator(User user);
 
-    List<User> searchUser(String kkk,String roleId,int startPage, int pageSize);
+    List<User> searchUser(String txt,String roleId,int startPage, int pageSize);
 
     int totals(int pageSize, String roleId);
 }

@@ -106,7 +106,7 @@ public class ManageController {
     }
 
     @GetMapping("searchUser.do")
-    public String searchUser(String kkk,Model model, String firstPage, String lastPage, String nextPage, String finalPage){
+    public String searchUser(String txt,Model model, String firstPage, String lastPage, String nextPage, String finalPage){
 
         int curPage=1;
         int pageSize = 8;
@@ -133,8 +133,8 @@ public class ManageController {
 
         int startPage = (curPage-1) * pageSize;
 
-        model.addAttribute("text",kkk);
-        model.addAttribute("viewUser", manageService.searchUser(kkk,"r1000",startPage,pageSize));
+        model.addAttribute("text",txt);
+        model.addAttribute("viewUser", manageService.searchUser(txt,"r1000",startPage,pageSize));
         model.addAttribute("flag",1);
         return "viewUser";
     }
