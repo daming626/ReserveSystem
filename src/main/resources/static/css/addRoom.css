@@ -1,33 +1,69 @@
+
 *{
     padding: 0;
     margin: 0;
-}
-#Room1 table {
-    border-collapse: collapse;
-}
-
-#Room1 table, th, td {
-    border: 1px solid black;
-}
-input{
-    color: #5cdd13;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 20px;
-}
-h1 {
-    font-size: 2.5em; /* 40px/16=2.5em */
+    background-color: #dddddd;
 }
 #Room1 {
-    width:500px;
-    height:400px;
+    width:600px;
+    height:500px;
     background-color: #dddddd;
     margin: auto;
-    position: absolute;
+    /*position: absolute;*/
     z-index:3;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display:none;
+    /*display:none;*/
+}
+
+.roomId{
+    position: relative;
+    top: 20px;
+    left: 22%;
+    margin: auto;
+}
+.roomName{
+    position: relative;
+    top: 80px;
+    left: 22%;
+    margin: auto;
+}
+.roomCapacity{
+    position: relative;
+    top: 140px;
+    left: 22%;
+    margin: auto;
+
+}
+.roomDescribe{
+    position: relative;
+    top: 200px;
+    left: 22%;
+    margin: auto;
+
+}
+
+#sub{
+    position: relative;
+    top: 260px;
+    left: 45%;
+    margin: auto;
+}
+input{
+    /*background-color: #5cdd13;   !* 背景色 *!*/
+    background-color: #03a9f4;
+    border: none;
+    color: white;   /*按钮名称颜色*/
+    padding: 8px 16px;   /*内边距*/
+    text-align: center;   /*按钮名称居中*/
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;   /*使用 font-size 属性来设置按钮大小*/
+    border-radius:12px;   /*使用 border-radius 属性来设置圆角按钮*/
+}
+
+input[type="submit"]{
+
 }
