@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css"/>
 </head>
 <body>
-<hr/>
+
 <p>摸板下载</p>
-<a href="/document/download">下载摸板</a>
-<hr/>
+<a href="/document/download">
+    <input id="moban" type='submit' value='下载摸板'></a>
+</a>
+
 <p>文件上传</p>
 <form action="/document/import" method="POST" enctype="multipart/form-data">
-    文件：<input type="file" name="file"/>
-    <input type="submit"/>
+    文件：<input id="wenjian" type="file" name="file"/>
+    <input id="tijiao" type="submit"/>
 </form>
-<hr/>
+
 </body>
 </html>

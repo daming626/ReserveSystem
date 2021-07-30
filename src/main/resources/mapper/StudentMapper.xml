@@ -11,7 +11,7 @@
         DELETE FROM tb_user WHERE userid=#{value}
     </delete>
     <insert id="insertStudent" parameterType="user">
-        INSERT INTO tb_user (userid,username,password,realname,sex,tclass,grade,contacts,state) VALUES (#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts},#{state});
+        INSERT INTO tb_user (userid,username,password,realname,sex,tclass,grade,contacts,state) VALUES (#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts},0);
         INSERT INTO tb_user_role values(#{userid},'r1000')
     </insert>
     <select id="getStudentbyId"  parameterType="String" resultType="user">

@@ -1,0 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#moban,#tijiao{
+    background-color: #60b3e7;   /* 背景色 */
+    border: none;
+    color: white;   /*按钮名称颜色*/
+    padding: 8px 15px;   /*内边距*/
+    text-align: center;   /*按钮名称居中*/
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;   /*使用 font-size 属性来设置按钮大小*/
+    border-radius:12px;   /*使用 border-radius 属性来设置圆角按钮*/
+}
+/*使用 :hover 选择器来修改鼠标悬停在按钮上的样式*/
+#moban:hover,#tijiao:hover {
+    color: #255aaf;   /*悬停时按钮名称颜色*/
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);   /*使用 box-shadow 属性来为按钮添加阴影*/
+}
