@@ -4,6 +4,7 @@ import com.example.springboot.bean.Notice;
 import com.example.springboot.bean.Room;
 import com.example.springboot.service.INoticeService;
 import com.example.springboot.service.IRoomService;
+import com.example.springboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,9 @@ public class OtherController {
 
     @Autowired
     private IRoomService roomService;
+
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("notice.do")
     public String getNotice(String id, Model model){
@@ -61,6 +65,7 @@ public class OtherController {
     }
 
     @PostMapping("insertNotice.do")
+    @ResponseBody
     public String insertNotice(String content){
         Date date = new Date();
         String strDateFormat = "yyyy-MM-dd HH:mm:ss";
@@ -69,4 +74,12 @@ public class OtherController {
         noticeService.insertNotice(time,content);
         return "提交成功";
     }
+
+    @GetMapping("feedback.do")
+    public String feedback(Model model){
+
+        return "feedback";
+    }
+
+
 }

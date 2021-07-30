@@ -164,6 +164,7 @@ public class ExcelServiceImpl extends ServiceImpl<ExcelMapper, Users> implements
             case NUMERIC:
                 //判断是否是整数
                 str = numberFormat.format(cell.getNumericCellValue());
+                numberFormat.setGroupingUsed(false);//取消千位分隔符
                 break;
             case STRING:
                 str = cell.getStringCellValue();
