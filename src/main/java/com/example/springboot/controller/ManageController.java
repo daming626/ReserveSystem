@@ -47,6 +47,7 @@ public class ManageController {
         int startPage = (curPage-1) * pageSize;
 
         model.addAttribute("viewUser", manageService.getUserById("r1000",startPage,pageSize));
+        model.addAttribute("flag",0);
         return "viewUser";
     }
 
@@ -102,5 +103,39 @@ public class ManageController {
         System.out.println(user.getUsername());
         manageService.insertAdministrator(user);
         return "viewManager";
+    }
+
+    @GetMapping("searchUser.do")
+    public String searchUser(String kkk,Model model, String firstPage, String lastPage, String nextPage, String finalPage){
+
+        int curPage=1;
+        int pageSize = 8;
+        int totalPage = manageService.totals(pageSize,"r1000");
+        if (firstPage != null) {//首页
+            curPage = 1;
+        }
+        if (lastPage != null) {//上一页
+            curPage --;
+        }
+        if (nextPage != null) {//下一页
+            curPage ++;
+        }
+        if (finalPage != null) {//尾页
+            curPage = totalPage;
+        }
+        if (curPage < 1) {//确定下界
+            curPage = 1;
+        }
+        if (curPage > totalPage) {//确定上界
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
+        }
+
+        int startPage = (curPage-1) * pageSize;
+
+        model.addAttribute("text",kkk);
+        model.addAttribute("viewUser", manageService.searchUser(kkk,"r1000",startPage,pageSize));
+        model.addAttribute("flag",1);
+        return "viewUser";
     }
 }

@@ -44,4 +44,14 @@ public class ManageServiceImpl implements IManageService {
     public void insertAdministrator(User user) {
 
     }
+
+    @Override
+    public List<User> searchUser(String kkk, String roleId,int startPage, int pageSize) {
+        return manageMapper.searchUser(kkk,roleId,startPage,pageSize);
+    }
+
+    @Override
+    public int totals(int pageSize, String roleId) {
+        return manageMapper.totals(pageSize,roleId);
+    }
 }

@@ -39,7 +39,20 @@
         SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
     </select>
 
+<!--添加管理员-->
     <insert id="insertAdministrator" parameterType="user">
         INSERT INTO tb_user VALUE (#{userId},#{username},#{password},#{realName},#{sex},#{tclass},#{grade},#{contacts},#{state})
     </insert>
+
+<!--    搜索用户-->
+    <select id="searchUser" resultType="user" parameterType="string">
+        SELECT * FROM tb_user u, tb_user_role ur
+        WHERE (u.userId like '%${kkk}%' OR u.userName like '%${kkk}%' OR realName like '%${kkk}%')
+        AND u.userId=ur.userId and ur.roleId = #{roleId} limit #{startPage},#{pageSize}
+    </select>
+
+    <select id="totals" resultType="int">
+        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
+    </select>
+
 </mapper>
