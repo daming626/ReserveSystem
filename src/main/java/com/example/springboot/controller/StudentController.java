@@ -43,6 +43,7 @@ public class StudentController {
 
         int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
         request.setAttribute("users",studentService.viewStudent(startRow,8));
+        System.out.println("000000");
         return "viewStudent";
     }
     @GetMapping("deleteStudent")
@@ -54,13 +55,14 @@ public class StudentController {
     @PostMapping("insertStudent")
     public String insertStudent(User user,HttpServletRequest request){
         studentService.insertStudent(user);
+        System.out.println("999999");
         request.setAttribute("users",studentService.viewStudent(0,8));
-        return "viewStudent";
+        return "redirect:manualEntry.do";
     }
-    @GetMapping("insertStudent")
-    public String insertStudent(){
-        return "insertStudent";
-    }
+//    @GetMapping("insertStudent")
+//    public String insertStudent(){
+//        return "insertStudent";
+//    }
 
     @PostMapping("updateStudent")
     public String updateStudent(User user,HttpServletRequest request){
@@ -76,7 +78,7 @@ public class StudentController {
         studentService.updateStudent(user);
         System.out.println("LLLLLLLLLLLL");
         request.setAttribute("users",studentService.viewStudent(0,8));
-        return "viewStudent";
+        return "redirect:manualEntry.do";
     }
     @GetMapping ("getStudentbyId")
     public String updateStudent(String userid, Model model){
@@ -84,6 +86,6 @@ public class StudentController {
         User user=studentService.getStudentbyId(userid);
         model.addAttribute("user",user);
         System.out.println("qqqqqq");
-        return "updateStudent";
+        return "viewStudent";
     }
 }
