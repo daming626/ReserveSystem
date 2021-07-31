@@ -1,11 +1,14 @@
 package com.example.springboot.service.impl;
 
 
+
 import com.example.springboot.bean.Room;
+import com.example.springboot.exception.RoomException;
 import com.example.springboot.mapper.RoomMapper;
 import com.example.springboot.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -30,9 +33,19 @@ public class RoomServiceImpl implements IRoomService {
 
     }
 
-    @Override
+    /*@Override
     public void addRoom(Room room) {
         roomMapper.addRoom(room);
+    }
+*/
+    @Override
+    @Transactional(rollbackFor = RoomException.class)
+    public void addRoom(Room room) throws RoomException {
+        try {
+            roomMapper.addRoom(room);
+        } catch (Exception e) {
+            throw new RoomException("自习室名称不能重复");
+        }
     }
 
     @Override

@@ -22,7 +22,7 @@
             filter: alpha(opacity=30);
             display:none;
         }
-
+/* 建一个弹窗边框*/
         #log_window {
             width:500px;
             height:400px;
@@ -91,6 +91,7 @@
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
+                    <!-- 传参放入遮罩层的方法中-->
                     <a href="#" th:onclick="shield([[${room.roomId}]],[[${room.roomName}]],[[${room.roomCapacity}]],[[${room.roomDescribe}]])">修改自习室</a>
                     <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
                 </td>
