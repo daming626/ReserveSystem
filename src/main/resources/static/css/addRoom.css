@@ -51,6 +51,11 @@
     left: 45%;
     margin: auto;
 }
+#message{
+    color: red;
+    position: relative;
+    top: 50px;
+}
 input{
     /*background-color: #5cdd13;   !* 背景色 *!*/
     background-color: #03a9f4;
