@@ -24,7 +24,7 @@
             <td th:text="${viewManager.getSex()}"></td>
             <td th:text="${viewManager.getContacts()}"></td>
             <td>
-                <a th:href="@{deleteManage.do(userId=${viewManager.userid})}" onclick="javascript:return del()" >移除管理员</a>
+                <a  style="color:red" th:href="@{deleteManage.do(userId=${viewManager.userid})}" onclick="javascript:return del()" >移除管理员</a>
             </td>
         </tr>
     </table>

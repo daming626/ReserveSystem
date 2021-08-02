@@ -9,7 +9,7 @@ body {
     /*background: #03a9f4;*/
 }
 
-#background {
+.background {
     display: none;
     position: fixed;
     left: 0;
@@ -21,11 +21,11 @@ body {
 /*=======================弹出框====================*/
 
 /*框体*/
-#block {
+.content {
     cursor: move;
     position: absolute;
     /*初始位置*/
-    top:20%;
+    top:5%;
     left:25%;
     background: #eeeeee;
     width: 30%;
@@ -34,13 +34,13 @@ body {
     border-radius: 10px;
 }
 /*头部标题及关闭按钮*/
-#head {
+.head {
     padding: 5px;
     background-color: #0b77ae;
     background-image: linear-gradient(90deg, #0b77ae 0%, #459abb 100%);
 }
 
-#close-button {
+.close-button {
     float: right;
     font-size: 30px;
     color: black;
@@ -60,7 +60,7 @@ h2 {
 }
 
 /*表单部分*/
-#formContent {
+.formContent {
     background: #eeeeee;
     margin: auto;
     height: auto;
@@ -69,7 +69,7 @@ h2 {
 }
 
 /*底部*/
-#foot {
+.foot {
     padding: 5px 0;
     text-align: center;
     background-color: #0b77ae;

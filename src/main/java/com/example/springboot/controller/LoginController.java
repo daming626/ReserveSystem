@@ -36,6 +36,7 @@ public class LoginController {
                 session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             } else if (flag == 1 && user.getRoleList().size()>1) {//若用户拥有多个权限，则以管理员权限运行
                 session.setAttribute("userTreeList", user.getRoleList().get(1).getTreeList());
+                session.setAttribute("role","r1001");
             } else if (flag == 1 && user.getRoleList().size()==1 && !user.getRoleList().get(0).getRoleId().equals("r1000")) {//若用户只有一个权限，且角色不为学生，就直接以管理员身份登录
                 session.setAttribute("userTreeList", user.getRoleList().get(0).getTreeList());
             } else {//用户无管理员权限
@@ -62,5 +63,10 @@ public class LoginController {
             return "login";
         }
         return "login";
+    }
+
+    @GetMapping("instructions.do")
+    public String getInstructions(String message,Model model){
+        return "instructions";
     }
 }

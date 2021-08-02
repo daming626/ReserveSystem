@@ -3,48 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>通知</title>
-    <link rel="stylesheet" href="/css/addManager.css">
+    <link rel="stylesheet" href="/css/PopupWindow.css">
+    <link rel="stylesheet" href="/css/notice.css">
 </head>
 <body>
-<section class="tableBox">
-    <button id="open_btn" class="btn" th:if="${session.user.roleList.get(0)} ne 'r1000'">发布通知</button>
-    <button id="open_btn" class="btn" th:if="${session.user.roleList.get(0)} ne 'r1000'">定时发送</button>
-</section>
-<div>
-    <div>
-        故障通告
-        <ul class="nav">
-            <li th:each="notice:${noticeList}">
-                <a href="#" onclick="showMenu(this);return false;" th:text="${notice.getTime()}+${notice.getContent()}"></a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="leftTree" >校内通知
-    <div>
-
+<div class="noticeArea">
+    <div class="noticeBox">
+        <div class="notice">
+            <div>
+                <img src="/img/notice2.png" alt="通知公告">
+                <label>通知公告</label>
+            </div>
+            <div>
+                <ul class="nav">
+                    <li th:each="notice:${noticeList}">
+                        <a href="#" onclick="showMenu(this);return false;"
+                           th:text="${notice.getTime()}+${notice.getContent()}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="notice">
+            <div>
+                <img src="/img/notice3.png" alt="故障通知">
+                <label>故障通知</label>
+            </div>
+            <div>
+                <ul>
+                    <li>2021-7-29：D区25栋103自习室电路故障，正在抢修！</li>
+                    <li>2021-7-29：B区12栋102自习室暂停使用</li>
+                    <li>2021-7-29：A区更换供电设备，所有自习室暂不开放</li>
+                </ul>
+            </div>
+        </div>
+        <div class="notice">
+            <div>
+                <img src="/img/notice1.png" alt="校内通知">
+                <label>校内通知</label>
+            </div>
+            <div>
+                <ul>
+                    <li>2021-7-29：仲园食堂推出新菜品，欢迎各位同学前往品尝！</li>
+                    <li>2021-7-29：六教，十一教近期有施工车辆往来，请同学们经过时注意安全</li>
+                    <li>2021-7-30：即将迎来2021级新生！</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-<div id="background" class="back">
-    <div id="formBox" class="content">
-        <div id="close">
-            <span id="close-button">×</span>
+<div id="background" class="background">
+    <div id="block" class="content">
+        <div id="head" class="head">
+            <span id="close-button" class="close-button">×</span>
             <h2>发布通知</h2>
         </div>
-        <div id="formContent">
+        <div class="formContent" id="formContent">
             <div><span id="message" value="" text="信息"></span></div>
             <form th:action="@{insertNotice.do}" method="post">
-                <p>
-                    通知内容
-                    <textarea name="content" id="content" placeholder="请填写内容" cols="50" rows="10"></textarea>
-                </p>
-                <input type="submit" value="提交">
+                <label>通知内容</label>
+                <textarea name="content" id="content" placeholder="请填写内容" cols="50" rows="10" required></textarea>
+                <div class="submitBox"><input type="submit" value="提交" style="width: 100%"></div>
             </form>
         </div>
-        <h3 id="foot">底部内容</h3>
+        <h3 id="foot" class="foot">预约系统</h3>
     </div>
 </div>
+<div id="background2" class="background">
+    <div id="block2" class="content" style="height: auto;width: auto">
+        <div id="head1" class="head">
+            <span id="close-button2" class="close-button">×</span>
+            <h2>请选择想要撤销的通知内容</h2>
+        </div>
+        <div class="formContent" id="formContent2">
+            <table id="seven" >
+                <tr>
+                    <th>通知编号</th>
+                    <th>通知发布时间</th>
+                    <th>通知内容</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="notice:${noticeList}">
+                    <td th:text="${notice.getId()}"></td>
+                    <td th:text="${notice.getTime()}"></td>
+                    <td th:text="${notice.getContent()}"></td>
+                    <td><a style="color:#3a8dc1" th:href="@{deleteNoticeById.do(Id=${notice.id})}" onclick="javascript:return del()">撤销</a></td>
+                </tr>
+            </table>
+        </div>
+        <h3 id="foot1" class="foot">预约系统</h3>
+    </div>
+</div>
+<div class="footer">
+    <div class="box">
+        <a id="open_btn" class="btn" style="font-size: 20px;letter-spacing:5px;" href="#" th:if="${session.role eq 'r1001' || session.user.roleList.get(0).getRoleId() eq 'r1001'}">
+            <img class="popupWindow" src="/img/publish.png" alt="发布通知">&emsp;发布通知
+        </a>
+    </div>
+    <div class="box">
+        <a  id="open_btn2" class="btn" style="font-size: 20px;letter-spacing:5px;" href="#" th:if="${session.role eq 'r1001' || session.user.roleList.get(0).getRoleId() eq 'r1001'}">
+            <img class="popupWindow" src="/img/undo.png" alt="发布通知">&emsp;撤销通知
+        </a>
+    </div>
+</div>
+
+<script src="/js/divMove.js"></script>
 <script src="/js/notice.js"></script>
+<script src="/js/PopupWindow.js"></script>
 </body>
 </html>
