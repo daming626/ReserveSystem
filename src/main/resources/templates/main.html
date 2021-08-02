@@ -56,7 +56,8 @@
                 <div id="leftTree">
                     <ul class="nav">
                         <li th:each="tree:${session.userTreeList}" th:if="${not #lists.isEmpty(tree.getChildTrees())}">
-                            <a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img th:src="@{/img/open.png}" alt="kkk"></a>
+                            <!--<a href="#" onclick="showMenu(this);return false;" th:text="${tree.title}"><img alt="kkk" src="/img/open.png"></a>-->
+                            <a href="#" onclick="showMenu(this)" th:text="${tree.title}"><img alt="kkk" src="/img/open.png"></a>
                             <ul>
                                 <li th:each="child:${tree.getChildTrees()}">
                                     <a target="right" th:href="@{'../'+${child.url}}" th:text="${child.title}"></a>
