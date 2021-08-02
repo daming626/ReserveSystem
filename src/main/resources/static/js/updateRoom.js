@@ -8,8 +8,6 @@ function shield(a,b,c,d){
     var roomDescribe1 = document.getElementById("roomDescribe1")
     roomDescribe1.value=d;
 
-
-
     var s = document.getElementById("test");
     s.style.display = "block";
 

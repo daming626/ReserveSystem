@@ -11,8 +11,8 @@
     <form th:action="@{addRoom}" method="POST">
         <div class="roomId"><label for="roomId">自习室Id：  </label><input type="text" name="roomId" id="roomId" onblur="check()" required><img id="img1"
                 src="" alt=""></div><span id="message" text="信息"></span>
-        <div class="roomName"><label for="roomName">自习室名称：</label><input type="text" name="RoomName" id="roomName"></div>
-        <div class="roomCapacity"><label for="roomCapacity">自习室容量：</label><input type="text" name="roomCapacity" id="roomCapacity"></div>
+        <div class="roomName"><label for="roomName">自习室名称：</label><input type="text" name="RoomName" id="roomName" required></div>
+        <div class="roomCapacity"><label for="roomCapacity">自习室容量：</label><input type="text" name="roomCapacity" id="roomCapacity" required></div>
         <div class="roomDescribe"><label for="roomDescribe">自习室描述：</label><input type="text" name="roomDescribe" id="roomDescribe"></div>
         <div id="sub"><input type="submit" value="添加"></div>
     </form>

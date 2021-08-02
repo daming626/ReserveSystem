@@ -85,23 +85,6 @@ public class RoomController {
 
     /*@GetMapping ("getRoomById.do")
     public String updateRoom(String roomId,String roomName,String roomCapacity,String roomDescribe, Model model,Room room,HttpServletResponse response){
-        Gson gson = new Gson();
-        PrintWriter out = null;
-        try {
-            //RoomServise.insertReservate(room);
-            roomService.addRoom(room);
-            Result result = new Result("roomToNo");//根据此标记来显示预约结果
-            out = response.getWriter();
-            out.write(gson.toJson(result));
-            out.flush();
-            out.close();
-        } catch (UserException | IOException e) {
-            Result result = new Result("roomToYes");//根据此标记来显示预约结果
-            out.write(gson.toJson(result));
-            out.flush();
-            out.close();
-        }
-        out.println("kkkkk");
         Room room=roomService.getRoomById(roomId);
         model.addAttribute("room",room);
         return "viewRoom";
@@ -118,16 +101,14 @@ public class RoomController {
             e.fillInStackTrace();
         }
 
-        try{
-            Room room = roomService.getRoomById(roomId);
-            System.out.println(room.getRoomName());
-            Result result = new Result("roomToYes");//根据此标记来显示预约结果
+        Room room = roomService.getRoomById(roomId);
+        if (room!=null){
+            Result result = new Result("roomToNo");//根据此标记来显示预约结果
             out.write(gson.toJson(result));
-        }catch (NullPointerException e){
-            Result result = new Result("roomToNo");
+        }else{
+            Result result = new Result("roomToYes");
             out.write(gson.toJson(result));
         }
-
         out.flush();
         out.close();
     }
