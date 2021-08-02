@@ -44,14 +44,15 @@ public class ExcelTool {
      */
     public static Workbook getWorkBook(POIFSFileSystem pfs, Workbook workbook, MultipartFile file) throws IOException {//POI解析文档
         String filename = file.getOriginalFilename();//得到上传时的文件名。
-        if (filename.endsWith("xls")) {
-            System.out.println("已判断出文件类型xls");
-             pfs = new POIFSFileSystem(file.getInputStream());
-            System.out.println("xls转inputstream");
-            workbook = new HSSFWorkbook(pfs);
-            System.out.println("xls格式转换完成");
-            return workbook;
-        } else if (filename.endsWith("xlsx")) {
+//        if (filename.endsWith("xls")) {
+//            System.out.println("已判断出文件类型xls");
+//             pfs = new POIFSFileSystem(file.getInputStream());
+//            System.out.println("xls转inputstream");
+//            workbook = new HSSFWorkbook(pfs);
+//            System.out.println("xls格式转换完成");
+//            return workbook;
+//        } else if (filename.endsWith("xlsx")) {
+        if (filename.endsWith("xlsx")) {
             try {
                 System.out.println("file转inputstream");
                 workbook = new XSSFWorkbook(file.getInputStream());

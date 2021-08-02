@@ -44,7 +44,7 @@
             <td th:text="${user.contacts}"></td>
 
             <td>
-                <a th:href="@{deleteStudent(userid=${user.userid})}">删除</a>
+                <a th:href="@{deleteStudent(userid=${user.userid})}" onclick="return confirm('确定删除?')">删除</a>
             </td>
 
             <td>
