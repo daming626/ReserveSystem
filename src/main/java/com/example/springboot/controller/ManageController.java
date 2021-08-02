@@ -116,19 +116,19 @@ public class ManageController {
     }
 
     @GetMapping("searchUser.do")
-    public String searchUser(String txt,Model model, String firstPage, String lastPage, String nextPage, String finalPage){
+    public String searchUser(String txt,Model model, String firstPage, String lastPage, String nextPage, String finalPage) {
 
-        int curPage=1;
+        int curPage = 1;
         int pageSize = 8;
-        int totalPage = manageService.totals(pageSize,"r1000");
+        int totalPage = manageService.totals(pageSize, "r1000");
         if (firstPage != null) {//首页
             curPage = 1;
         }
         if (lastPage != null) {//上一页
-            curPage --;
+            curPage--;
         }
         if (nextPage != null) {//下一页
-            curPage ++;
+            curPage++;
         }
         if (finalPage != null) {//尾页
             curPage = totalPage;
@@ -137,17 +137,20 @@ public class ManageController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            if(totalPage==0){curPage = 1;}
-            else {curPage = totalPage;}
+            if (totalPage == 0) {
+                curPage = 1;
+            } else {
+                curPage = totalPage;
+            }
         }
 
-        int startPage = (curPage-1) * pageSize;
+        int startPage = (curPage - 1) * pageSize;
 
-        model.addAttribute("text",txt);
-        model.addAttribute("viewUser", manageService.searchUser(txt,"r1000",startPage,pageSize));
-        model.addAttribute("flag",1);
+        model.addAttribute("text", txt);
+        model.addAttribute("viewUser", manageService.searchUser(txt, "r1000", startPage, pageSize));
+        model.addAttribute("flag", 1);
         return "viewUser";
-      
+    }
     @GetMapping("insertManagerById.do")
     public String insertManagerById(String userId){
         userService.insertManagerById(userId);

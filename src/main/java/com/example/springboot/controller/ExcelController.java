@@ -1,9 +1,11 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.bean.Result;
 import com.example.springboot.bean.Results;
 import com.example.springboot.service.ExcelService;
 import com.example.springboot.utils.ExcelTool;
 import com.example.springboot.utils.FileUtils;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * 接口

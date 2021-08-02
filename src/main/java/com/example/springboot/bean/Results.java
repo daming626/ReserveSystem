@@ -11,6 +11,15 @@ public class Results implements Serializable{//一个类只有实现了Serializa
     private String message;//返回结果信息，主要用于页面提示信息
     private Object data;//返回数据
     private List list;
+    private String results;
+
+    public Results() {
+    }
+
+    public Results(String result) {
+        this.results = result;
+    }
+
 
     public static Results success(String message){
         return new Results(true,message);

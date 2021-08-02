@@ -1,7 +1,9 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.bean.Result;
 import com.example.springboot.bean.User;
 import com.example.springboot.service.IStudentService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @RequestMapping("/document")
 @Controller
@@ -43,7 +48,6 @@ public class StudentController {
 
         int startRow = (curPage-1)*pageSize;//当前页的第一条数据在数据库的位置
         request.setAttribute("users",studentService.viewStudent(startRow,8));
-        System.out.println("000000");
         return "viewStudent";
     }
     @GetMapping("deleteStudent")
@@ -55,37 +59,61 @@ public class StudentController {
     @PostMapping("insertStudent")
     public String insertStudent(User user,HttpServletRequest request){
         studentService.insertStudent(user);
-        System.out.println("999999");
-        request.setAttribute("users",studentService.viewStudent(0,8));
-        return "redirect:manualEntry.do";
+        request.setAttribute("users",studentService.viewStudent(1,8));
+        return "viewStudent";
     }
-//    @GetMapping("insertStudent")
-//    public String insertStudent(){
-//        return "insertStudent";
+//    @PostMapping("insertStudent")
+//    public String insertStudent(User user, HttpServletResponse response, HttpServletRequest request) {
+//        System.out.println(user.getUserid());
+//        Gson gson = new Gson();
+//        PrintWriter out = null;
+//        try {
+//            out = response.getWriter();
+//        } catch (IOException e) {
+//            e.fillInStackTrace();
+//        }
+//        try {
+//            studentService.insertStudent(user);
+//            request.setAttribute("users", studentService.viewStudent(0, 8));
+//            Result result = new Result("studentToYes");//根据此标记来显示预约结果
+//            out.write(gson.toJson(result));
+//        } catch (NullPointerException e) {
+//            Result result = new Result("studentToNo");
+//            out.write(gson.toJson(result));
+//        }
+//        return "redirect:manualEntry.do";
 //    }
 
     @PostMapping("updateStudent")
     public String updateStudent(User user,HttpServletRequest request){
-        System.out.println("KKKKKKK");
-        System.out.println(user.getUserid());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        System.out.println(user.getRealname());
-        System.out.println(user.getSex());
-        System.out.println(user.getTclass());
-        System.out.println(user.getGrade());
-        System.out.println(user.getContacts());
         studentService.updateStudent(user);
-        System.out.println("LLLLLLLLLLLL");
         request.setAttribute("users",studentService.viewStudent(0,8));
         return "redirect:manualEntry.do";
     }
     @GetMapping ("getStudentbyId")
-    public String updateStudent(String userid, Model model){
-        System.out.println("sssssss");
-        User user=studentService.getStudentbyId(userid);
-        model.addAttribute("user",user);
-        System.out.println("qqqqqq");
-        return "viewStudent";
+    public void getStudentbyId(String userid, HttpServletResponse response){
+        System.out.println(userid);
+        Gson gson = new Gson();
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+        } catch (IOException e) {
+            e.fillInStackTrace();
+        }
+        try {
+            User user=studentService.getStudentbyId(userid);
+            System.out.println(user.getUserid());
+            Result result = new Result("studentToNo");//根据此标记来显示预约结果
+            System.out.println("jieguo");
+            out.write(gson.toJson(result));
+        } catch (NullPointerException e) {
+            Result result = new Result("studentToYes");
+            System.out.println("buxing");
+            out.write(gson.toJson(result));
+        }
+        System.out.println("chuanhui");
+        out.flush();
+        out.close();
     }
 }
+
