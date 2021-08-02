@@ -5,6 +5,17 @@
     <link type="text/css" rel="stylesheet" href="/css/student.css"/>
     <script src="/js/updatestudent.js"></script>
     <script src="/js/insertstudent.js"></script>
+    <style>
+        #message{
+            position: absolute;
+            right: 0;
+            top: 37px;
+            font-size: 14px;
+            color:red;
+            font-family: 楷体;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div class="view">
@@ -35,9 +46,7 @@
             <td>
                 <a th:href="@{deleteStudent(userid=${user.userid})}">删除</a>
             </td>
-<!--            <td>-->
-<!--                <a href="#" th:onclick="shield2()">增加</a>-->
-<!--            </td>-->
+
             <td>
                 <a href="#" th:onclick="shield([[${user.userid}]],[[${user.username}]],[[${user.password}]],[[${user.realname}]],[[${user.sex}]],[[${user.tclass}]],[[${user.grade}]],[[${user.contacts}]])">修改</a>
             </td>
@@ -65,10 +74,11 @@
 
     <div id="test2"></div>
     <div id="log_window2">
-        <a class="a2" href="javascript:kkk()">❌</a>
+        <a class="a2" href="javascript:cancel_shield2()">❌</a>
         <div>
             <form action="insertStudent" method="post">
-                <div class="userid2"><label for="userid2">用户ID：</label><input id="userid2" type="text" name="userid" required></div>
+                <div class="userid2"><label for="userid2">用户ID：</label><input id="userid2" type="text" name="userid" onblur="check()" required></div>
+                <span id="message"></span>
                 <div class="username2"><label for="username2">用户名：</label><input id="username2" type="text" name="username" required></div>
                 <div class="password2"><label for="password2">密码：</label><input id="password2"  type="text" name="password" value=""></div>
                 <div class="realname2"><label for="realname2">真实姓名：</label><input id="realname2"  type="text" name="realname" value=""></div>
@@ -80,6 +90,8 @@
             </form>
         </div>
     </div>
+
+
 
 
     <div id="but-box">
