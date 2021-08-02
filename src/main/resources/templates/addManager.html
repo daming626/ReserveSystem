@@ -3,38 +3,82 @@
 <head>
     <title>Thymeleaf demo</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/addManager.css">
+    <link rel="stylesheet" href="/css/PopupWindow.css">
+    <style>
+        a:link, a:visited {
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        img:visited {
+            background-color: grey;
+        }
+
+        .button {
+            box-sizing: border-box;
+            margin-top: 150px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .box {
+            text-align: center;
+            float: left;
+            width: 33.33%; /* 三个框（四框使用 25%，两框使用 50%，以此类推） */
+            height: 50%;
+        }
+
+        .box input {
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
-<button id="open_btn" class="btn">弹窗</button>
-<a href="">查看管理员</a>
-
+<div class="button">
+    <div class="box">
+        <a id="open_btn" href="#"><img src="/img/admin1.png" alt="新增管理员账户"></a><br>
+        <label>新增管理员账户</label>
+    </div>
+    <div class="box">
+        <a th:href="@{viewUser.do}"><img src="/img/admin2.png" alt="授予管理员权限"></a><br>
+        <label>授予管理员权限</label>
+    </div>
+    <div class="box">
+        <a href="#"><img src="/img/admin2.png" alt="敬请期待"></a><br>
+        <label>敬请期待</label>
+    </div>
+</div>
 <!-- 弹窗内容开始 -->
-<div id="background" class="back">
-    <div id="formBox" class="content">
-        <div id="close">
-            <span id="close-button">×</span>
+<div id="background" class="background">
+    <div id="block" class="content">
+        <div id="head" class="head">
+            <span id="close-button" class="close-button">×</span>
             <h2>新增管理员</h2>
         </div>
-        <div id="formContent">
-            <h3>请输入相关信息</h3>
-            <div><span id="message" value="" text="信息"></span></div>
+        <div id="formContent" class="formContent">
+            <h4>请输入相关信息</h4>
             <form th:action="@{insertAdministrator.do}" method="post">
-                <label>管理员账号</label>
-                <input name="userId" id="userId" type="text" onblur="checkUserId(this)"><br>
+                <label>管理员账号</label><span style="padding-left:5px ;color: red" id="message" value="" text="信息"></span>
+                <input name="userid" id="userId" type="text" onblur="checkUserId(this)" required><br>
                 <label>管理员名称</label>
-                <input name="userName" type="text"><br>
+                <input name="username" type="text" required><br>
                 <label>管理员密码</label>
-                <input name="password" ype="password"><br>
-                <label>确认密码</label>
-                <input type="password">
+                <input id="password" name="password" type="password" required><br>
+                <label>确认密码</label><span style="padding-left:5px ;color: red" id="pwdmessage" value="" text="信息"></span>
+                <input id="checkPwd" type="password" onblur="checkPassword()">
                 <input type="submit" value="提交">
             </form>
         </div>
-        <h3 id="foot">底部内容</h3>
+        <h3 id="foot" class="foot">管理员</h3>
     </div>
 </div>
 <!-- 弹窗内容结束 -->
+<script src="/js/divMove.js"></script>
 <script src="/js/addManager.js"></script>
+<script src="/js/PopupWindow.js"></script>
 </body>
 </html>

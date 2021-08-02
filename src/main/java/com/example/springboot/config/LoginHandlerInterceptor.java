@@ -20,8 +20,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         //判读用户是否登录
         if (loginUser == null){//用户对象不存在，说明用户没有登录，不予放行
             request.setAttribute("message","没有权限，请先登录");//向前端发送错误参数
-//            request.getRequestDispatcher("/login.html").forward(request,response);//请求转发回登录页面
-            response.sendRedirect("/login.html?message=12345");
+            response.sendRedirect("/login.html?message=error");
             return false;
         }else {//用户对象已存在，予以放行
             return true;

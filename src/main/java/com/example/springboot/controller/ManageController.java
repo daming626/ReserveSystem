@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.SQLException;
+
 
 @Controller
 @RequestMapping("manage")
@@ -112,7 +114,7 @@ public class ManageController {
         System.out.println(user.getPassword());
         System.out.println(user.getUsername());
         manageService.insertAdministrator(user);
-        return "viewManager";
+        return "redirect:viewUser.do";
     }
 
     @GetMapping("searchUser.do")
@@ -150,12 +152,16 @@ public class ManageController {
         model.addAttribute("viewUser", manageService.searchUser(txt, "r1000", startPage, pageSize));
         model.addAttribute("flag", 1);
         return "viewUser";
+
     }
+
     @GetMapping("insertManagerById.do")
     public String insertManagerById(String userId){
+
         userService.insertManagerById(userId);
         System.out.println(userId);
         System.out.println("a");
+
         return "redirect:viewUser.do";
     }
 }

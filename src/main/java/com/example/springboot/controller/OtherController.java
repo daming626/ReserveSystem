@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -54,14 +55,14 @@ public class OtherController {
     }
 
     @PostMapping("updateRepair.do")
-    @ResponseBody
     public String UpdateRepair(String roomName,String types, String userId, String description){
         Date date = new Date();
         String strDateFormat = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
         String time  = sdf.format(date);
         roomService.insertRepairInfo(roomName,time,types,userId,description);
-        return "提交成功";
+
+        return "redirect:../instructions.do";
     }
 
     @PostMapping("insertNotice.do")
@@ -77,9 +78,6 @@ public class OtherController {
 
     @GetMapping("feedback.do")
     public String feedback(Model model){
-
         return "feedback";
     }
-
-
 }

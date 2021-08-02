@@ -32,7 +32,7 @@
                     this.minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
                     this.second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
                     this.toString = function() {
-                        return "时间:" + this.year + "年" + this.month + "月" + this.date + "日 " + this.hour + ":" + this.minute + ":" + this.second + " " + this.day;
+                        return this.year + "年" + this.month + "月" + this.date + "日 " + this.hour + ":" + this.minute + ":" + this.second + " " + this.day;
                     };
                     this.toSimpleDate = function() {
                         return this.year + "-" + this.month + "-" + this.date;

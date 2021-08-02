@@ -37,7 +37,7 @@ public class ExcelController {
         @GetMapping("documentEntry.do")
         public String documententry(){
             System.out.println("页面跳转");
-            return "index";
+            return "Upload";
     }
     @PostMapping("/import")
     @ResponseBody//响应体
