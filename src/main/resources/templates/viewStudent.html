@@ -2,42 +2,121 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
+    <link type="text/css" rel="stylesheet" href="/css/student.css"/>
+    <script src="/js/updatestudent.js"></script>
+    <script src="/js/insertstudent.js"></script>
+    <style>
+        #message{
+            position: absolute;
+            right: 0;
+            top: 37px;
+            font-size: 14px;
+            color:red;
+            font-family: 楷体;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<table border="1">
-    <tr>
-        <th>用户ID</th>
-        <th>用户名</th>
-        <th>密码</th>
-        <th>真实姓名</th>
-        <th>性别</th>
-        <th>班级</th>
-        <th>年级</th>
-        <th>联系方式</th>
-        <th>删除用户</th>
-        <th>增加用户</th>
-        <th>修改信息</th>
-    </tr>
-    <tr th:each="user,userStat : ${users}">
-        <td th:text="${user.userid}"></td>
-        <td th:text="${user.username}"></td>
-        <td th:text="${user.password}"></td>
-        <td th:text="${user.realname}"></td>
-        <td th:text="${user.sex}"></td>
-        <td th:text="${user.tclass}"></td>
-        <td th:text="${user.grade}"></td>
-        <td th:text="${user.contacts}"></td>
+<div class="view">
+    <table id="view" border="1">
+        <tr>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>真实姓名</th>
+            <th>性别</th>
+            <th>班级</th>
+            <th>年级</th>
+            <th>联系方式</th>
+            <th>删除用户</th>
+<!--            <th>增加用户</th>-->
+            <th>修改信息</th>
+        </tr>
+        <tr th:each="user,userStat : ${users}">
+            <td th:text="${user.userid}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.realname}"></td>
+            <td th:text="${user.sex}"></td>
+            <td th:text="${user.tclass}"></td>
+            <td th:text="${user.grade}"></td>
+            <td th:text="${user.contacts}"></td>
 
-        <td>
-            <a th:href="@{deleteStudent(userid=${user.userid})}">删除</a>
-        </td>
-        <td>
-            <a th:href="@{insertStudent(user=${user})}">增加</a>
-        </td>
-        <td>
-            <a th:href="@{getStudentbyId(userid=${user.userid})}">修改</a>
-        </td>
-    </tr>
-</table>
+            <td>
+                <a th:href="@{deleteStudent(userid=${user.userid})}">删除</a>
+            </td>
+
+            <td>
+                <a href="#" th:onclick="shield([[${user.userid}]],[[${user.username}]],[[${user.password}]],[[${user.realname}]],[[${user.sex}]],[[${user.tclass}]],[[${user.grade}]],[[${user.contacts}]])">修改</a>
+            </td>
+        </tr>
+    </table>
+    <input id="insert" type="submit" value="增加用户" th:onclick="shield2()">
+    <div id="test"></div>
+    <div id="log_window">
+        <a class="a" href="javascript:cancel_shield()">❌</a>
+        <div>
+            <form action="updateStudent" method="post">
+                <input id="userid1" type="hidden" name="userid" value=""><br>
+                <div class="username1"><label for="username1">用户名：</label><input id="username1" type="text" name="username" value=""></div>
+                <div class="password1"><label for="password1">密码：</label><input id="password1"  type="text" name="password" value=""></div>
+                <div class="realname1"><label for="realname1">真实姓名：</label><input id="realname1"  type="text" name="realname" value=""></div>
+                <div class="sex1"><label for="sex1">性别：</label><input id="sex1"  type="text" name="sex" value=""></div>
+                <div class="tclass1"><label for="tclass1">班级：</label><input id="tclass1"  type="text" name="tclass" value=""></div>
+                <div class="grade1"><label for="grade1">年级：</label><input id="grade1"  type="text" name="grade" value=""></div>
+                <div class="contacts1"><label for="contacts1">联系方式：</label><input id="contacts1"  type="text" name="contacts" value=""></div>
+                <input id="sub" type="submit" value="保存">
+            </form>
+        </div>
+    </div>
+
+
+    <div id="test2"></div>
+    <div id="log_window2">
+        <a class="a2" href="javascript:cancel_shield2()">❌</a>
+        <div>
+            <form action="insertStudent" method="post">
+                <div class="userid2"><label for="userid2">用户ID：</label><input id="userid2" type="text" name="userid" onblur="check()" required></div>
+                <span id="message"></span>
+                <div class="username2"><label for="username2">用户名：</label><input id="username2" type="text" name="username" required></div>
+                <div class="password2"><label for="password2">密码：</label><input id="password2"  type="text" name="password" value=""></div>
+                <div class="realname2"><label for="realname2">真实姓名：</label><input id="realname2"  type="text" name="realname" value=""></div>
+                <div class="sex2"><label for="sex2">性别：</label><input id="sex2"  type="text" name="sex" value=""></div>
+                <div class="tclass2"><label for="tclass2">班级：</label><input id="tclass2"  type="text" name="tclass" value=""></div>
+                <div class="grade2"><label for="grade2">年级：</label><input id="grade2"  type="text" name="grade" value=""></div>
+                <div class="contacts2"><label for="contacts2">联系方式：</label><input id="contacts2"  type="text" name="contacts" value=""></div>
+                <input id="sub2" type="submit" value="添加">
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <div id="but-box">
+        <input type="button" value="首页" id="k">
+        <input type="button" value="上一页" id="kk">
+        <input type="button" value="下一页" id="kkk">
+        <input type="button" value="尾页" id="kkkk">
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#k").click(function () {
+                window.location.href = "manualEntry.do?firstPage=1"
+            })
+            $("#kk").click(function () {
+                window.location.href ="manualEntry.do?lastPage=1"
+            })
+            $("#kkk").click(function () {
+                window.location.href = "manualEntry.do?nextPage=1"
+            })
+            $("#kkkk").click(function () {
+                window.location.href = "manualEntry.do?finalPage=1"
+            })
+        })
+    </script>
+</div>
 </body>
 </html>

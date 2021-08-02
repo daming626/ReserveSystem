@@ -3,17 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css"/>
 </head>
 <body>
-<hr/>
-<p>摸板下载</p>
-<a href="/document/download">下载摸板</a>
-<hr/>
-<p>文件上传</p>
-<form action="/document/import" method="POST" enctype="multipart/form-data">
-    文件：<input type="file" name="file"/>
-    <input type="submit"/>
+<ul class="container">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+<p id="aaa">下载文件：</p>
+<a href="/document/download">
+    <input class="xiazai" type='submit' value='下载摸板'></a>
+</a>
+<p id="bbb">（注：请下载模板文件进行上传！）</p>
+
+<form id="shangchuan" action="/document/import" method="POST" enctype="multipart/form-data">
+    上传文件：<input id="wenjian" type="file" name="file"/>
+    <input class="tijiao" type="submit"/>
 </form>
-<hr/>
+
+
+
+
+
+
+
+
+
 </body>
 </html>

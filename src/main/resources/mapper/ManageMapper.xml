@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.mapper.ManageMapper">
-<!--    <resultMap id="manageMap" type="manage">-->
-<!--        <id property="userId" column="userid"></id>-->
-<!--        <result property="userName" column="username"></result>-->
-<!--        <result property="realName" column="realname"></result>-->
-<!--        <result property="sex" column="sex"></result>-->
-<!--        <result property="tclass" column="tclass"></result>-->
-<!--        <result property="grade" column="grade"></result>-->
-<!--        <result property="contacts" column="contacts"></result>-->
-<!--        <result property="state" column="state"></result>-->
-<!--        <collection property="roleList" column="userid" select="com.example.springboot.mapper.RoleMapper.getRoleByUserId">-->
-<!--        </collection>-->
-<!--    </resultMap>-->
 <!--    查看用户-->
-<!--    SELECT * FROM tb_user WHERE userId IN (SELECT userId FROM tb_user_role WHERE roleId = #{roleId}) limit #{startPage},#{pageSize}-->
     <select id="getUserById" resultType="user">
         SELECT * FROM tb_user u,tb_user_role ur  WHERE u.userId=ur.userId and ur.roleId = #{roleId} limit #{startPage},#{pageSize}
 	</select>
-
-<!--    删除用户-->
-    <delete id="deleteUser" parameterType="string">
-		DELETE FROM tb_user WHERE userId=#{value }
-	</delete>
+  
+    <select id="totalu" resultType="int">
+        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
+    </select>
 
 <!--    查看管理员-->
     <select id="getManageById" resultType="user">
@@ -34,11 +20,24 @@
 		DELETE FROM tb_user_role WHERE userId=#{value} AND roleId='r1001'
 	</delete>
 
-    <select id="total" parameterType="int" resultType="int">
-        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_reservate
+    <select id="totalm" resultType="int">
+        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
     </select>
 
+<!--添加管理员-->
     <insert id="insertAdministrator" parameterType="user">
         INSERT INTO tb_user VALUE (#{userId},#{username},#{password},#{realName},#{sex},#{tclass},#{grade},#{contacts},#{state})
     </insert>
+
+<!--    搜索用户-->
+    <select id="searchUser" resultType="user" parameterType="string">
+        SELECT * FROM tb_user u, tb_user_role ur
+        WHERE (u.userId like '%${txt}%' OR u.userName like '%${txt}%' OR realName like '%${txt}%')
+        AND u.userId=ur.userId and ur.roleId = #{roleId} limit #{startPage},#{pageSize}
+    </select>
+
+    <select id="totals" resultType="int">
+        SELECT (count(*) + #{pageSize} - 1) / #{pageSize} FROM tb_user u,tb_user_role ur WHERE u.userId=ur.userId and ur.roleId = #{roleId}
+    </select>
+
 </mapper>

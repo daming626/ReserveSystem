@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf demo</title>
-    <link rel="stylesheet" href="/css/Room.css"/>
+    <link rel="stylesheet" href="/css/seven.css"/>
     <script src="/js/updateRoom.js"></script>
     <style>
         html,body {
@@ -22,11 +22,11 @@
             filter: alpha(opacity=30);
             display:none;
         }
-
+/* 建一个弹窗边框*/
         #log_window {
             width:500px;
             height:400px;
-            background-color: #dddddd;
+            background-color: white;
             margin: auto;
             position: absolute;
             z-index:3;
@@ -35,10 +35,16 @@
             left: 0;
             right: 0;
             display:none;
+
+            box-sizing: border-box;
+            background: rgba(256, 256, 256, .8);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, .7);
+            border-radius: 15px;
         }
         .a{
             position: absolute;
             right: 0;
+            color: #192b02;
         }
         .RoomName1{
             position: relative;
@@ -64,7 +70,7 @@
         #sub{
             position: relative;
             top: 200px;
-            left: 45%;
+            left: 55%;
             margin: auto;
         }
     </style>
@@ -74,7 +80,7 @@
         <table id="seven" border="1">
             <tr>
                 <th>房间ID</th>
-                <th>房间名</th>
+                <th>房间名称</th>
                 <th>房间容量</th>
                 <th>房间描述</th>
                 <th>操作</th>
@@ -85,6 +91,7 @@
                 <td th:text="${room.roomCapacity}"></td>
                 <td th:text="${room.roomDescribe}"></td>
                 <td>
+                    <!-- 传参放入遮罩层的方法中-->
                     <a href="#" th:onclick="shield([[${room.roomId}]],[[${room.roomName}]],[[${room.roomCapacity}]],[[${room.roomDescribe}]])">修改自习室</a>
                     <a th:href="@{deleteRoom.do(roomId=${room.roomId})}" onclick="return confirm('确定删除?')">删除自习室</a>
                 </td>
@@ -96,7 +103,7 @@
             <div>
                 <form action="updateRoom" method="post">
                     <input id="RoomId1" type="hidden" name="RoomId" value=""><br>
-                    <div class="RoomName1"><label for="RoomName1">房间名：</label><input id="RoomName1" type="text" name="RoomName" value=""></div>
+                    <div class="RoomName1"><label for="RoomName1">房间名称：</label><input id="RoomName1" type="text" name="RoomName" value=""></div>
                     <div class="roomCapacity1"><label for="roomCapacity1">房间容量：</label><input id="roomCapacity1"  type="text" name="roomCapacity" value=""></div>
                     <div class="roomDescribe1"><label for="roomDescribe1">房间描述：</label><input id="roomDescribe1"  type="text" name="roomDescribe" value=""></div>
                     <input id="sub" type="submit" value="保存">

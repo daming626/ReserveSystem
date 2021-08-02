@@ -32,8 +32,10 @@
 }
 /*指定了 <th> 元素的背景颜色和文本颜色*/
 #seven th {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
     color: white;
+    background-color: #3a8dc1;
+
 }
 /*按钮位置*/
 #but-box{
@@ -41,7 +43,9 @@
 }
 
 input{
-    background-color: #5cdd13;   /* 背景色 */
+    /*background-color: #5cdd13;   !* 背景色 *!*/
+    /*background-color: #03a9f4;*/
+    background: #3a8dc1;
     border: none;
     color: white;   /*按钮名称颜色*/
     padding: 8px 15px;   /*内边距*/

@@ -27,7 +27,7 @@ public class ManageController {
 
         int curPage=1;
         int pageSize = 8;
-        int totalPage = manageService.total(pageSize);
+        int totalPage = manageService.totalu(pageSize,"r1000");
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -44,12 +44,14 @@ public class ManageController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
         int startPage = (curPage-1) * pageSize;
 
         model.addAttribute("viewUser", manageService.getUserById("r1000",startPage,pageSize));
+        model.addAttribute("flag",0);
         return "viewUser";
     }
 
@@ -65,7 +67,7 @@ public class ManageController {
 
         int curPage=1;
         int pageSize = 8;
-        int totalPage = manageService.total(pageSize);
+        int totalPage = manageService.totalm(pageSize,"r1001");
         if (firstPage != null) {//首页
             curPage = 1;
         }
@@ -82,7 +84,8 @@ public class ManageController {
             curPage = 1;
         }
         if (curPage > totalPage) {//确定上界
-            curPage = totalPage;
+            if(totalPage==0){curPage = 1;}
+            else {curPage = totalPage;}
         }
 
         int startPage = (curPage-1) * pageSize;
@@ -112,6 +115,42 @@ public class ManageController {
         return "viewManager";
     }
 
+    @GetMapping("searchUser.do")
+    public String searchUser(String txt,Model model, String firstPage, String lastPage, String nextPage, String finalPage) {
+
+        int curPage = 1;
+        int pageSize = 8;
+        int totalPage = manageService.totals(pageSize, "r1000");
+        if (firstPage != null) {//首页
+            curPage = 1;
+        }
+        if (lastPage != null) {//上一页
+            curPage--;
+        }
+        if (nextPage != null) {//下一页
+            curPage++;
+        }
+        if (finalPage != null) {//尾页
+            curPage = totalPage;
+        }
+        if (curPage < 1) {//确定下界
+            curPage = 1;
+        }
+        if (curPage > totalPage) {//确定上界
+            if (totalPage == 0) {
+                curPage = 1;
+            } else {
+                curPage = totalPage;
+            }
+        }
+
+        int startPage = (curPage - 1) * pageSize;
+
+        model.addAttribute("text", txt);
+        model.addAttribute("viewUser", manageService.searchUser(txt, "r1000", startPage, pageSize));
+        model.addAttribute("flag", 1);
+        return "viewUser";
+    }
     @GetMapping("insertManagerById.do")
     public String insertManagerById(String userId){
         userService.insertManagerById(userId);

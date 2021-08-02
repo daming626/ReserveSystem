@@ -3,78 +3,85 @@
 <head>
     <title>查看用户</title>
     <link type="text/css" rel="stylesheet" href="/css/seven.css"/>
+    <style>
+        .search {
+            position: absolute;
+            top: 475px;
+            left: 0; /*绝对位置*/
+        }
+    </style>
 </head>
 <body>
-    <div class="seven">
-        <table id="seven" border="1">
-            <tr>
-                <th>用户ID</th>
-                <th>用户名称</th>
-                <th>密码</th>
-                <th>真实名称</th>
-                <th>性别</th>
-                <th>所在班级</th>
-                <th>所在年级</th>
-                <th>电话</th>
-                <th>操作</th>
-            </tr>
-            <tr  th:each="viewUser: ${viewUser}" >
-                <td th:text="${viewUser.getUserid()}"></td>
-                <td th:text="${viewUser.getUsername()}"></td>
-                <td th:text="${viewUser.getPassword()}"></td>
-                <td th:text="${viewUser.getRealname()}"></td>
-                <td th:text="${viewUser.getSex()}"></td>
-                <td th:text="${viewUser.getTclass()}"></td>
-                <td th:text="${viewUser.getGrade()}"></td>
-                <td th:text="${viewUser.getContacts()}"></td>
-                <td>
-                    <a th:href="@{insertManagerById.do(userId=${viewUser.userid})}" th:if="${session.user.getRealname()=='超级管理员'}" onclick="javascript:return del1()">授予管理员</a>
-                    <a th:href="@{deleteUser.do(userId=${viewUser.userid})}" onclick="javascript:return del()" >删除用户</a>
-                </td>
-            </tr>
-        </table>
-        <script>
-            function del() {
-                var msg = "是否要删除该用户？";
-                if (confirm(msg)==true){
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-
-            function del1() {
-                var msg = "是否要授予管理员？";
-                if (confirm(msg)==true){
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-        </script>
-        <div id="but-box">
-            <input type="button" value="首页" id="k">
-            <input type="button" value="上一页" id="kk">
-            <input type="button" value="下一页" id="kkk">
-            <input type="button" value="尾页" id="kkkk">
-        </div>
-        <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#k").click(function () {
-                    window.location.href = "currentReservation.do?firstPage=1"
-                })
-                $("#kk").click(function () {
-                    window.location.href ="currentReservation.do?lastPage=1"
-                })
-                $("#kkk").click(function () {
-                    window.location.href = "currentReservation.do?nextPage=1"
-                })
-                $("#kkkk").click(function () {
-                    window.location.href = "currentReservation.do?finalPage=1"
-                })
-            })
-        </script>
+<div class="seven">
+    <table id="seven" border="1">
+        <tr>
+            <th>用户ID</th>
+            <th>用户名称</th>
+            <th>密码</th>
+            <th>真实名称</th>
+            <th>性别</th>
+            <th>所在班级</th>
+            <th>所在年级</th>
+            <th>电话</th>
+        </tr>
+        <tr th:each="viewUser: ${viewUser}">
+            <td th:text="${viewUser.getUserid()}"></td>
+            <td th:text="${viewUser.getUsername()}"></td>
+            <td th:text="${viewUser.getPassword()}"></td>
+            <td th:text="${viewUser.getRealname()}"></td>
+            <td th:text="${viewUser.getSex()}"></td>
+            <td th:text="${viewUser.getTclass()}"></td>
+            <td th:text="${viewUser.getGrade()}"></td>
+            <td th:text="${viewUser.getContacts()}"></td>
+        </tr>
+    </table>
+    <div id="but-box">
+        <input type="button" value="首页" id="k1">
+        <input type="button" value="上一页" id="k2">
+        <input type="button" value="下一页" id="k3">
+        <input type="button" value="尾页" id="k4">
     </div>
+    <form action="/manage/searchUser.do">
+        <div class="search">
+            <input id="userId" name="txt" type="text" th:value="${text}" placeholder="请输入账号、ID或姓名">
+            <input id="sub" type="submit" value="搜索">
+            <div hidden><input id="lll" th:value="${flag}" ></div>
+        </div>
+    </form>
+    <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var text=document.getElementById("userId").value;
+            var val=document.getElementById("lll").value;
+            if (val==0){
+                $("#k1").click(function () {
+                    window.location.href = "viewUser.do?firstPage=1"
+                })
+                $("#k2").click(function () {
+                    window.location.href ="viewUser.do?lastPage=1"
+                })
+                $("#k3").click(function () {
+                    window.location.href = "viewUser.do?nextPage=1"
+                })
+                $("#k4").click(function () {
+                    window.location.href = "viewUser.do?finalPage=1"
+                })
+            }else if(val==1){
+                $("#k1").click(function () {
+                    window.location.href = "searchUser.do?firstPage=1&txt="+text
+                })
+                $("#k2").click(function () {
+                    window.location.href = "searchUser.do?lastPage=1&txt="+text
+                })
+                $("#k3").click(function () {
+                    window.location.href = "searchUser.do?nextPage=1&txt="+text
+                })
+                $("#k4").click(function () {
+                    window.location.href = "searchUser.do?finalPage=1&txt="+text
+                })
+            }
+        })
+    </script>
+</div>
 </body>
 </html>

@@ -121,7 +121,8 @@ html, body {
 
 /*指定了 <th> 元素的背景颜色和文本颜色*/
 #reservedTable1 th {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
+    background-color: #3a8dc1;
     color: white;
 }
 
@@ -130,7 +131,7 @@ html, body {
 /*弹窗上的预约样式*/
 #form label {
     display: inline;
-    color: lightskyblue;
+    color: #2b4906;
 }
 
 /*预约div布局*/
@@ -170,7 +171,8 @@ html, body {
     /* line-height: 40px; */
     position: relative;
     /* cursor: pointer; */
-    background: #44bbff;
+    /*background: #44bbff;*/
+    background: #4f8ace;
     color: #FFFFFF;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -190,7 +192,8 @@ html, body {
     line-height: 40px;
     position: relative;
     /* cursor: pointer; */
-    background: #44bbff;
+    /*background: #44bbff;*/
+    background: #4f8ace;
     color: #FFFFFF;
     border: 1px solid #ddd;
     border-radius: 4px;
