@@ -39,19 +39,11 @@
             </div>
             <div>
                 <form id="form">
-                    <div id="k1"><label>日期</label><input id="reservingDate" type="text" name="reservingDate"
-                                                 th:value="${reservingDate}"
-                                                 th:placeholder="${reservingDate}"></div>
-                    <div id="k2"><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}"
-                                                     th:placeholder="${roomId}"></div>
+                    <div id="k1"><label>日期:</label><input id="reservingDate" type="text" name="reservingDate" th:value="${reservingDate}" th:placeholder="${reservingDate}"></div>
+                    <div id="k2"><label>自习室id:</label><input id="roomId" type="text" name="roomId" th:value="${roomId}" th:placeholder="${roomId}"></div>
                     <div id="k3"><label>座位号:</label><input id="seatNum" type="text" name="seatNumber"></div>
-                    <div id="k4"><label>预约开始时间:</label><input id="startTime" type="time" name="startTime" value=""
-                                                      placeholder=""
-                                                      th:onblur="displayImgOne([[${reservingDate}]],[[${roomId}]])"><img
-                            id="displayImg1" src=""></div>
-                    <div id="k5"><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder=""
-                                                      th:onblur="displayImgTwo([[${reservingDate}]],[[${roomId}]])"><img
-                            id="displayImg2" src=""></div>
+                    <div id="k4"><label>预约开始时间:</label><input id="startTime" type="time" name="startTime" value="" placeholder="" th:onblur="displayImgOne([[${reservingDate}]],[[${roomId}]])"><img id="displayImg1" src=""></div>
+                    <div id="k5"><label>预约结束时间:</label><input id="overTime" type="time" name="overTime" value="" placeholder="" th:onblur="displayImgTwo([[${reservingDate}]],[[${roomId}]])"><img id="displayImg2" src=""></div>
                     <div id="k6"><input id="res" type="button" value="申请预约" onclick="conservation()"></div>
                     <div id="k7"><span id="message" value="" text=""></span></div>
                 </form>

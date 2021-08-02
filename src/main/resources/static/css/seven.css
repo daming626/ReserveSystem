@@ -44,7 +44,8 @@
 
 input{
     /*background-color: #5cdd13;   !* 背景色 *!*/
-    background-color: #03a9f4;
+    /*background-color: #03a9f4;*/
+    background: #3a8dc1;
     border: none;
     color: white;   /*按钮名称颜色*/
     padding: 8px 15px;   /*内边距*/

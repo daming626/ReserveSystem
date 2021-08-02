@@ -23,7 +23,8 @@ function shield(reservingDate, roomId, seatNumber) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var items = document.getElementById("items");
             if (items == null) {
-                window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber);
+                console.log("格式错误");
+                // window.open('http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber);
             } else {
                 items.innerHTML = xmlhttp.response;
             }
@@ -56,10 +57,6 @@ function cancel_shield() {
     var message = document.getElementById("message");
     message.innerText = '';
 }
-
-// $(document).ready(function () {
-//
-// }
 
 // 检测输入的开始预约时间是否合格
 function displayImgOne(reservingDate, roomId) {
@@ -146,35 +143,35 @@ function conservation() {
     var startTime = document.getElementById("startTime").value;
     var overTime = document.getElementById("overTime").value;
 
-    //时间为空，将日期置空引起sql错误（数据库要求时间非空）
+    //时间为空，提示错误信息，不再继续执行
     if (startTime == '' || overTime == '') {
-        reservingDate = ''
-    }
+        message.innerText = '请选择时间'
+    }else{
+        //根据图片提示的信息判断是否能成功预约，若图片为叉，给图片赋值‘错误’，
+        // 在此处判断图片的值，若为‘错误’，则提示错误信息
+        var img1 = document.getElementById("displayImg1").text;
+        var img2 = document.getElementById("displayImg2").text;
+        if (img1 == '错误' || img2 == '错误') {
+            message.innerText = '请重新选择时间'
+        }else{
+            xmlHttp = new XMLHttpRequest();//创建request对象
+            xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
+            xmlHttp.open("POST", "insertReservate.do?reservingDate=" + reservingDate + "&roomId=" + roomId + "&seatNumber=" + seatNum + "&startTime=" + startTime + "&overTime=" + overTime);  // 開啟連結
+            xmlHttp.send(null);  // 傳送請求
 
-    //根据图片提示的信息判断是否能成功预约，若图片为叉，给图片赋值‘错误’，
-    // 在此处判断图片的值，若为‘错误’，将日期置空引起sql语句错误，从而预约失败（插入数据库失败）
-    var img1 = document.getElementById("displayImg1").text;
-    var img2 = document.getElementById("displayImg2").text;
-    if (img1 == '错误' || img2 == '错误') {
-        reservingDate = ''
-    }
-
-    xmlHttp = new XMLHttpRequest();//创建request对象
-    xmlHttp.onreadystatechange = checkReserve;  // 服务器响应后，谁负责处理服务器响应的数据
-    xmlHttp.open("POST", "insertReservate.do?reservingDate=" + reservingDate + "&roomId=" + roomId + "&seatNumber=" + seatNum + "&startTime=" + startTime + "&overTime=" + overTime);  // 開啟連結
-    xmlHttp.send(null);  // 傳送請求
-
-    function checkReserve() {
-        if (xmlHttp.readyState == 4) {
-            if (xmlHttp.status == 200) {
-                // console.log(typeof xmlHttp.responseText);//服务器响应的原始数据
-                // console.log(typeof eval('('+xmlHttp.responseText+')'));//不推荐使用
-                // console.log(typeof JSON.parse(xmlHttp.responseText));
-                rel = JSON.parse(xmlHttp.responseText);
-                if (rel.result == "reservingToYes") {
-                    message.innerText = '预约成功'
-                } else if (rel.result == "reservingToNo") {
-                    message.innerText = '预约失败'
+            function checkReserve() {
+                if (xmlHttp.readyState == 4) {
+                    if (xmlHttp.status == 200) {
+                        // console.log(typeof xmlHttp.responseText);//服务器响应的原始数据
+                        // console.log(typeof eval('('+xmlHttp.responseText+')'));//不推荐使用
+                        // console.log(typeof JSON.parse(xmlHttp.responseText));
+                        rel = JSON.parse(xmlHttp.responseText);
+                        if (rel.result == "reservingToYes") {
+                            message.innerText = '预约成功'
+                        } else if (rel.result == "reservingToNo") {
+                            message.innerText = '预约失败'
+                        }
+                    }
                 }
             }
         }
