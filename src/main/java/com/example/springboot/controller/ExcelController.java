@@ -44,8 +44,8 @@ public class ExcelController {
     public Results importProject(MultipartFile file) {
         String postfix = ExcelTool.getPostfix(file.getOriginalFilename());//调用getPostfix获得文件后缀名
 
-        if (!"xlsx".equals(postfix) && !"xls".equals(postfix)) {
-            return Results.error("导入失败，请选择正确的文件格式支持xlsx或xls");
+        if (!"xlsx".equals(postfix)) {
+            return Results.error("导入失败，请选择正确的文件格式支持xlsx");
         }
         System.out.println("拿到file文件");
         return excelService.importProject(file);
