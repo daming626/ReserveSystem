@@ -13,4 +13,6 @@ public interface UserMapper {
     void deleteUser(String userId);
     User getUserById(String userId);
     void insertManagerById(String userId);
+    void update(User user);
+    void alterpw(User user);
 }

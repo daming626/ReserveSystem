@@ -15,6 +15,16 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
+    public void updateUser(User user){
+        userMapper.update(user);
+    }
+
+    @Override
+    public void alterUser(User user){
+        userMapper.alterpw(user);
+    }
+
+    @Override
     public List<User> viewUser() {
         return userMapper.viewUser();
     }

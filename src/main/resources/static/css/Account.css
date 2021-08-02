@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.zhanghao{
+    background-color:white;
+    text-align: center;
+}
+p{
+    text-align: left;
+    text-indent: 5cm;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+/*设置表格字体居中*/
+td{
+    text-align: center;
+}
+
+/*字体大小颜色*/
+p{
+    font-size: 20px;
+    font-family: "宋体";
+    font-weight: bold;
+}
+
+img{
+    width: 100px;
+    border: solid 4px snow ;
+    text-align: center;
+}
+
+span{
+    font-size: 100px;
+    font-family: "仿宋";
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看账号信息</title>
+    <!--<link type="text/css" rel="stylesheet" href="./css/Account.css"/>-->
+    <style>
+        #id {
+            background-color: #60acf0;
+            width: 1525px;
+            height: 720px;
+        }
+
+        .header {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #60acf0;
+            font-size: 40px;
+            font-family: 宋体;
+        }
+
+        .main {
+            height: 80%;
+        }
+
+        .left {
+            float: left;
+            text-align: left;
+            width: 60%;
+            height: 100%;
+            background-color: #60acf0;
+            text-indent: 6cm;
+            font-size: 14px;
+            font-family: 宋体;
+            font-weight: bold;
+        }
+
+        .right {
+            float: right;
+            width: 40%;
+            height: 100%;
+            background-color: #60acf0;
+        }
+
+        .footer {
+            height: 10%;
+            line-height: 50px;
+            text-align: center;
+            background-color: #60acf0;
+            font-size: 30px;
+        }
+
+        .btn-btn-default {
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            color: white; /* 字体颜色 */
+            font-size: 15px; /* 字体大小 */
+            position: absolute;
+            top: 560px;
+            width: 200px;
+            height: 50px;
+            left: 40%; /*绝对位置*/
+            text-align: center;
+        }
+
+        .btn-btn-default:hover {
+            background: #5599FF;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="id">
+        <div class="header">
+            <span>账</span>
+            <span>号</span>
+            <span>信</span>
+            <span>息</span>
+        </div>
+        <div class="main">
+            <div class="left">
+                <form th:action="@{update}" method="post">
+                    <p>账号 ID：<input readonly type="text" id="userid" name="userid"
+                                    style="background-color:transparent;border:0;" th:value="${session.user.userid}"/>
+                    </p><br>
+                    <p>账号 名称：<input type="text" id="username" name="username" placeholder="请输入账号名称"
+                                    th:value="${session.user.username}"/>
+                    </p><br>
+                    <p>真实 姓名：<input type="text" id="realname" name="realname" placeholder="请输入真实姓名"
+                                    th:value="${session.user.realname}"/>
+                    </p> <br>
+                    <p>性 别：<input th:checked="${session.user.sex=='男'}" type="radio" id="sex" name="sex" value="男"/>男
+                        <input th:checked="${session.user.sex=='女'}" type="radio" id="sex1" name="sex" value="女"/>女
+                    </p> <br>
+                    <p>班 级：<input type="text" id="class" name="tclass" placeholder="请输入班级"
+                                  th:value="${session.user.tclass}"/>
+                    </p> <br>
+                    <p>年 级：<input type="text" id="grade" name="grade" placeholder="请输入年级"
+                                  th:value="${session.user.grade}"/>
+                    </p> <br>
+                    <p>联系 方式：<input type="text" id="contacts" name="contacts" placeholder="请输入联系方式"
+                                    th:value="${session.user.contacts}"/>
+                    </p> <br>
+                    <p>当前 状态：<input type="text" id="state" name="state" placeholder="0/1"
+                                    th:value="${session.user.state}"/>
+                    </p> <br>
+                    <button  class="btn-btn-default" type="submit">更改信息</button>
+                </form>
+            </div>
+            <div class="right">
+                <img id="img" width="300px" height="300px" style="text-align: left"
+                     src="/img/toux.png"
+                     alt="">
+                <br>
+                <input type="file" name="file" id="file">
+            </div>
+        </div>
+        <div class="footer">
+        </div>
+    </div>
+</div>
+</body>
+<script language=JavaScript>
+    self.opener.location.reload();
+</script>
+<script>
+    document.getElementsById("file").addEventListener("change", function () {
+        let file = document.getElementById('file').files[0]
+        var fileType = file.name.substring(file.name.lastIndexOf(".") + 1);
+        if (fileType == "jpg" || fileType == "png" || fileType == "jpeg" || fileType == "JPG") {
+            var size = file.size / 1024 / 1024;
+            if (size > 1) {
+                alert("头像不能大于1M");
+                return false;
+            }
+            r = new FileReader();
+            r.onload = function () {
+                console.log(r.result)
+                document.getElementById("img").src = r.result
+            }
+            r.readAsDataURL(file);
+        } else {
+            alert("头像格式不对，请重新选择！")
+            return false;
+        }
+    });
+</script>
+</html>
