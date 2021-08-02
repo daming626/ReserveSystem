@@ -10,4 +10,6 @@ public interface IUserService {
     void deleteUser(String userId);
     User getUserById(String userId);
     void insertManagerById(String userId);
+    void updateUser(User user);
+    void alterUser(User user);
 }
