@@ -23,6 +23,9 @@ public class ReservedController {
 
     private String currentTime;
 
+    private int curPagec = 1;
+
+    private int curPageh = 1;
 //    当前预约
     @GetMapping("currentReservation.do")
     public String currentReserved(Model model, String firstPage, String lastPage, String nextPage, String finalPage, HttpSession session){
@@ -33,30 +36,29 @@ public class ReservedController {
         User user = (User) session.getAttribute("user");
         String userId = user.getUserid();
 
-        int curPage=1;
         int pageSize = 8;
         int totalPage = reservedService.totalc(pageSize,userId,currentTime);
         if (firstPage != null) {//首页
-            curPage = 1;
+            curPagec = 1;
         }
         if (lastPage != null) {//上一页
-            curPage --;
+            curPagec --;
         }
         if (nextPage != null) {//下一页
-            curPage ++;
+            curPagec ++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPagec = totalPage;
         }
-        if (curPage < 1) {//确定下界
-            curPage = 1;
+        if (curPagec < 1) {//确定下界
+            curPagec = 1;
         }
-        if (curPage > totalPage) {//确定上界
-            if(totalPage==0){curPage=1; }
-            else {curPage = totalPage;}
+        if (curPagec > totalPage) {//确定上界
+            if(totalPage==0){curPagec=1; }
+            else {curPagec = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
+        int startPage = (curPagec-1) * pageSize;;
 
         model.addAttribute("currentReservation", reservedService.getCurrentReservedById(userId,currentTime,startPage,pageSize));
         return "currentReservation";
@@ -80,30 +82,29 @@ public class ReservedController {
 
         User user = (User) session.getAttribute("user");
         String userId = user.getUserid();
-        int curPage=1;
         int pageSize = 8;
         int totalPage = reservedService.totalh(pageSize,userId,currentTime);
         if (firstPage != null) {//首页
-            curPage = 1;
+            curPageh = 1;
         }
         if (lastPage != null) {//上一页
-            curPage --;
+            curPageh --;
         }
         if (nextPage != null) {//下一页
-            curPage ++;
+            curPageh ++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPageh = totalPage;
         }
-        if (curPage < 1) {//确定下界
-            curPage = 1;
+        if (curPageh < 1) {//确定下界
+            curPageh = 1;
         }
-        if (curPage > totalPage) {//确定上界
-            if(totalPage==0){curPage=1; }
-            else {curPage = totalPage;}
+        if (curPageh > totalPage) {//确定上界
+            if(totalPage==0){curPageh=1; }
+            else {curPageh = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
+        int startPage = (curPageh-1) * pageSize;
 
         model.addAttribute("historyAppointment", reservedService.getHistoryReservedById(userId,currentTime,startPage,pageSize));
         return "historyAppointment";
