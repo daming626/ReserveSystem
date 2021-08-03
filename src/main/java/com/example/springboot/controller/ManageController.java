@@ -23,34 +23,40 @@ public class ManageController {
     @Autowired
     private IUserService userService;
 
+    private int curPageu = 1;
+
+    private int curPagem = 1;
+
+    private int curPages = 1;
+
     //查看用户
     @GetMapping("viewUser.do")
     public String viewUser(Model model, String firstPage, String lastPage, String nextPage, String finalPage){
 
-        int curPage=1;
+
         int pageSize = 8;
         int totalPage = manageService.totalu(pageSize,"r1000");
         if (firstPage != null) {//首页
-            curPage = 1;
+            curPageu = 1;
         }
         if (lastPage != null) {//上一页
-            curPage --;
+            curPageu --;
         }
         if (nextPage != null) {//下一页
-            curPage ++;
+            curPageu ++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPageu = totalPage;
         }
-        if (curPage < 1) {//确定下界
-            curPage = 1;
+        if (curPageu < 1) {//确定下界
+            curPageu = 1;
         }
-        if (curPage > totalPage) {//确定上界
-            if(totalPage==0){curPage = 1;}
-            else {curPage = totalPage;}
+        if (curPageu > totalPage) {//确定上界
+            if(totalPage==0){curPageu = 1;}
+            else {curPageu = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
+        int startPage = (curPageu-1) * pageSize;
 
         model.addAttribute("viewUser", manageService.getUserById("r1000",startPage,pageSize));
         model.addAttribute("flag",0);
@@ -67,30 +73,29 @@ public class ManageController {
     @GetMapping("viewManager.do")
     public String viewManage(Model model, String firstPage, String lastPage, String nextPage, String finalPage){
 
-        int curPage=1;
         int pageSize = 8;
         int totalPage = manageService.totalm(pageSize,"r1001");
         if (firstPage != null) {//首页
-            curPage = 1;
+            curPagem = 1;
         }
         if (lastPage != null) {//上一页
-            curPage --;
+            curPagem --;
         }
         if (nextPage != null) {//下一页
-            curPage ++;
+            curPagem ++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPagem = totalPage;
         }
-        if (curPage < 1) {//确定下界
-            curPage = 1;
+        if (curPagem < 1) {//确定下界
+            curPagem = 1;
         }
-        if (curPage > totalPage) {//确定上界
-            if(totalPage==0){curPage = 1;}
-            else {curPage = totalPage;}
+        if (curPagem > totalPage) {//确定上界
+            if(totalPage==0){curPagem = 1;}
+            else {curPagem = totalPage;}
         }
 
-        int startPage = (curPage-1) * pageSize;
+        int startPage = (curPagem-1) * pageSize;
 
         model.addAttribute("viewManager", manageService.getManageById("r1001",startPage,pageSize));
         return "viewManager";
@@ -120,33 +125,32 @@ public class ManageController {
     @GetMapping("searchUser.do")
     public String searchUser(String txt,Model model, String firstPage, String lastPage, String nextPage, String finalPage) {
 
-        int curPage = 1;
         int pageSize = 8;
         int totalPage = manageService.totals(pageSize, "r1000");
         if (firstPage != null) {//首页
-            curPage = 1;
+            curPages = 1;
         }
         if (lastPage != null) {//上一页
-            curPage--;
+            curPages--;
         }
         if (nextPage != null) {//下一页
-            curPage++;
+            curPages++;
         }
         if (finalPage != null) {//尾页
-            curPage = totalPage;
+            curPages = totalPage;
         }
-        if (curPage < 1) {//确定下界
-            curPage = 1;
+        if (curPages < 1) {//确定下界
+            curPages = 1;
         }
-        if (curPage > totalPage) {//确定上界
+        if (curPages > totalPage) {//确定上界
             if (totalPage == 0) {
-                curPage = 1;
+                curPages = 1;
             } else {
-                curPage = totalPage;
+                curPages = totalPage;
             }
         }
 
-        int startPage = (curPage - 1) * pageSize;
+        int startPage = (curPages - 1) * pageSize;
 
         model.addAttribute("text", txt);
         model.addAttribute("viewUser", manageService.searchUser(txt, "r1000", startPage, pageSize));
