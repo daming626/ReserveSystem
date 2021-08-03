@@ -11,8 +11,10 @@
         }
         #id {
             background-color: #60acf0;
-            width: 1525px;
-            height: 720px;
+            width: 1200px;
+            /*width: 100%;*/
+            /*height: 100%;*/
+            height: 620px;
         }
 
         .header {
@@ -62,7 +64,7 @@
             color: white; /* 字体颜色 */
             font-size: 15px; /* 字体大小 */
             position: absolute;
-            top: 560px;
+            top: 400px;
             width: 200px;
             height: 50px;
             left: 40%; /*绝对位置*/
@@ -86,28 +88,28 @@
         <div class="main">
             <div class="left">
                 <form th:action="@{update}" method="post">
-                    <p>账号 ID：<input readonly type="text" id="userid" name="userid"
+                    <p>账号&emsp;ID：<input readonly type="text" id="userid" name="userid"
                                     style="background-color:transparent;border:0;" th:value="${session.user.userid}"/>
                     </p><br>
-                    <p>账号 名称：<input type="text" id="username" name="username" placeholder="请输入账号名称"
+                    <p>账号名称：<input type="text" id="username" name="username" placeholder="请输入账号名称"
                                     th:value="${session.user.username}"/>
                     </p><br>
-                    <p>真实 姓名：<input type="text" id="realname" name="realname" placeholder="请输入真实姓名"
+                    <p>真实姓名：<input type="text" id="realname" name="realname" placeholder="请输入真实姓名"
                                     th:value="${session.user.realname}"/>
                     </p> <br>
-                    <p>性 别：<input th:checked="${session.user.sex=='男'}" type="radio" id="sex" name="sex" value="男"/>男
+                    <p>性&emsp;&emsp;别：<input th:checked="${session.user.sex=='男'}" type="radio" id="sex" name="sex" value="男"/>男
                         <input th:checked="${session.user.sex=='女'}" type="radio" id="sex1" name="sex" value="女"/>女
                     </p> <br>
-                    <p>班 级：<input type="text" id="class" name="tclass" placeholder="请输入班级"
+                    <p>班&emsp;&emsp;级：<input type="text" id="class" name="tclass" placeholder="请输入班级"
                                   th:value="${session.user.tclass}"/>
                     </p> <br>
-                    <p>年 级：<input type="text" id="grade" name="grade" placeholder="请输入年级"
+                    <p>年&emsp;&emsp;级：<input type="text" id="grade" name="grade" placeholder="请输入年级"
                                   th:value="${session.user.grade}"/>
                     </p> <br>
-                    <p>联系 方式：<input type="text" id="contacts" name="contacts" placeholder="请输入联系方式"
+                    <p>联系方式：<input type="text" id="contacts" name="contacts" placeholder="请输入联系方式"
                                     th:value="${session.user.contacts}"/>
                     </p> <br>
-                    <p>当前 状态：<input type="text" id="state" name="state" placeholder="0/1"
+                    <p>当前状态：<input type="text" id="state" name="state" placeholder="0/1"
                                     th:value="${session.user.state}"/>
                     </p> <br>
                     <button  class="btn-btn-default" type="submit">更改信息</button>

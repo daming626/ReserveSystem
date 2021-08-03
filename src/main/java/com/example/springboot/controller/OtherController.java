@@ -76,6 +76,12 @@ public class OtherController {
         return "提交成功";
     }
 
+    @GetMapping("deleteNoticeById.do")
+    public String deleteNotice(String Id){
+        noticeService.deleteNotice(Id);
+        return "redirect:getAllNotice.do";
+    }
+
     @GetMapping("feedback.do")
     public String feedback(Model model){
         return "feedback";

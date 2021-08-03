@@ -15,4 +15,7 @@
     <insert id="insertNotice" parameterType="string">
         INSERT INTO tb_notice VALUE (null,#{time},#{content})
     </insert>
+    <delete id="deleteNotice" parameterType="string">
+        DELETE FROM tb_notice WHERE id=#{value}
+    </delete>
 </mapper>

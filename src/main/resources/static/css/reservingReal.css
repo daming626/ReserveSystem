@@ -90,6 +90,7 @@ html, body {
 }
 
 #reservedTable1 {
+    border: 0;
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -97,11 +98,13 @@ html, body {
 }
 
 #reservedTable1 table, th, td {
-    border: 1px solid black;
+    border: 0;
+    /*border: 1px solid black;*/
 }
 
 /*控制边框和表格内容之间的间距，内容居中*/
 #reservedTable1 th, td {
+    border: 0;
     padding: 5px;
     text-align: center;
     border-bottom: 1px solid #ddd;

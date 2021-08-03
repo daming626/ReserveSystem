@@ -11,4 +11,5 @@ public interface NoticeMapper {
     Notice getNoticeById(String id);
     List<Notice> getAllNotice();
     void insertNotice(String time,String content);
+    void deleteNotice(String Id);
 }

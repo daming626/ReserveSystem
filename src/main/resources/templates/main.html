@@ -10,7 +10,7 @@
     <body>
         <!--头部-->
         <header class="publicHeader">
-            <h1>自习室预约系统</h1>
+            <h1><a th:href="instructions.do" target="right" >自习室预约系统</a></h1>
             <div class="publicHeaderR">
                 <p><span>下午好！</span><span style="color: #fff21b" th:text="${session.user.realname}"></span> , 欢迎你！</p>
                 <a th:href="@{logout.do}">退出</a>
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="right">
-                <iframe src="" scrolling="no" width="100%" height="100%" name="right"></iframe>
+                <iframe th:src="@{instructions.do}" scrolling="no" width="100%" height="100%" name="right"></iframe>
             </div>
         </section>
     </body>

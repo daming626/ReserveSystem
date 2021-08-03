@@ -28,4 +28,9 @@ public class NoticeServiceImpl implements INoticeService {
     public void insertNotice(String time, String content) {
         noticeMapper.insertNotice(time,content);
     }
+
+    @Override
+    public void deleteNotice(String Id) {
+        noticeMapper.deleteNotice(Id);
+    }
 }

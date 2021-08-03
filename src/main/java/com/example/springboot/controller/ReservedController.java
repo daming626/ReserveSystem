@@ -21,7 +21,7 @@ public class ReservedController {
     @Autowired
     private IReservedService reservedService;
 
-    private  String currentTime;
+    private String currentTime;
 
 //    当前预约
     @GetMapping("currentReservation.do")

@@ -209,3 +209,11 @@ img{
     /*float: left;*/
 }
 /*底部结束*/
+
+.publicHeader a{
+    text-decoration:none;
+    color: #ffffff;
+}
+.publicHeader a:link {
+    color: #ffffff;
+}
