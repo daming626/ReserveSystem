@@ -1,4 +1,5 @@
 function checkUserId() {
+    console.log("KKKKKKKK");
     var message = document.getElementById("message");
 
     var userId = document.getElementById("userId").value;

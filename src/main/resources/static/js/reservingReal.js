@@ -16,7 +16,9 @@ function shield(reservingDate, roomId, seatNumber) {
 
     // ajax获取某座位的当天预约信息
     var xmlhttp = new XMLHttpRequest();
-    var seraddrs = 'http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber;
+    // var seraddrs = 'http://localhost:9090/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber;
+    // var seraddrs = '/reserving/viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber;
+    var seraddrs = 'viewAllReservedBySome.do?date=' + reservingDate + '&roomId=' + roomId + '&seatNumber=' + seatNumber;
     xmlhttp.open("GET", seraddrs);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.onreadystatechange = function (ev) {

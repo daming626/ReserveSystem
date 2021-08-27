@@ -42,8 +42,11 @@
 
 <!--添加管理员-->
     <insert id="insertAdministrator" parameterType="user">
-        INSERT INTO tb_user VALUE (#{userId},#{username},#{password},#{realName},#{sex},#{tclass},#{grade},#{contacts},#{state})
+        INSERT INTO tb_user VALUE (#{userid},#{username},#{password},#{realname},#{sex},#{tclass},#{grade},#{contacts},#{state});
+        INSERT INTO tb_user_role VALUE (#{userid},'r1001')
     </insert>
+
+
 
 <!--    搜索用户-->
     <select id="searchUser" resultType="user" parameterType="string">

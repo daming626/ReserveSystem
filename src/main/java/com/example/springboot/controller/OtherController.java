@@ -79,7 +79,7 @@ public class OtherController {
     @GetMapping("deleteNoticeById.do")
     public String deleteNotice(String Id){
         noticeService.deleteNotice(Id);
-        return "redirect:getAllNotice.do";
+        return "redirect:notice.do";
     }
 
     @GetMapping("feedback.do")

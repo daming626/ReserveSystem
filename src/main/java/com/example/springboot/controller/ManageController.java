@@ -110,6 +110,7 @@ public class ManageController {
     @GetMapping("addManager.do")
     public String addManager(){
 
+
         return "addManager";
     }
 

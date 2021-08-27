@@ -62,9 +62,9 @@
         <div id="formContent" class="formContent">
             <h4>请输入相关信息</h4>
             <form th:action="@{insertAdministrator.do}" method="post">
-                <label>管理员账号</label><span style="padding-left:5px ;color: red" id="message" value="" text="信息"></span>
+                <label>管理员ID</label><span style="padding-left:5px ;color: red" id="message" value="" text="信息"></span>
                 <input name="userid" id="userId" type="text" onblur="checkUserId(this)" required><br>
-                <label>管理员名称</label>
+                <label>管理员用户名</label>
                 <input name="username" type="text" required><br>
                 <label>管理员密码</label>
                 <input id="password" name="password" type="password" required><br>

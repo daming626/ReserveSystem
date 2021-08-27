@@ -12,7 +12,7 @@
         <header class="publicHeader">
             <h1><a th:href="instructions.do" target="right" >自习室预约系统</a></h1>
             <div class="publicHeaderR">
-                <p><span>下午好！</span><span style="color: #fff21b" th:text="${session.user.realname}"></span> , 欢迎你！</p>
+                <p><span>下午好！</span><span style="color: #fff21b" th:if="${session.user.getRoleList().get(0).getRoleId()!='r1000'||session.role=='r1001' }">管理员&emsp;</span><span style="color: #fff21b" th:text="${session.user.realname}"></span> , 欢迎你！</p>
                 <a th:href="@{logout.do}">退出</a>
             </div>
         </header>

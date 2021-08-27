@@ -2,6 +2,7 @@ package com.example.springboot.controller;
 
 import com.alibaba.druid.support.json.JSONUtils;
 import com.example.springboot.bean.User;
+import com.example.springboot.mapper.UserMapper;
 import com.example.springboot.service.IUserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -25,11 +28,13 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("viewAccount.do")
+//    @ResponseBody
     public String viewUser(Model model) {
         System.out.println("lllll");
         model.addAttribute("users", userService.viewUser());
         System.out.println("ssss");
         return "viewAccount";
+//        return userService.viewUser();
     }
 
     @GetMapping("alterPassword.do")
