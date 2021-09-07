@@ -1,5 +1,7 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.aopLog.AutoLog;
+import com.example.springboot.aopLog.CrcConstants;
 import com.example.springboot.bean.User;
 import com.example.springboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ public class LoginController {
     @Autowired
     private IUserService userService;
 
+    @AutoLog(value = "登录", logType = CrcConstants.LOG_TYPE_1)
     @PostMapping("login.do")
     public String login(String username, String password, HttpSession session, Model model) {
         int flag = 0;

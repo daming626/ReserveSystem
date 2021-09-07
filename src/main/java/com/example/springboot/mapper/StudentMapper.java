@@ -3,6 +3,7 @@ package com.example.springboot.mapper;
 import com.example.springboot.bean.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper

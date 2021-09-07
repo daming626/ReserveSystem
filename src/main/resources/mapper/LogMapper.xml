@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.LogMapper">
+    <insert id="insert" parameterType="sysLog">
+        INSERT INTO sys_log VALUES(#{id},#{log_type},#{log_content},#{operate_type},#{userid},#{username},#{ip},#{method},#{request_url},#{request_param},#{request_type},#{cost_time},#{create_by},#{create_time},#{update_by},#{update_time})
+    </insert>
+</mapper>

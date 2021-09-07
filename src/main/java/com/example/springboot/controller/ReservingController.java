@@ -1,5 +1,7 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.aopLog.AutoLog;
+import com.example.springboot.aopLog.CrcConstants;
 import com.example.springboot.bean.Reservate;
 import com.example.springboot.bean.Result;
 import com.example.springboot.bean.User;
@@ -7,6 +9,7 @@ import com.example.springboot.exception.UserException;
 import com.example.springboot.service.IReservingServise;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 
 @Controller
@@ -31,6 +35,7 @@ public class ReservingController {
         return "reserving";
     }
 
+    @AutoLog(value="查询自习室",operateType= CrcConstants.OPERATE_TYPE_1)
     @GetMapping("getRoomInformation.do")
     public String test(String date, String time, String roomId, Model model) {
         if (time != null) {
